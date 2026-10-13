@@ -18,11 +18,11 @@ Everything below is marked in the files with an HTML comment, so you can search 
 1. ~~Contact details~~ Done: WhatsApp +971 52 453 4410, Instagram @4c.house, email hello@4chouse.com. To change the email, search for `hello@4chouse.com` in `index.html` and `privacy.html`.
 2. **Connect the form.** Create a free form at [formspree.io](https://formspree.io) (or similar), then paste its URL into `<form id="leadForm" action="">`. Until then, submitting opens an email draft instead.
 3. **Your photo.** Save it as `assets/founder.jpg`. Until then a "K" monogram shows.
-4. **Past-project photos.** Copy photos into `assets/work/`, then edit the `PROJECTS` list near the bottom of `index.html`:
+4. ~~Past-project photos~~ Done: 27 enhanced photos in `assets/work/` (large) and `assets/work/thumb/` (gallery strip). To add more, save a 1800px and a 900px WebP version and add a line to the `PROJECTS` list near the bottom of `index.html`:
    ```js
-   { img: "assets/work/mall-activation-dubai-mall.jpg", title: "Brand launch, Dubai Mall", category: "Activations" },
+   { img: "assets/work/thumb/new-project.webp", full: "assets/work/new-project.webp", title: "Brand launch, Dubai Mall", category: "Activations" },
    ```
-   Add as many as you like. Categories become the filter buttons automatically. Compress photos first (about 1600px wide, under 400 KB each, for example with squoosh.app).
+   Categories become the filter buttons automatically.
 5. **Privacy policy.** Add your registered company name and address in `privacy.html`, and check it with your advisor.
 
 ### Should do

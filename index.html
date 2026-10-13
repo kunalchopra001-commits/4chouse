@@ -315,7 +315,8 @@
       transition: box-shadow 0.3s var(--ease-out), transform 0.3s var(--ease-out);
     }
     .shot button:hover .frame { box-shadow: inset 0 0 0 1px var(--cyan), 0 0 32px rgba(0, 217, 255, 0.14), 0 12px 32px rgba(0, 0, 0, 0.45); transform: translateY(-4px); }
-    .frame img { width: 100%; height: 100%; object-fit: cover; }
+    .frame img { position: relative; width: 100%; height: 100%; object-fit: cover; }
+    .frame img.tall { object-fit: contain; }
     .frame .ph { position: absolute; inset: 0; display: grid; place-items: center; color: rgba(0, 217, 255, 0.4); }
     .frame .ph .icon { width: 64px; height: 64px; }
     .shot figcaption { margin-top: 14px; }
@@ -999,17 +1000,36 @@
    EDIT YOUR CONTENT HERE
    ================================================================ */
 
-// Past projects for the "Our work" gallery. Put photos in assets/work/
-// and set img to the file path. Entries without a photo show a placeholder.
+// Past projects for the "Our work" gallery, in display order.
+// img = small version for the strip (assets/work/thumb/), full = large version for the lightbox.
 const PROJECTS = [
-  { img: "", title: "Mall activation", category: "Activations" },
-  { img: "", title: "Exhibition stand", category: "Exhibitions" },
-  { img: "", title: "Food kiosk", category: "Kiosks and carts" },
-  { img: "", title: "Retail interior", category: "Retail and interiors" },
-  { img: "", title: "Brand pop-up", category: "Activations" },
-  { img: "", title: "Food cart", category: "Kiosks and carts" },
-  { img: "", title: "Trade show pavilion", category: "Exhibitions" },
-  { img: "", title: "Store fit-out", category: "Retail and interiors" },
+  { img: "assets/work/thumb/mclaren-f1-dubai-duty-free.webp", full: "assets/work/mclaren-f1-dubai-duty-free.webp", title: "McLaren F1 showcase, Dubai Duty Free", category: "Activations" },
+  { img: "assets/work/thumb/kohinoor-foods-stand.webp", full: "assets/work/kohinoor-foods-stand.webp", title: "Kohinoor Foods exhibition stand", category: "Exhibitions" },
+  { img: "assets/work/thumb/balqees-honey-kiosk.webp", full: "assets/work/balqees-honey-kiosk.webp", title: "Balqees honey kiosk", category: "Retail and interiors" },
+  { img: "assets/work/thumb/da-luca-tuk-tuk.webp", full: "assets/work/da-luca-tuk-tuk.webp", title: "Da Luca tuk-tuk food cart", category: "Kiosks and carts" },
+  { img: "assets/work/thumb/etisalat-stand.webp", full: "assets/work/etisalat-stand.webp", title: "Etisalat exhibition stand", category: "Exhibitions" },
+  { img: "assets/work/thumb/wooden-market-cart.webp", full: "assets/work/wooden-market-cart.webp", title: "Wooden market cart", category: "Kiosks and carts" },
+  { img: "assets/work/thumb/lenovo-ideapad-display.webp", full: "assets/work/lenovo-ideapad-display.webp", title: "Lenovo IdeaPad display, Plug-Ins", category: "Activations" },
+  { img: "assets/work/thumb/cafe-bookstore-interior.webp", full: "assets/work/cafe-bookstore-interior.webp", title: "Café and bookstore interior", category: "Retail and interiors" },
+  { img: "assets/work/thumb/050-telecom-stand.webp", full: "assets/work/050-telecom-stand.webp", title: "050 Telecom exhibition stand", category: "Exhibitions" },
+  { img: "assets/work/thumb/chocolate-trolley.webp", full: "assets/work/chocolate-trolley.webp", title: "The Chocolate Trolley cart", category: "Kiosks and carts" },
+  { img: "assets/work/thumb/car-launch-stage.webp", full: "assets/work/car-launch-stage.webp", title: "Car launch stage, outdoor event", category: "Activations" },
+  { img: "assets/work/thumb/ruky-perfume-kiosk.webp", full: "assets/work/ruky-perfume-kiosk.webp", title: "Ruky perfume kiosk", category: "Retail and interiors" },
+  { img: "assets/work/thumb/event-stage-set.webp", full: "assets/work/event-stage-set.webp", title: "Event stage and screen set", category: "Exhibitions" },
+  { img: "assets/work/thumb/charm-lounge-cart.webp", full: "assets/work/charm-lounge-cart.webp", title: "The Charm Lounge cart", category: "Kiosks and carts" },
+  { img: "assets/work/thumb/character-lightbox-display.webp", full: "assets/work/character-lightbox-display.webp", title: "Illuminated character display", category: "Activations" },
+  { img: "assets/work/thumb/sapil-fragrance-display.webp", full: "assets/work/sapil-fragrance-display.webp", title: "Sapil fragrance display", category: "Retail and interiors" },
+  { img: "assets/work/thumb/india-pavilion.webp", full: "assets/work/india-pavilion.webp", title: "India pavilion stands", category: "Exhibitions" },
+  { img: "assets/work/thumb/dessert-cart-night.webp", full: "assets/work/dessert-cart-night.webp", title: "Illuminated dessert cart", category: "Kiosks and carts" },
+  { img: "assets/work/thumb/la-vache-qui-rit-fun-corner.webp", full: "assets/work/la-vache-qui-rit-fun-corner.webp", title: "La Vache qui rit fun corner", category: "Activations" },
+  { img: "assets/work/thumb/a-lot-store-counter.webp", full: "assets/work/a-lot-store-counter.webp", title: "A Lot store counter", category: "Retail and interiors" },
+  { img: "assets/work/thumb/registration-counter.webp", full: "assets/work/registration-counter.webp", title: "Conference registration counter", category: "Exhibitions" },
+  { img: "assets/work/thumb/kiosk-in-workshop.webp", full: "assets/work/kiosk-in-workshop.webp", title: "Kiosk build in our workshop", category: "Kiosks and carts" },
+  { img: "assets/work/thumb/lancome-lightbox.webp", full: "assets/work/lancome-lightbox.webp", title: "Lancôme lightbox display", category: "Activations" },
+  { img: "assets/work/thumb/retail-shelving-fitout.webp", full: "assets/work/retail-shelving-fitout.webp", title: "Retail shelving fit-out", category: "Retail and interiors" },
+  { img: "assets/work/thumb/la-vache-qui-rit-props.webp", full: "assets/work/la-vache-qui-rit-props.webp", title: "La Vache qui rit giant props", category: "Activations" },
+  { img: "assets/work/thumb/red-rock-storefront.webp", full: "assets/work/red-rock-storefront.webp", title: "Red Rock store front", category: "Retail and interiors" },
+  { img: "assets/work/thumb/handbag-wall-display.webp", full: "assets/work/handbag-wall-display.webp", title: "Handbag wall display, Candy Bay", category: "Activations" },
 ];
 
 // Client logos for the strip under the hero. The strip stays hidden while this is empty.
@@ -1167,11 +1187,13 @@ document.addEventListener("keydown", e => { if (e.key === "Escape" && mobileNav.
   const dlg = document.querySelector("dialog.lightbox");
   let visible = PROJECTS.slice(), current = 0;
 
-  function frameHTML(p, eager) {
+  function frameHTML(p, large) {
     const icon = ICONS[p.category] || "image";
     const ph = '<span class="ph" aria-hidden="true"><svg class="icon"><use href="#i-' + icon + '"/></svg></span>';
-    if (!p.img) return ph;
-    return ph + '<img src="' + p.img + '" alt="" ' + (eager ? "" : 'loading="lazy" ') + 'onerror="this.remove()">';
+    const src = large ? (p.full || p.img) : p.img;
+    if (!src) return ph;
+    return ph + '<img src="' + src + '" alt="" decoding="async" ' + (large ? "" : 'loading="lazy" ') +
+      'onload="if(this.naturalHeight>this.naturalWidth)this.classList.add(\'tall\')" onerror="this.remove()">';
   }
   function renderStrip() {
     strip.innerHTML = "";
