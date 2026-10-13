@@ -342,9 +342,9 @@
       background: radial-gradient(circle at 30% 25%, #1f2a2d, #0f0f0f 70%);
       box-shadow: 0 0 48px rgba(0, 217, 255, 0.2), 0 0 96px rgba(0, 217, 255, 0.06), inset 0 0 0 1px var(--cyan-edge);
     }
-    .portrait img { width: 100%; height: 100%; object-fit: cover; }
+    .portrait img { position: relative; z-index: 1; width: 100%; height: 100%; object-fit: cover; }
     .portrait .mono { position: absolute; inset: 0; display: grid; place-items: center; font: 900 5rem/1 var(--display); color: rgba(0, 217, 255, 0.5); }
-    .years { position: absolute; right: -12px; bottom: 6px; padding: 14px 18px; border-radius: 16px; background: var(--surface); box-shadow: inset 0 0 0 1px var(--line-strong), 0 12px 32px rgba(0, 0, 0, 0.5); }
+    .years { position: absolute; z-index: 2; right: -12px; bottom: 6px; padding: 14px 18px; border-radius: 16px; background: var(--surface); box-shadow: inset 0 0 0 1px var(--line-strong), 0 12px 32px rgba(0, 0, 0, 0.5); }
     .years b { display: block; font: 900 1.8rem/1 var(--display); color: var(--cyan); }
     .years span { font: 600 0.72rem/1.2 var(--display); color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; }
     .founder p.body { color: var(--muted); margin-top: 20px; max-width: 58ch; font-size: 1.05rem; }
