@@ -184,18 +184,11 @@
     /* AI background, from the Figma system: fixed behind the whole page */
     .site-bg { position: fixed; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; }
     main, footer { position: relative; z-index: 1; }
-    .ai-grid {
-      position: absolute; inset: 0; opacity: 0.55;
-      background-image: linear-gradient(rgba(0, 217, 255, 0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 217, 255, 0.04) 1px, transparent 1px);
-      background-size: 48px 48px;
-      -webkit-mask-image: radial-gradient(ellipse 120% 100% at 50% 50%, #000 55%, rgba(0,0,0,0.35) 100%);
-      mask-image: radial-gradient(ellipse 120% 100% at 50% 50%, #000 55%, rgba(0,0,0,0.35) 100%);
-    }
+    .net { position: absolute; inset: 0; width: 100%; height: 100%; }
     .orb { position: absolute; border-radius: 50%; }
     .orb-cyan { width: 640px; height: 640px; top: -140px; right: -120px; opacity: 0.16; background: radial-gradient(circle, var(--cyan) 0%, transparent 70%); animation: float-orb 12s ease-in-out infinite; }
     .orb-2 { top: auto; right: auto; bottom: -220px; left: -180px; width: 560px; height: 560px; opacity: 0.1; animation-duration: 18s; }
     .orb-magenta { top: 45%; bottom: auto; width: 420px; height: 420px; bottom: -100px; left: 8%; opacity: 0.08; background: radial-gradient(circle, var(--magenta) 0%, transparent 70%); animation: float-orb 16s ease-in-out infinite reverse; }
-    .nodes { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0.2; }
     .node-line { stroke-dasharray: 8 4; animation: dash-flow 3s linear infinite; }
     @keyframes float-orb {
       0%, 100% { transform: translate(0, 0) scale(1); }
@@ -409,7 +402,7 @@
 
     /* Founder */
     .founder-grid { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 80px; align-items: center; }
-    .portrait-wrap { position: relative; justify-self: center; margin-bottom: 24px; }
+    .portrait-wrap { position: relative; justify-self: center; }
     .portrait {
       width: clamp(240px, 28vw, 340px); aspect-ratio: 1; border-radius: 50%; overflow: hidden; position: relative;
       background: radial-gradient(circle at 30% 25%, #1f2a2d, #0f0f0f 70%);
@@ -417,9 +410,6 @@
     }
     .portrait img { position: relative; z-index: 1; width: 100%; height: 100%; object-fit: cover; }
     .portrait .mono { position: absolute; inset: 0; display: grid; place-items: center; font: 900 5rem/1 var(--display); color: rgba(0, 217, 255, 0.5); }
-    .years { position: absolute; z-index: 2; left: 50%; bottom: -24px; transform: translateX(-50%); display: flex; align-items: center; gap: 10px; white-space: nowrap; padding: 10px 20px; border-radius: var(--pill); background: var(--surface); box-shadow: inset 0 0 0 1px var(--cyan-edge), 0 0 24px rgba(0, 217, 255, 0.18), 0 12px 32px rgba(0, 0, 0, 0.5); }
-    .years b { font: 900 1.5rem/1 var(--display); color: var(--cyan); }
-    .years span { font: 600 0.75rem/1.2 var(--display); color: var(--fg); letter-spacing: 0.1em; text-transform: uppercase; }
     .founder p.body { color: var(--muted); margin-top: 20px; max-width: 58ch; font-size: 1.05rem; }
     .pullquote { margin: 32px 0 0; padding: 24px 28px; border-radius: var(--radius); background: var(--surface); box-shadow: inset 0 0 0 1px var(--cyan-edge); font: 700 1.15rem/1.45 var(--display); }
     .tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
@@ -584,92 +574,10 @@
 </svg>
 
 <div class="site-bg" aria-hidden="true">
-  <div class="ai-grid"></div>
+  <canvas class="net"></canvas>
   <div class="orb orb-cyan"></div>
   <div class="orb orb-cyan orb-2"></div>
   <div class="orb orb-magenta"></div>
-  <svg class="nodes" viewBox="0 0 1440 900" fill="none" preserveAspectRatio="xMidYMid slice">
-    <g stroke="#00d9ff">
-          <line x1="78" y1="55" x2="249" y2="94" stroke-width="0.8" class="node-line"/>
-          <line x1="78" y1="55" x2="259" y2="232" stroke-width="0.6" class="node-line"/>
-          <line x1="249" y1="94" x2="452" y2="91" stroke-width="0.6" class="node-line"/>
-          <line x1="249" y1="94" x2="259" y2="232" stroke-width="0.8" class="node-line"/>
-          <line x1="452" y1="91" x2="559" y2="238" stroke-width="0.6" class="node-line"/>
-          <line x1="711" y1="47" x2="915" y2="123" stroke-width="0.6" class="node-line"/>
-          <line x1="711" y1="47" x2="739" y2="257" stroke-width="0.8" class="node-line"/>
-          <line x1="915" y1="123" x2="865" y2="226" stroke-width="0.6" class="node-line"/>
-          <line x1="39" y1="306" x2="259" y2="232" stroke-width="0.6" class="node-line"/>
-          <line x1="39" y1="306" x2="144" y2="470" stroke-width="0.8" class="node-line"/>
-          <line x1="559" y1="238" x2="739" y2="257" stroke-width="0.6" class="node-line"/>
-          <line x1="739" y1="257" x2="865" y2="226" stroke-width="0.6" class="node-line"/>
-          <line x1="739" y1="257" x2="667" y2="442" stroke-width="0.8" class="node-line"/>
-          <line x1="1157" y1="263" x2="1349" y2="265" stroke-width="0.6" class="node-line"/>
-          <line x1="1157" y1="263" x2="1155" y2="476" stroke-width="0.6" class="node-line"/>
-          <line x1="1349" y1="265" x2="1390" y2="431" stroke-width="0.8" class="node-line"/>
-          <line x1="144" y1="470" x2="116" y2="638" stroke-width="0.6" class="node-line"/>
-          <line x1="667" y1="442" x2="877" y2="449" stroke-width="0.6" class="node-line"/>
-          <line x1="667" y1="442" x2="537" y2="586" stroke-width="0.8" class="node-line"/>
-          <line x1="877" y1="449" x2="896" y2="619" stroke-width="0.6" class="node-line"/>
-          <line x1="1155" y1="476" x2="1065" y2="626" stroke-width="0.6" class="node-line"/>
-          <line x1="1155" y1="476" x2="1284" y2="586" stroke-width="0.8" class="node-line"/>
-          <line x1="1390" y1="431" x2="1284" y2="586" stroke-width="0.6" class="node-line"/>
-          <line x1="116" y1="638" x2="51" y2="785" stroke-width="0.6" class="node-line"/>
-          <line x1="356" y1="674" x2="537" y2="586" stroke-width="0.8" class="node-line"/>
-          <line x1="356" y1="674" x2="361" y2="768" stroke-width="0.6" class="node-line"/>
-          <line x1="356" y1="674" x2="521" y2="848" stroke-width="0.6" class="node-line"/>
-          <line x1="896" y1="619" x2="1065" y2="626" stroke-width="0.8" class="node-line"/>
-          <line x1="896" y1="619" x2="771" y2="788" stroke-width="0.6" class="node-line"/>
-          <line x1="1065" y1="626" x2="1083" y2="778" stroke-width="0.6" class="node-line"/>
-          <line x1="1284" y1="586" x2="1300" y2="808" stroke-width="0.8" class="node-line"/>
-          <line x1="51" y1="785" x2="361" y2="768" stroke-width="0.6" class="node-line"/>
-          <line x1="361" y1="768" x2="521" y2="848" stroke-width="0.6" class="node-line"/>
-          <line x1="521" y1="848" x2="771" y2="788" stroke-width="0.8" class="node-line"/>
-          <line x1="1083" y1="778" x2="1300" y2="808" stroke-width="0.6" class="node-line"/>
-    </g>
-    <g fill="#00d9ff">
-          <circle cx="78" cy="55" r="3.5" opacity="0.55"/><circle cx="78" cy="55" r="8" opacity="0.08"/>
-          <circle cx="249" cy="94" r="3.5" opacity="0.55"/><circle cx="249" cy="94" r="8" opacity="0.08"/>
-          <circle cx="452" cy="91" r="3.5" opacity="0.55"/><circle cx="452" cy="91" r="8" opacity="0.08"/>
-          <circle cx="711" cy="47" r="3.5" opacity="0.55"/><circle cx="711" cy="47" r="8" opacity="0.08"/>
-          <circle cx="915" cy="123" r="3.5" opacity="0.55"/><circle cx="915" cy="123" r="8" opacity="0.08"/>
-          <circle cx="39" cy="306" r="3.5" opacity="0.55"/><circle cx="39" cy="306" r="8" opacity="0.08"/>
-          <circle cx="259" cy="232" r="3.5" opacity="0.55"/><circle cx="259" cy="232" r="8" opacity="0.08"/>
-          <circle cx="559" cy="238" r="3.5" opacity="0.55"/><circle cx="559" cy="238" r="8" opacity="0.08"/>
-          <circle cx="739" cy="257" r="3.5" opacity="0.55"/><circle cx="739" cy="257" r="8" opacity="0.08"/>
-          <circle cx="865" cy="226" r="3.5" opacity="0.55"/><circle cx="865" cy="226" r="8" opacity="0.08"/>
-          <circle cx="1157" cy="263" r="3.5" opacity="0.55"/><circle cx="1157" cy="263" r="8" opacity="0.08"/>
-          <circle cx="1349" cy="265" r="3.5" opacity="0.55"/><circle cx="1349" cy="265" r="8" opacity="0.08"/>
-          <circle cx="144" cy="470" r="3.5" opacity="0.55"/><circle cx="144" cy="470" r="8" opacity="0.08"/>
-          <circle cx="667" cy="442" r="3.5" opacity="0.55"/><circle cx="667" cy="442" r="8" opacity="0.08"/>
-          <circle cx="877" cy="449" r="3.5" opacity="0.55"/><circle cx="877" cy="449" r="8" opacity="0.08"/>
-          <circle cx="1155" cy="476" r="3.5" opacity="0.55"/><circle cx="1155" cy="476" r="8" opacity="0.08"/>
-          <circle cx="1390" cy="431" r="3.5" opacity="0.55"/><circle cx="1390" cy="431" r="8" opacity="0.08"/>
-          <circle cx="116" cy="638" r="3.5" opacity="0.55"/><circle cx="116" cy="638" r="8" opacity="0.08"/>
-          <circle cx="356" cy="674" r="3.5" opacity="0.55"/><circle cx="356" cy="674" r="8" opacity="0.08"/>
-          <circle cx="537" cy="586" r="3.5" opacity="0.55"/><circle cx="537" cy="586" r="8" opacity="0.08"/>
-          <circle cx="896" cy="619" r="3.5" opacity="0.55"/><circle cx="896" cy="619" r="8" opacity="0.08"/>
-          <circle cx="1065" cy="626" r="3.5" opacity="0.55"/><circle cx="1065" cy="626" r="8" opacity="0.08"/>
-          <circle cx="1284" cy="586" r="3.5" opacity="0.55"/><circle cx="1284" cy="586" r="8" opacity="0.08"/>
-          <circle cx="51" cy="785" r="3.5" opacity="0.55"/><circle cx="51" cy="785" r="8" opacity="0.08"/>
-          <circle cx="361" cy="768" r="3.5" opacity="0.55"/><circle cx="361" cy="768" r="8" opacity="0.08"/>
-          <circle cx="521" cy="848" r="3.5" opacity="0.55"/><circle cx="521" cy="848" r="8" opacity="0.08"/>
-          <circle cx="771" cy="788" r="3.5" opacity="0.55"/><circle cx="771" cy="788" r="8" opacity="0.08"/>
-          <circle cx="1083" cy="778" r="3.5" opacity="0.55"/><circle cx="1083" cy="778" r="8" opacity="0.08"/>
-          <circle cx="1300" cy="808" r="3.5" opacity="0.55"/><circle cx="1300" cy="808" r="8" opacity="0.08"/>
-    </g>
-    <g class="movers">
-          <circle r="2.6" fill="#00d9ff"><animateMotion dur="3.5s" begin="0.0s" repeatCount="indefinite" path="M78,55 L249,94"/><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.15;0.85;1" dur="3.5s" begin="0.0s" repeatCount="indefinite"/></circle>
-          <circle r="2.6" fill="#00d9ff"><animateMotion dur="4.4s" begin="0.7s" repeatCount="indefinite" path="M249,94 L259,232"/><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.15;0.85;1" dur="4.4s" begin="0.7s" repeatCount="indefinite"/></circle>
-          <circle r="2.6" fill="#00d9ff"><animateMotion dur="5.3s" begin="1.4s" repeatCount="indefinite" path="M711,47 L739,257"/><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.15;0.85;1" dur="5.3s" begin="1.4s" repeatCount="indefinite"/></circle>
-          <circle r="2.6" fill="#00d9ff"><animateMotion dur="6.2s" begin="2.1s" repeatCount="indefinite" path="M39,306 L144,470"/><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.15;0.85;1" dur="6.2s" begin="2.1s" repeatCount="indefinite"/></circle>
-          <circle r="2.6" fill="#00d9ff"><animateMotion dur="3.5s" begin="2.8s" repeatCount="indefinite" path="M739,257 L667,442"/><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.15;0.85;1" dur="3.5s" begin="2.8s" repeatCount="indefinite"/></circle>
-          <circle r="2.6" fill="#00d9ff"><animateMotion dur="4.4s" begin="3.5s" repeatCount="indefinite" path="M1349,265 L1390,431"/><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.15;0.85;1" dur="4.4s" begin="3.5s" repeatCount="indefinite"/></circle>
-          <circle r="2.6" fill="#00d9ff"><animateMotion dur="5.3s" begin="0.2s" repeatCount="indefinite" path="M667,442 L537,586"/><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.15;0.85;1" dur="5.3s" begin="0.2s" repeatCount="indefinite"/></circle>
-          <circle r="2.6" fill="#00d9ff"><animateMotion dur="6.2s" begin="0.9s" repeatCount="indefinite" path="M1155,476 L1284,586"/><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.15;0.85;1" dur="6.2s" begin="0.9s" repeatCount="indefinite"/></circle>
-          <circle r="2.6" fill="#00d9ff"><animateMotion dur="3.5s" begin="1.6s" repeatCount="indefinite" path="M356,674 L537,586"/><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.15;0.85;1" dur="3.5s" begin="1.6s" repeatCount="indefinite"/></circle>
-          <circle r="2.6" fill="#00d9ff"><animateMotion dur="4.4s" begin="2.3s" repeatCount="indefinite" path="M896,619 L1065,626"/><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.15;0.85;1" dur="4.4s" begin="2.3s" repeatCount="indefinite"/></circle>
-    </g>
-  </svg>
 </div>
 <a class="skip" href="#main">Skip to content</a>
 
@@ -992,7 +900,6 @@
           <span class="mono" aria-hidden="true">K</span>
           <img src="assets/founder.jpg" alt="Kunal, founder of 4C House of Advertising" onerror="this.remove()">
         </div>
-        <div class="years"><b>24</b><span>years in business</span></div>
       </div>
       <div class="founder">
         <h2 id="about-title">I've run the business you're running.</h2>
@@ -1203,11 +1110,114 @@ const CLIENT_LOGOS = [];
 
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 document.documentElement.classList.add("js");
-const bgSvg = document.querySelector(".site-bg svg");
-if (bgSvg && bgSvg.pauseAnimations) {
-  if (reduceMotion) bgSvg.pauseAnimations();
-  else document.addEventListener("visibilitychange", () => document.hidden ? bgSvg.pauseAnimations() : bgSvg.unpauseAnimations());
-}
+// Background network: an endless field of nodes and dashed links drawn on a canvas.
+// The near layer moves with the page, the far layer moves slower for depth, and
+// pulses travel down the links, speeding up while the visitor scrolls.
+(function () {
+  const canvas = document.querySelector(".site-bg .net");
+  if (!canvas || !canvas.getContext) return;
+  const ctx = canvas.getContext("2d");
+  const CYAN = "0, 217, 255";
+  let w = 0, h = 0, dpr = 1, flow = 0, lastY = window.scrollY, lastT = performance.now(), running = false;
+
+  // Stable pseudo-random numbers per grid cell, so the network never changes shape
+  function rand(x, y, k) {
+    let n = (x * 374761393 + y * 668265263 + k * 2147483647) | 0;
+    n = (n ^ (n >>> 13)) * 1274126177 | 0;
+    return ((n ^ (n >>> 16)) >>> 0) / 4294967295;
+  }
+  const layers = [
+    { cell: 150, speed: 0.4, line: 0.07, node: 0.10, width: 0.5, pulses: false, salt: 11 },
+    { cell: 230, speed: 1.0, line: 0.17, node: 0.22, width: 0.8, pulses: true, salt: 3 }
+  ];
+  function node(L, c, r) {
+    if (rand(c, r, L.salt) < 0.22) return null;
+    return { x: (c + 0.15 + 0.7 * rand(c, r, L.salt + 1)) * L.cell, y: (r + 0.15 + 0.7 * rand(c, r, L.salt + 2)) * L.cell };
+  }
+  function resize() {
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    w = window.innerWidth; h = window.innerHeight;
+    canvas.width = w * dpr; canvas.height = h * dpr;
+    const small = w < 760;
+    layers[0].cell = small ? 110 : 150;
+    layers[1].cell = small ? 170 : 230;
+    draw();
+  }
+  function drawLayer(L, scrollY) {
+    const off = scrollY * L.speed;
+    const r0 = Math.floor((off - L.cell) / L.cell), r1 = Math.ceil((off + h + L.cell) / L.cell);
+    const c0 = -1, c1 = Math.ceil(w / L.cell) + 1;
+    ctx.setLineDash([8, 5]);
+    ctx.lineDashOffset = -flow * (L.pulses ? 1 : 0.4);
+    ctx.lineWidth = L.width;
+    ctx.strokeStyle = "rgba(" + CYAN + "," + L.line + ")";
+    const pulses = [];
+    ctx.beginPath();
+    for (let r = r0; r <= r1; r++) for (let c = c0; c <= c1; c++) {
+      const a = node(L, c, r); if (!a) continue;
+      const links = [[c + 1, r, 0.35], [c, r + 1, 0.45], [c + 1, r + 1, 0.78], [c - 1, r + 1, 0.85]];
+      for (const [cc, rr, p] of links) {
+        if (rand(c * 7 + cc, r * 7 + rr, L.salt + 5) < p) continue;
+        const b = node(L, cc, rr); if (!b) continue;
+        ctx.moveTo(a.x, a.y - off); ctx.lineTo(b.x, b.y - off);
+        if (L.pulses && rand(c + cc * 3, r + rr * 5, 41) > 0.6) pulses.push([a, b, rand(c, r, 77 + cc)]);
+      }
+    }
+    ctx.stroke();
+    ctx.setLineDash([]);
+    for (let r = r0; r <= r1; r++) for (let c = c0; c <= c1; c++) {
+      const a = node(L, c, r); if (!a) continue;
+      const y = a.y - off;
+      ctx.fillStyle = "rgba(" + CYAN + "," + (L.node * 0.35) + ")";
+      ctx.beginPath(); ctx.arc(a.x, y, L.pulses ? 7 : 4, 0, 6.283); ctx.fill();
+      ctx.fillStyle = "rgba(" + CYAN + "," + L.node * 2.2 + ")";
+      ctx.beginPath(); ctx.arc(a.x, y, L.pulses ? 2.6 : 1.6, 0, 6.283); ctx.fill();
+    }
+    // Pulses always travel downwards, the way the page reads
+    for (const [a, b, ph] of pulses) {
+      const [top, bot] = a.y <= b.y ? [a, b] : [b, a];
+      const t = ((flow / 140) + ph) % 1;
+      const x = top.x + (bot.x - top.x) * t, y = top.y + (bot.y - top.y) * t - off;
+      const fade = Math.sin(Math.PI * t);
+      ctx.fillStyle = "rgba(" + CYAN + "," + (0.12 * fade) + ")";
+      ctx.beginPath(); ctx.arc(x, y, 7, 0, 6.283); ctx.fill();
+      ctx.fillStyle = "rgba(" + CYAN + "," + (0.85 * fade) + ")";
+      ctx.beginPath(); ctx.arc(x, y, 2.2, 0, 6.283); ctx.fill();
+    }
+  }
+  function draw() {
+    const y = window.scrollY;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.clearRect(0, 0, w, h);
+    // Fine grid, moving with the page
+    ctx.strokeStyle = "rgba(" + CYAN + ",0.022)"; ctx.lineWidth = 1;
+    ctx.beginPath();
+    for (let x = 0.5; x < w; x += 48) { ctx.moveTo(x, 0); ctx.lineTo(x, h); }
+    for (let gy = (48 - (y % 48)) % 48 + 0.5; gy < h; gy += 48) { ctx.moveTo(0, gy); ctx.lineTo(w, gy); }
+    ctx.stroke();
+    for (const L of layers) drawLayer(L, y);
+  }
+  function frame(now) {
+    const dt = Math.min(64, now - lastT) / 1000; lastT = now;
+    const y = window.scrollY, dy = Math.abs(y - lastY); lastY = y;
+    flow += dt * 26 + Math.min(dy, 120) * 0.6;
+    draw();
+    if (running) requestAnimationFrame(frame);
+  }
+  window.addEventListener("resize", resize);
+  resize();
+  if (reduceMotion) {
+    // No continuous motion: redraw only as the visitor scrolls
+    let queued = false;
+    window.addEventListener("scroll", () => { if (!queued) { queued = true; requestAnimationFrame(() => { queued = false; draw(); }); } }, { passive: true });
+  } else {
+    running = true; requestAnimationFrame(frame);
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden) running = false;
+      else if (!running) { running = true; lastT = performance.now(); requestAnimationFrame(frame); }
+    });
+  }
+})();
 document.querySelectorAll("[data-year]").forEach(el => el.textContent = new Date().getFullYear());
 
 function track(google, meta, params) {
