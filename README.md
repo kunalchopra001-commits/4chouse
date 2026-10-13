@@ -7,7 +7,8 @@ A static, single-page site with no build step. Files:
 | `index.html` | The landing page (design, content and scripts in one file) |
 | `privacy.html` | Privacy policy, linked from the form and footer (needed for Google and Meta ads) |
 | `robots.txt` | Lets search engines index the site |
-| `_headers` | Netlify caching and security settings |
+| `_headers` | Netlify caching and security settings (HTTPS-only, content security policy, anti-clickjacking) |
+| `assets/fonts/` | Self-hosted Montserrat and Inter fonts (no calls to Google Fonts) |
 | `assets/work/` | Put past-project photos here |
 | `assets/founder.jpg` | Put your portrait here (square works best) |
 
@@ -28,7 +29,7 @@ Everything below is marked in the files with an HTML comment, so you can search 
 
 ### Should do
 6. **Client logos.** Add logos (SVG or transparent PNG) to `assets/clients/` and list them in `CLIENT_LOGOS`. The scrolling logo strip under the hero appears automatically once the list has entries. Only use brands you have permission to show.
-7. **Ad tracking.** Uncomment the tracking block in the `<head>` and add your Google Analytics 4, Google Ads and Meta Pixel IDs. The page already sends these events:
+7. **Ad tracking.** Uncomment the tracking block in the `<head>` and add your Google Analytics 4, Google Ads and Meta Pixel IDs. At the same time, update `privacy.html` (it currently says the site uses no analytics or cookies). The security policy in `_headers` already allows Google and Meta tracking scripts. The page already sends these events:
    - `generate_lead` (Google) and `Lead` (Meta) when the form is submitted. Use this as your ad conversion.
    - `checkup_complete` and `CheckupComplete` when someone finishes the 60-second check-up
    - `whatsapp_click` and `Contact` when a WhatsApp link is clicked
