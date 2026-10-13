@@ -118,7 +118,7 @@
 
     .wrap { width: 100%; max-width: var(--max); margin: 0 auto; padding: 0 24px; }
     section { position: relative; padding: clamp(80px, 11vw, 140px) 0; }
-    .tone { background: #0d0d0d; }
+    .tone { background: rgba(255, 255, 255, 0.012); }
 
     .icon { width: 1.25em; height: 1.25em; flex-shrink: 0; fill: currentColor; }
 
@@ -181,19 +181,21 @@
       .mobile-nav .btn { margin-top: 16px; }
     }
 
-    /* AI background, from the Figma system */
-    .ai-bg { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+    /* AI background, from the Figma system: fixed behind the whole page */
+    .site-bg { position: fixed; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; }
+    main, footer { position: relative; z-index: 1; }
     .ai-grid {
-      position: absolute; inset: 0; opacity: 0.6;
-      background-image: linear-gradient(rgba(0, 217, 255, 0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 217, 255, 0.035) 1px, transparent 1px);
+      position: absolute; inset: 0; opacity: 0.55;
+      background-image: linear-gradient(rgba(0, 217, 255, 0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 217, 255, 0.04) 1px, transparent 1px);
       background-size: 48px 48px;
-      -webkit-mask-image: radial-gradient(ellipse at 60% 40%, #000 30%, transparent 75%);
-      mask-image: radial-gradient(ellipse at 60% 40%, #000 30%, transparent 75%);
+      -webkit-mask-image: radial-gradient(ellipse 120% 100% at 50% 50%, #000 55%, rgba(0,0,0,0.35) 100%);
+      mask-image: radial-gradient(ellipse 120% 100% at 50% 50%, #000 55%, rgba(0,0,0,0.35) 100%);
     }
     .orb { position: absolute; border-radius: 50%; }
     .orb-cyan { width: 640px; height: 640px; top: -140px; right: -120px; opacity: 0.16; background: radial-gradient(circle, var(--cyan) 0%, transparent 70%); animation: float-orb 12s ease-in-out infinite; }
-    .orb-magenta { width: 420px; height: 420px; bottom: -100px; left: 8%; opacity: 0.08; background: radial-gradient(circle, var(--magenta) 0%, transparent 70%); animation: float-orb 16s ease-in-out infinite reverse; }
-    .nodes { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0.22; }
+    .orb-2 { top: auto; right: auto; bottom: -220px; left: -180px; width: 560px; height: 560px; opacity: 0.1; animation-duration: 18s; }
+    .orb-magenta { top: 45%; bottom: auto; width: 420px; height: 420px; bottom: -100px; left: 8%; opacity: 0.08; background: radial-gradient(circle, var(--magenta) 0%, transparent 70%); animation: float-orb 16s ease-in-out infinite reverse; }
+    .nodes { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0.2; }
     .node-line { stroke-dasharray: 8 4; animation: dash-flow 3s linear infinite; }
     @keyframes float-orb {
       0%, 100% { transform: translate(0, 0) scale(1); }
@@ -216,6 +218,37 @@
     .hero-ctas { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 36px; }
 
     /* Check-up widget */
+    @property --spin { syntax: "<angle>"; inherits: false; initial-value: 0deg; }
+    .checkup-frame {
+      position: relative; padding: 1.5px; border-radius: calc(var(--radius) + 1.5px);
+      background: conic-gradient(from var(--spin), rgba(0, 217, 255, 0.15) 0deg, rgba(0, 217, 255, 0.15) 200deg, var(--cyan) 280deg, #b8f6ff 300deg, var(--cyan) 320deg, rgba(0, 217, 255, 0.15) 360deg);
+      box-shadow: 0 0 40px rgba(0, 217, 255, 0.18), 0 0 90px rgba(0, 217, 255, 0.08);
+      animation: spin-border 4.5s linear infinite;
+    }
+    @keyframes spin-border { to { --spin: 360deg; } }
+    .checkup-frame > .checkup { border: 0; background: rgba(14, 14, 14, 0.96); }
+    .checkup-tag {
+      position: absolute; z-index: 3; top: -13px; left: 24px; padding: 6px 12px; border-radius: var(--pill);
+      background: var(--cyan); color: var(--bg); font: 800 0.72rem/1 var(--display); letter-spacing: 0.08em; text-transform: uppercase;
+      box-shadow: 0 0 18px rgba(0, 217, 255, 0.45);
+    }
+    .checkup-pointer {
+      display: inline-flex; align-items: center; gap: 10px; margin-top: 22px; color: var(--cyan); text-decoration: none;
+      font: 600 0.95rem/1.3 var(--display);
+    }
+    .checkup-pointer span { text-decoration: underline; text-decoration-color: var(--cyan-edge); text-underline-offset: 4px; }
+    .checkup-pointer:hover span { text-decoration-color: var(--cyan); }
+    .checkup-pointer .arrow { animation: hint-nudge 1.6s var(--ease-out) infinite; }
+    @media (max-width: 1023px) { .checkup-pointer .arrow { transform: rotate(90deg); animation: none; } }
+    .checkup.flash { animation: flash 1.2s var(--ease-out); }
+    @keyframes flash { 0% { box-shadow: 0 0 0 0 rgba(0, 217, 255, 0.6); } 100% { box-shadow: 0 0 0 18px rgba(0, 217, 255, 0); } }
+    .checkup-band { position: relative; z-index: 1; border-top: 1px solid var(--cyan-edge); border-bottom: 1px solid var(--cyan-edge); background: linear-gradient(90deg, rgba(0, 217, 255, 0.04), rgba(0, 217, 255, 0.1), rgba(0, 217, 255, 0.04)); }
+    .band-inner { display: flex; align-items: center; gap: 20px; padding-top: 28px; padding-bottom: 28px; }
+    .band-inner p { flex: 1; color: var(--muted); font-size: 1.05rem; }
+    .band-inner b { color: var(--fg); font-weight: 600; }
+    .band-icon { width: 48px; height: 48px; flex-shrink: 0; border-radius: 14px; display: grid; place-items: center; color: var(--cyan); background: var(--cyan-wash); box-shadow: inset 0 0 0 1px var(--cyan-edge), 0 0 24px rgba(0, 217, 255, 0.2); }
+    .band-icon .icon { width: 24px; height: 24px; }
+    @media (max-width: 760px) { .band-inner { flex-wrap: wrap; } .band-inner p { flex-basis: calc(100% - 68px); } .band-inner .btn { width: 100%; } }
     .checkup {
       position: relative; overflow: hidden; background: rgba(17, 17, 17, 0.88);
       border: 1px solid var(--line-strong); border-radius: var(--radius); padding: 28px;
@@ -224,7 +257,7 @@
     }
     .checkup-head { display: flex; align-items: center; gap: 12px; }
     .checkup-head .badge { width: 40px; height: 40px; border-radius: 12px; display: grid; place-items: center; background: var(--cyan-wash); color: var(--cyan); box-shadow: inset 0 0 0 1px var(--cyan-edge); }
-    .checkup-title { font: 700 1.05rem/1.3 var(--display); letter-spacing: -0.01em; }
+    .checkup-title { font: 700 1.15rem/1.3 var(--display); letter-spacing: -0.01em; }
     .checkup-head p:not(.checkup-title) { color: var(--dim); font-size: 0.85rem; }
     .progress { height: 2px; background: transparent; margin: 22px 0 26px; position: relative; }
     .progress i { position: absolute; left: 0; top: 0; height: 2px; width: 0; background: var(--cyan); box-shadow: 0 0 12px var(--cyan); transition: width 0.6s var(--ease-out); }
@@ -315,6 +348,25 @@
     .legacy-head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 28px; }
     .legacy-head > div { max-width: 640px; }
     .gallery-controls { display: flex; gap: 10px; }
+    .strip-wrap { position: relative; }
+    .strip-wrap::before, .strip-wrap::after { content: ""; position: absolute; top: 0; bottom: 0; width: clamp(40px, 10vw, 140px); z-index: 2; pointer-events: none; transition: opacity 0.4s var(--ease-out); }
+    .strip-wrap::before { left: 0; background: linear-gradient(90deg, var(--bg), transparent); opacity: 0; }
+    .strip-wrap::after { right: 0; background: linear-gradient(270deg, var(--bg), transparent); }
+    .strip-wrap.scrolled::before { opacity: 1; }
+    .strip-wrap.at-end::after { opacity: 0; }
+    .strip.dragging { cursor: grabbing; scroll-snap-type: none; scroll-behavior: auto; }
+    .strip.dragging .shot button { cursor: grabbing; }
+    .gallery-nav { display: grid; grid-template-columns: auto 1fr auto auto; align-items: center; gap: 24px; margin-top: 20px; }
+    .gallery-hint { display: inline-flex; align-items: center; gap: 10px; color: var(--cyan); font: 600 0.85rem/1.2 var(--display); letter-spacing: 0.02em; transition: opacity 0.5s var(--ease-out); }
+    .gallery-hint .icon { width: 18px; height: 18px; animation: hint-nudge 1.6s var(--ease-out) infinite; }
+    .gallery-hint.done { opacity: 0.45; }
+    .gallery-hint.done .icon { animation: none; }
+    .hint-touch { display: none; }
+    @media (hover: none) { .hint-touch { display: inline; } .hint-mouse { display: none; } }
+    @keyframes hint-nudge { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(6px); } }
+    .gallery-progress { position: relative; height: 3px; border-radius: 3px; background: rgba(255, 255, 255, 0.08); overflow: hidden; }
+    .gallery-progress i { position: absolute; top: 0; bottom: 0; left: 0; width: 20%; border-radius: 3px; background: var(--cyan); box-shadow: 0 0 12px var(--cyan); transition: left 0.15s linear, width 0.3s var(--ease-out); }
+    .gallery-count { color: var(--muted); font: 600 0.85rem/1 var(--display); font-variant-numeric: tabular-nums; white-space: nowrap; }
     .round-btn { width: 48px; height: 48px; border-radius: 50%; border: 0; cursor: pointer; background: var(--surface); color: var(--fg); box-shadow: inset 0 0 0 1px var(--line-strong); display: grid; place-items: center; transition: box-shadow 0.2s, color 0.2s; }
     .round-btn:hover { color: var(--cyan); box-shadow: inset 0 0 0 1px var(--cyan); }
     .round-btn:disabled { opacity: 0.35; cursor: default; color: var(--fg); box-shadow: inset 0 0 0 1px var(--line-strong); }
@@ -357,7 +409,7 @@
 
     /* Founder */
     .founder-grid { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 80px; align-items: center; }
-    .portrait-wrap { position: relative; justify-self: center; }
+    .portrait-wrap { position: relative; justify-self: center; margin-bottom: 24px; }
     .portrait {
       width: clamp(240px, 28vw, 340px); aspect-ratio: 1; border-radius: 50%; overflow: hidden; position: relative;
       background: radial-gradient(circle at 30% 25%, #1f2a2d, #0f0f0f 70%);
@@ -365,9 +417,9 @@
     }
     .portrait img { position: relative; z-index: 1; width: 100%; height: 100%; object-fit: cover; }
     .portrait .mono { position: absolute; inset: 0; display: grid; place-items: center; font: 900 5rem/1 var(--display); color: rgba(0, 217, 255, 0.5); }
-    .years { position: absolute; z-index: 2; right: -12px; bottom: 6px; padding: 14px 18px; border-radius: 16px; background: var(--surface); box-shadow: inset 0 0 0 1px var(--line-strong), 0 12px 32px rgba(0, 0, 0, 0.5); }
-    .years b { display: block; font: 900 1.8rem/1 var(--display); color: var(--cyan); }
-    .years span { font: 600 0.72rem/1.2 var(--display); color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; }
+    .years { position: absolute; z-index: 2; left: 50%; bottom: -24px; transform: translateX(-50%); display: flex; align-items: center; gap: 10px; white-space: nowrap; padding: 10px 20px; border-radius: var(--pill); background: var(--surface); box-shadow: inset 0 0 0 1px var(--cyan-edge), 0 0 24px rgba(0, 217, 255, 0.18), 0 12px 32px rgba(0, 0, 0, 0.5); }
+    .years b { font: 900 1.5rem/1 var(--display); color: var(--cyan); }
+    .years span { font: 600 0.75rem/1.2 var(--display); color: var(--fg); letter-spacing: 0.1em; text-transform: uppercase; }
     .founder p.body { color: var(--muted); margin-top: 20px; max-width: 58ch; font-size: 1.05rem; }
     .pullquote { margin: 32px 0 0; padding: 24px 28px; border-radius: var(--radius); background: var(--surface); box-shadow: inset 0 0 0 1px var(--cyan-edge); font: 700 1.15rem/1.45 var(--display); }
     .tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
@@ -478,11 +530,14 @@
       .form-card { padding: 24px 20px; }
       .checkup { padding: 22px; }
       .answers { grid-template-columns: 1fr 1fr; }
-      .gallery-controls { display: none; }
+      .gallery-nav { grid-template-columns: 1fr auto; gap: 14px 16px; }
+      .gallery-progress { grid-column: 1 / -1; grid-row: 1; }
+      .gallery-hint { grid-column: 1; }
+      .gallery-count { grid-column: 1; grid-row: 3; }
+      .gallery-controls { grid-column: 2; grid-row: 2 / span 2; }
       .wa-float { display: grid; }
       .foot-grid { grid-template-columns: 1fr; }
       details p { padding-right: 0; }
-      .years { right: -4px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -528,6 +583,94 @@
 <symbol id="i-x" viewBox="0 0 256 256"><path d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z"/></symbol>
 </svg>
 
+<div class="site-bg" aria-hidden="true">
+  <div class="ai-grid"></div>
+  <div class="orb orb-cyan"></div>
+  <div class="orb orb-cyan orb-2"></div>
+  <div class="orb orb-magenta"></div>
+  <svg class="nodes" viewBox="0 0 1440 900" fill="none" preserveAspectRatio="xMidYMid slice">
+    <g stroke="#00d9ff">
+          <line x1="78" y1="55" x2="249" y2="94" stroke-width="0.8" class="node-line"/>
+          <line x1="78" y1="55" x2="259" y2="232" stroke-width="0.6" class="node-line"/>
+          <line x1="249" y1="94" x2="452" y2="91" stroke-width="0.6" class="node-line"/>
+          <line x1="249" y1="94" x2="259" y2="232" stroke-width="0.8" class="node-line"/>
+          <line x1="452" y1="91" x2="559" y2="238" stroke-width="0.6" class="node-line"/>
+          <line x1="711" y1="47" x2="915" y2="123" stroke-width="0.6" class="node-line"/>
+          <line x1="711" y1="47" x2="739" y2="257" stroke-width="0.8" class="node-line"/>
+          <line x1="915" y1="123" x2="865" y2="226" stroke-width="0.6" class="node-line"/>
+          <line x1="39" y1="306" x2="259" y2="232" stroke-width="0.6" class="node-line"/>
+          <line x1="39" y1="306" x2="144" y2="470" stroke-width="0.8" class="node-line"/>
+          <line x1="559" y1="238" x2="739" y2="257" stroke-width="0.6" class="node-line"/>
+          <line x1="739" y1="257" x2="865" y2="226" stroke-width="0.6" class="node-line"/>
+          <line x1="739" y1="257" x2="667" y2="442" stroke-width="0.8" class="node-line"/>
+          <line x1="1157" y1="263" x2="1349" y2="265" stroke-width="0.6" class="node-line"/>
+          <line x1="1157" y1="263" x2="1155" y2="476" stroke-width="0.6" class="node-line"/>
+          <line x1="1349" y1="265" x2="1390" y2="431" stroke-width="0.8" class="node-line"/>
+          <line x1="144" y1="470" x2="116" y2="638" stroke-width="0.6" class="node-line"/>
+          <line x1="667" y1="442" x2="877" y2="449" stroke-width="0.6" class="node-line"/>
+          <line x1="667" y1="442" x2="537" y2="586" stroke-width="0.8" class="node-line"/>
+          <line x1="877" y1="449" x2="896" y2="619" stroke-width="0.6" class="node-line"/>
+          <line x1="1155" y1="476" x2="1065" y2="626" stroke-width="0.6" class="node-line"/>
+          <line x1="1155" y1="476" x2="1284" y2="586" stroke-width="0.8" class="node-line"/>
+          <line x1="1390" y1="431" x2="1284" y2="586" stroke-width="0.6" class="node-line"/>
+          <line x1="116" y1="638" x2="51" y2="785" stroke-width="0.6" class="node-line"/>
+          <line x1="356" y1="674" x2="537" y2="586" stroke-width="0.8" class="node-line"/>
+          <line x1="356" y1="674" x2="361" y2="768" stroke-width="0.6" class="node-line"/>
+          <line x1="356" y1="674" x2="521" y2="848" stroke-width="0.6" class="node-line"/>
+          <line x1="896" y1="619" x2="1065" y2="626" stroke-width="0.8" class="node-line"/>
+          <line x1="896" y1="619" x2="771" y2="788" stroke-width="0.6" class="node-line"/>
+          <line x1="1065" y1="626" x2="1083" y2="778" stroke-width="0.6" class="node-line"/>
+          <line x1="1284" y1="586" x2="1300" y2="808" stroke-width="0.8" class="node-line"/>
+          <line x1="51" y1="785" x2="361" y2="768" stroke-width="0.6" class="node-line"/>
+          <line x1="361" y1="768" x2="521" y2="848" stroke-width="0.6" class="node-line"/>
+          <line x1="521" y1="848" x2="771" y2="788" stroke-width="0.8" class="node-line"/>
+          <line x1="1083" y1="778" x2="1300" y2="808" stroke-width="0.6" class="node-line"/>
+    </g>
+    <g fill="#00d9ff">
+          <circle cx="78" cy="55" r="3.5" opacity="0.55"/><circle cx="78" cy="55" r="8" opacity="0.08"/>
+          <circle cx="249" cy="94" r="3.5" opacity="0.55"/><circle cx="249" cy="94" r="8" opacity="0.08"/>
+          <circle cx="452" cy="91" r="3.5" opacity="0.55"/><circle cx="452" cy="91" r="8" opacity="0.08"/>
+          <circle cx="711" cy="47" r="3.5" opacity="0.55"/><circle cx="711" cy="47" r="8" opacity="0.08"/>
+          <circle cx="915" cy="123" r="3.5" opacity="0.55"/><circle cx="915" cy="123" r="8" opacity="0.08"/>
+          <circle cx="39" cy="306" r="3.5" opacity="0.55"/><circle cx="39" cy="306" r="8" opacity="0.08"/>
+          <circle cx="259" cy="232" r="3.5" opacity="0.55"/><circle cx="259" cy="232" r="8" opacity="0.08"/>
+          <circle cx="559" cy="238" r="3.5" opacity="0.55"/><circle cx="559" cy="238" r="8" opacity="0.08"/>
+          <circle cx="739" cy="257" r="3.5" opacity="0.55"/><circle cx="739" cy="257" r="8" opacity="0.08"/>
+          <circle cx="865" cy="226" r="3.5" opacity="0.55"/><circle cx="865" cy="226" r="8" opacity="0.08"/>
+          <circle cx="1157" cy="263" r="3.5" opacity="0.55"/><circle cx="1157" cy="263" r="8" opacity="0.08"/>
+          <circle cx="1349" cy="265" r="3.5" opacity="0.55"/><circle cx="1349" cy="265" r="8" opacity="0.08"/>
+          <circle cx="144" cy="470" r="3.5" opacity="0.55"/><circle cx="144" cy="470" r="8" opacity="0.08"/>
+          <circle cx="667" cy="442" r="3.5" opacity="0.55"/><circle cx="667" cy="442" r="8" opacity="0.08"/>
+          <circle cx="877" cy="449" r="3.5" opacity="0.55"/><circle cx="877" cy="449" r="8" opacity="0.08"/>
+          <circle cx="1155" cy="476" r="3.5" opacity="0.55"/><circle cx="1155" cy="476" r="8" opacity="0.08"/>
+          <circle cx="1390" cy="431" r="3.5" opacity="0.55"/><circle cx="1390" cy="431" r="8" opacity="0.08"/>
+          <circle cx="116" cy="638" r="3.5" opacity="0.55"/><circle cx="116" cy="638" r="8" opacity="0.08"/>
+          <circle cx="356" cy="674" r="3.5" opacity="0.55"/><circle cx="356" cy="674" r="8" opacity="0.08"/>
+          <circle cx="537" cy="586" r="3.5" opacity="0.55"/><circle cx="537" cy="586" r="8" opacity="0.08"/>
+          <circle cx="896" cy="619" r="3.5" opacity="0.55"/><circle cx="896" cy="619" r="8" opacity="0.08"/>
+          <circle cx="1065" cy="626" r="3.5" opacity="0.55"/><circle cx="1065" cy="626" r="8" opacity="0.08"/>
+          <circle cx="1284" cy="586" r="3.5" opacity="0.55"/><circle cx="1284" cy="586" r="8" opacity="0.08"/>
+          <circle cx="51" cy="785" r="3.5" opacity="0.55"/><circle cx="51" cy="785" r="8" opacity="0.08"/>
+          <circle cx="361" cy="768" r="3.5" opacity="0.55"/><circle cx="361" cy="768" r="8" opacity="0.08"/>
+          <circle cx="521" cy="848" r="3.5" opacity="0.55"/><circle cx="521" cy="848" r="8" opacity="0.08"/>
+          <circle cx="771" cy="788" r="3.5" opacity="0.55"/><circle cx="771" cy="788" r="8" opacity="0.08"/>
+          <circle cx="1083" cy="778" r="3.5" opacity="0.55"/><circle cx="1083" cy="778" r="8" opacity="0.08"/>
+          <circle cx="1300" cy="808" r="3.5" opacity="0.55"/><circle cx="1300" cy="808" r="8" opacity="0.08"/>
+    </g>
+    <g class="movers">
+          <circle r="2.6" fill="#00d9ff"><animateMotion dur="3.5s" begin="0.0s" repeatCount="indefinite" path="M78,55 L249,94"/><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.15;0.85;1" dur="3.5s" begin="0.0s" repeatCount="indefinite"/></circle>
+          <circle r="2.6" fill="#00d9ff"><animateMotion dur="4.4s" begin="0.7s" repeatCount="indefinite" path="M249,94 L259,232"/><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.15;0.85;1" dur="4.4s" begin="0.7s" repeatCount="indefinite"/></circle>
+          <circle r="2.6" fill="#00d9ff"><animateMotion dur="5.3s" begin="1.4s" repeatCount="indefinite" path="M711,47 L739,257"/><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.15;0.85;1" dur="5.3s" begin="1.4s" repeatCount="indefinite"/></circle>
+          <circle r="2.6" fill="#00d9ff"><animateMotion dur="6.2s" begin="2.1s" repeatCount="indefinite" path="M39,306 L144,470"/><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.15;0.85;1" dur="6.2s" begin="2.1s" repeatCount="indefinite"/></circle>
+          <circle r="2.6" fill="#00d9ff"><animateMotion dur="3.5s" begin="2.8s" repeatCount="indefinite" path="M739,257 L667,442"/><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.15;0.85;1" dur="3.5s" begin="2.8s" repeatCount="indefinite"/></circle>
+          <circle r="2.6" fill="#00d9ff"><animateMotion dur="4.4s" begin="3.5s" repeatCount="indefinite" path="M1349,265 L1390,431"/><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.15;0.85;1" dur="4.4s" begin="3.5s" repeatCount="indefinite"/></circle>
+          <circle r="2.6" fill="#00d9ff"><animateMotion dur="5.3s" begin="0.2s" repeatCount="indefinite" path="M667,442 L537,586"/><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.15;0.85;1" dur="5.3s" begin="0.2s" repeatCount="indefinite"/></circle>
+          <circle r="2.6" fill="#00d9ff"><animateMotion dur="6.2s" begin="0.9s" repeatCount="indefinite" path="M1155,476 L1284,586"/><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.15;0.85;1" dur="6.2s" begin="0.9s" repeatCount="indefinite"/></circle>
+          <circle r="2.6" fill="#00d9ff"><animateMotion dur="3.5s" begin="1.6s" repeatCount="indefinite" path="M356,674 L537,586"/><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.15;0.85;1" dur="3.5s" begin="1.6s" repeatCount="indefinite"/></circle>
+          <circle r="2.6" fill="#00d9ff"><animateMotion dur="4.4s" begin="2.3s" repeatCount="indefinite" path="M896,619 L1065,626"/><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.15;0.85;1" dur="4.4s" begin="2.3s" repeatCount="indefinite"/></circle>
+    </g>
+  </svg>
+</div>
 <a class="skip" href="#main">Skip to content</a>
 
 <header class="site-header" id="top">
@@ -556,6 +699,7 @@
   <a class="link" href="#services">Services</a>
   <a class="link" href="#work">Our work</a>
   <a class="link" href="#about">About</a>
+  <a class="link" href="#checkup" data-start-checkup>Free 60-second check-up</a>
   <a class="btn btn-cyan" href="#book">Book a free diagnostic</a>
 </nav>
 
@@ -563,35 +707,6 @@
 
   <!-- HERO -->
   <section class="hero" aria-labelledby="hero-title">
-    <div class="ai-bg" aria-hidden="true">
-      <div class="ai-grid"></div>
-      <div class="orb orb-cyan"></div>
-      <div class="orb orb-magenta"></div>
-      <svg class="nodes" viewBox="0 0 1440 900" fill="none" preserveAspectRatio="xMidYMid slice">
-        <g stroke="#00d9ff">
-          <line x1="200" y1="150" x2="450" y2="280" stroke-width="0.8" class="node-line"/>
-          <line x1="450" y1="280" x2="720" y2="180" stroke-width="0.8" class="node-line"/>
-          <line x1="720" y1="180" x2="980" y2="320" stroke-width="0.8" class="node-line"/>
-          <line x1="980" y1="320" x2="1200" y2="200" stroke-width="0.8" class="node-line"/>
-          <line x1="450" y1="280" x2="380" y2="480" stroke-width="0.6" class="node-line"/>
-          <line x1="720" y1="180" x2="750" y2="420" stroke-width="0.6" class="node-line"/>
-          <line x1="980" y1="320" x2="950" y2="540" stroke-width="0.6" class="node-line"/>
-          <line x1="1200" y1="200" x2="1300" y2="400" stroke-width="0.6" class="node-line"/>
-          <line x1="380" y1="480" x2="750" y2="420" stroke-width="0.6" class="node-line"/>
-          <line x1="750" y1="420" x2="950" y2="540" stroke-width="0.6" class="node-line"/>
-          <line x1="950" y1="540" x2="1180" y2="700" stroke-width="0.6" class="node-line"/>
-          <line x1="380" y1="480" x2="240" y2="720" stroke-width="0.6" class="node-line"/>
-        </g>
-        <g fill="#00d9ff">
-          <circle cx="200" cy="150" r="4" opacity="0.6"/><circle cx="450" cy="280" r="4" opacity="0.6"/>
-          <circle cx="720" cy="180" r="4" opacity="0.6"/><circle cx="980" cy="320" r="4" opacity="0.6"/>
-          <circle cx="1200" cy="200" r="4" opacity="0.6"/><circle cx="380" cy="480" r="4" opacity="0.6"/>
-          <circle cx="750" cy="420" r="4" opacity="0.6"/><circle cx="950" cy="540" r="4" opacity="0.6"/>
-          <circle cx="1300" cy="400" r="4" opacity="0.6"/><circle cx="1180" cy="700" r="4" opacity="0.6"/>
-          <circle cx="240" cy="720" r="4" opacity="0.6"/>
-        </g>
-      </svg>
-    </div>
 
     <div class="wrap hero-grid">
       <div>
@@ -613,15 +728,22 @@
           <a class="btn btn-outline" href="https://wa.me/971524534410?text=Hi%2C%20I%27d%20like%20to%20book%20a%20free%20business%20diagnostic" target="_blank" rel="noopener" data-track="whatsapp">
             <svg class="icon" aria-hidden="true"><use href="#i-whatsapp-logo"/></svg>Chat on WhatsApp</a>
         </div>
+        <a class="checkup-pointer" href="#checkup" data-start-checkup>
+          <svg class="icon" aria-hidden="true"><use href="#i-stethoscope"/></svg>
+          <span>Not ready to talk? Try the free 60-second check-up</span>
+          <svg class="icon arrow" aria-hidden="true"><use href="#i-arrow-right"/></svg>
+        </a>
       </div>
 
+      <div class="checkup-frame">
+      <span class="checkup-tag">Free · No sign-up</span>
       <div class="checkup" id="checkup" role="region" aria-labelledby="checkup-title">
         <div class="scanline" aria-hidden="true"></div>
         <div class="checkup-head">
           <span class="badge" aria-hidden="true"><svg class="icon"><use href="#i-stethoscope"/></svg></span>
           <div>
-            <p class="checkup-title" id="checkup-title">60-second business check-up</p>
-            <p>Six yes-or-no questions. Instant results.</p>
+            <p class="checkup-title" id="checkup-title">Take the 60-second business check-up</p>
+            <p>Six yes-or-no questions. See where your business leaks leads and time.</p>
           </div>
         </div>
         <div class="progress" aria-hidden="true"><i></i></div>
@@ -646,6 +768,7 @@
           </div>
         </div>
       </div>
+      </div>
     </div>
   </section>
 
@@ -659,7 +782,7 @@
   <section class="tone" aria-labelledby="diff-title">
     <div class="wrap">
       <h2 id="diff-title">Not another agency.<br>Not another consultancy.</h2>
-      <p class="lede">One sells you posts. The other sells you a report. Neither fixes the engine. We diagnose it, repair it, and keep it running.</p>
+      <p class="lede">We find what is holding your business back, fix it, and keep it running. An agency sells you posts. A consultancy sells you a report. Neither fixes the engine.</p>
       <table class="compare">
         <caption class="sr-only">How 4C House compares with a social media agency and a management consultancy</caption>
         <thead>
@@ -744,6 +867,15 @@
     </div>
   </section>
 
+  <!-- CHECK-UP REMINDER -->
+  <aside class="checkup-band" aria-label="60-second check-up">
+    <div class="wrap band-inner">
+      <span class="band-icon" aria-hidden="true"><svg class="icon"><use href="#i-stethoscope"/></svg></span>
+      <p><b>Not sure where your business is leaking?</b> Six quick questions will tell you where to start.</p>
+      <a class="btn btn-outline" href="#checkup" data-start-checkup>Start the check-up</a>
+    </div>
+  </aside>
+
   <!-- SERVICES -->
   <section class="tone" id="services" aria-labelledby="services-title">
     <div class="wrap">
@@ -816,14 +948,24 @@
           <h2 id="work-title">24 years of building things that had to open on time.</h2>
           <p class="lede">Mall activations, exhibition stands, retail interiors, food kiosks and carts. Designed and made to order for big brands and local startups.</p>
         </div>
-        <div class="gallery-controls">
-          <button class="round-btn" type="button" data-scroll="-1" aria-label="Previous projects"><svg class="icon" aria-hidden="true"><use href="#i-caret-left"/></svg></button>
-          <button class="round-btn" type="button" data-scroll="1" aria-label="Next projects"><svg class="icon" aria-hidden="true"><use href="#i-caret-right"/></svg></button>
-        </div>
       </div>
       <div class="filters" role="group" aria-label="Filter projects" data-filters></div>
     </div>
-    <div class="strip" data-strip tabindex="0" aria-label="Past projects, scroll sideways"></div>
+    <div class="strip-wrap" data-strip-wrap>
+      <div class="strip" data-strip tabindex="0" aria-label="Past projects, scroll sideways"></div>
+    </div>
+    <div class="wrap gallery-nav">
+      <p class="gallery-hint" data-hint>
+        <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg>
+        <span class="hint-touch">Swipe to see all projects</span><span class="hint-mouse">Drag, scroll sideways or use the arrows</span>
+      </p>
+      <div class="gallery-progress" aria-hidden="true"><i data-thumb></i></div>
+      <p class="gallery-count" data-count aria-live="polite"></p>
+      <div class="gallery-controls">
+        <button class="round-btn" type="button" data-scroll="-1" aria-label="Previous projects"><svg class="icon" aria-hidden="true"><use href="#i-caret-left"/></svg></button>
+        <button class="round-btn" type="button" data-scroll="1" aria-label="Next projects"><svg class="icon" aria-hidden="true"><use href="#i-caret-right"/></svg></button>
+      </div>
+    </div>
     <div class="wrap">
       <p class="materials">Built in <b>wood, metal and acrylic</b>, finished with <b>spray paint and graphic wraps</b>, delivered against dates that never moved. That same discipline now goes into your systems.</p>
     </div>
@@ -850,7 +992,7 @@
           <span class="mono" aria-hidden="true">K</span>
           <img src="assets/founder.jpg" alt="Kunal, founder of 4C House of Advertising" onerror="this.remove()">
         </div>
-        <div class="years"><b>24</b><span>years in<br>business</span></div>
+        <div class="years"><b>24</b><span>years in business</span></div>
       </div>
       <div class="founder">
         <h2 id="about-title">I've run the business you're running.</h2>
@@ -867,7 +1009,6 @@
 
   <!-- BOOKING -->
   <section class="book" id="book" aria-labelledby="book-title">
-    <div class="ai-bg" aria-hidden="true"><div class="ai-grid"></div><div class="orb orb-cyan" style="top:auto;bottom:-260px;right:auto;left:-200px"></div></div>
     <div class="wrap book-grid">
       <div>
         <h2 id="book-title">Book your free diagnostic call.</h2>
@@ -1062,6 +1203,11 @@ const CLIENT_LOGOS = [];
 
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 document.documentElement.classList.add("js");
+const bgSvg = document.querySelector(".site-bg svg");
+if (bgSvg && bgSvg.pauseAnimations) {
+  if (reduceMotion) bgSvg.pauseAnimations();
+  else document.addEventListener("visibilitychange", () => document.hidden ? bgSvg.pauseAnimations() : bgSvg.unpauseAnimations());
+}
 document.querySelectorAll("[data-year]").forEach(el => el.textContent = new Date().getFullYear());
 
 function track(google, meta, params) {
@@ -1171,6 +1317,18 @@ document.addEventListener("keydown", e => { if (e.key === "Escape" && mobileNav.
   render();
 })();
 
+// Links that jump to the check-up: scroll there, flash the card, focus the first answer
+document.querySelectorAll("[data-start-checkup]").forEach(a => a.addEventListener("click", e => {
+  e.preventDefault();
+  const box = document.getElementById("checkup");
+  box.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "center" });
+  setTimeout(() => {
+    box.classList.remove("flash"); void box.offsetWidth; box.classList.add("flash");
+    const first = box.querySelector("[data-answer]:not([hidden])") || box.querySelector("[data-restart]");
+    if (first && first.offsetParent) first.focus({ preventScroll: true });
+  }, reduceMotion ? 0 : 600);
+}));
+
 // Method: highlight the stage in view
 (function () {
   const stages = document.querySelectorAll(".stage");
@@ -1247,20 +1405,73 @@ document.addEventListener("keydown", e => { if (e.key === "Escape" && mobileNav.
   });
 
   const prev = document.querySelector('[data-scroll="-1"]'), next = document.querySelector('[data-scroll="1"]');
+  const wrapEl = document.querySelector("[data-strip-wrap]");
+  const thumb = document.querySelector("[data-thumb]");
+  const countEl = document.querySelector("[data-count]");
+  const hint = document.querySelector("[data-hint]");
+  let autoScroll = false;
   function updateArrows() {
+    const max = strip.scrollWidth - strip.clientWidth;
     prev.disabled = strip.scrollLeft < 8;
-    next.disabled = strip.scrollLeft + strip.clientWidth >= strip.scrollWidth - 8;
+    next.disabled = strip.scrollLeft >= max - 8;
+    wrapEl.classList.toggle("scrolled", strip.scrollLeft > 8);
+    wrapEl.classList.toggle("at-end", strip.scrollLeft >= max - 8);
+    const ratio = strip.scrollWidth ? strip.clientWidth / strip.scrollWidth : 1;
+    thumb.style.width = Math.max(8, ratio * 100) + "%";
+    thumb.style.left = (max > 0 ? (strip.scrollLeft / max) * (100 - Math.max(8, ratio * 100)) : 0) + "%";
+    const box = strip.getBoundingClientRect();
+    const shots = [...strip.querySelectorAll(".shot")];
+    const seen = shots.map((el, i) => { const r = el.getBoundingClientRect(); return r.right > box.left + r.width / 2 && r.left < box.right - r.width / 2 ? i + 1 : 0; }).filter(Boolean);
+    if (seen.length) countEl.textContent = (seen.length > 1 ? seen[0] + " to " + seen[seen.length - 1] : seen[0]) + " of " + shots.length;
   }
   [prev, next].forEach(b => b.addEventListener("click", () => {
     const card = strip.querySelector(".shot");
     const step = card ? card.getBoundingClientRect().width + 20 : 400;
-    strip.scrollBy({ left: Number(b.dataset.scroll) * step * 2, behavior: reduceMotion ? "auto" : "smooth" });
+    strip.scrollBy({ left: Number(b.dataset.scroll) * step * (window.innerWidth < 760 ? 1 : 2), behavior: reduceMotion ? "auto" : "smooth" });
   }));
-  strip.addEventListener("scroll", () => requestAnimationFrame(updateArrows), { passive: true });
+  strip.addEventListener("scroll", () => {
+    requestAnimationFrame(updateArrows);
+    if (!autoScroll && strip.scrollLeft > 40) hint.classList.add("done");
+  }, { passive: true });
   window.addEventListener("resize", updateArrows);
   strip.addEventListener("keydown", e => {
     if (e.key === "ArrowRight" || e.key === "ArrowLeft") { e.preventDefault(); (e.key === "ArrowRight" ? next : prev).click(); }
   });
+
+  // Drag to scroll with a mouse
+  let drag = null;
+  strip.addEventListener("pointerdown", e => {
+    if (e.pointerType !== "mouse" || e.button !== 0) return;
+    drag = { x: e.clientX, left: strip.scrollLeft, moved: false };
+  });
+  window.addEventListener("pointermove", e => {
+    if (!drag) return;
+    const dx = e.clientX - drag.x;
+    if (!drag.moved && Math.abs(dx) > 6) { drag.moved = true; strip.classList.add("dragging"); }
+    if (drag.moved) strip.scrollLeft = drag.left - dx;
+  });
+  window.addEventListener("pointerup", () => {
+    if (!drag) return;
+    const moved = drag.moved; drag = null;
+    strip.classList.remove("dragging");
+    if (moved) strip.addEventListener("click", ev => { ev.stopPropagation(); ev.preventDefault(); }, { capture: true, once: true });
+  });
+
+  // One gentle nudge the first time the gallery comes into view, to show it scrolls
+  if (!reduceMotion) {
+    const nudge = new IntersectionObserver(([e]) => {
+      if (!e.isIntersecting) return;
+      nudge.disconnect();
+      if (strip.scrollLeft > 8) return;
+      autoScroll = true;
+      setTimeout(() => {
+        strip.style.scrollSnapType = "none";
+        strip.scrollBy({ left: 160, behavior: "smooth" });
+        setTimeout(() => { strip.scrollBy({ left: -160, behavior: "smooth" }); setTimeout(() => { strip.style.scrollSnapType = ""; autoScroll = false; }, 700); }, 750);
+      }, 400);
+    }, { threshold: 0.6 });
+    nudge.observe(strip);
+  }
 
   function showLb() {
     const p = visible[current];
