@@ -467,7 +467,7 @@
     details p { color: var(--muted); padding: 0 48px 24px 0; max-width: 68ch; }
 
     /* Footer */
-    footer { border-top: 1px solid var(--line); padding: 64px 0 32px; }
+    footer { border-top: 1px solid var(--line); padding: 64px 0 96px; }
     .foot-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 48px; }
     .foot-grid p { color: var(--muted); font-size: 0.92rem; margin-top: 16px; max-width: 36ch; }
     .foot-grid h3 { font-size: 0.8rem; color: var(--dim); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 16px; }
@@ -476,15 +476,17 @@
     .foot-links a:hover { color: var(--fg); }
     .foot-links .icon { width: 16px; height: 16px; color: var(--cyan); }
     .foot-bottom { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--line); color: var(--dim); font-size: 0.85rem; }
-    .socials { display: flex; gap: 10px; }
+    .socials { display: flex; gap: 10px; margin-top: 20px; }
     .socials a { width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; color: var(--muted); background: rgba(255, 255, 255, 0.04); transition: color 0.2s, background-color 0.2s; }
     .socials a:hover { color: var(--cyan); background: var(--cyan-wash); }
 
     .wa-float {
-      display: none; position: fixed; right: 16px; bottom: 16px; z-index: 40; width: 56px; height: 56px; border-radius: 50%;
+      display: none; position: fixed; right: 16px; bottom: 84px; z-index: 40; width: 56px; height: 56px; border-radius: 50%;
       background: #25d366; color: #fff; place-items: center; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
     }
     .wa-float .icon { width: 30px; height: 30px; }
+    .wa-float { transition: opacity 0.3s var(--ease-out), transform 0.3s var(--ease-out); }
+    .wa-float.away { opacity: 0; transform: translateY(12px); pointer-events: none; }
 
     /* Scroll reveal: content stays visible if JS is off */
     .js .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.8s var(--ease-out), transform 0.9s var(--ease-out); transition-delay: calc(var(--i, 0) * 90ms); }
@@ -990,12 +992,12 @@
           <button class="btn btn-cyan" type="submit">Book my diagnostic
             <svg class="icon" aria-hidden="true"><use href="#i-calendar-check"/></svg></button>
           <p class="form-error" role="alert" data-form-error></p>
-          <p class="fine">We reply within one business day. Your details stay private. <a href="privacy.html">Privacy policy</a></p>
+          <p class="fine">Expect a quick reply on WhatsApp. Your details stay private. <a href="privacy.html">Privacy policy</a></p>
         </form>
         <div class="success" hidden data-success tabindex="-1">
           <div class="tick"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></div>
           <h3>Request received.</h3>
-          <p>We'll message you on WhatsApp within one business day to set a time.</p>
+          <p>Thanks, we have it. Expect a WhatsApp message from us shortly to set a time that suits you.</p>
         </div>
       </div>
     </div>
@@ -1031,6 +1033,10 @@
       <div>
         <a class="brand" href="#main"><span class="brand-mark" aria-hidden="true">4C</span><span class="brand-name">4C House of Advertising</span></a>
         <p>Business diagnostics and AI automation for growing companies in Dubai and the UAE.</p>
+        <div class="socials">
+          <a href="https://www.instagram.com/4c.house/" target="_blank" rel="noopener" aria-label="Instagram, @4c.house"><svg class="icon" aria-hidden="true"><use href="#i-instagram-logo"/></svg></a>
+          <a href="https://wa.me/971524534410" target="_blank" rel="noopener" aria-label="WhatsApp" data-track="whatsapp"><svg class="icon" aria-hidden="true"><use href="#i-whatsapp-logo"/></svg></a>
+        </div>
       </div>
       <div>
         <h3>Explore</h3>
@@ -1053,10 +1059,6 @@
     </div>
     <div class="foot-bottom">
       <p>© <span data-year>2026</span> 4C House of Advertising LLC. <a href="privacy.html">Privacy policy</a></p>
-      <div class="socials">
-        <a href="https://www.instagram.com/4c.house/" target="_blank" rel="noopener" aria-label="Instagram, @4c.house"><svg class="icon" aria-hidden="true"><use href="#i-instagram-logo"/></svg></a>
-        <a href="https://wa.me/971524534410" target="_blank" rel="noopener" aria-label="WhatsApp" data-track="whatsapp"><svg class="icon" aria-hidden="true"><use href="#i-whatsapp-logo"/></svg></a>
-      </div>
     </div>
   </div>
 </footer>
@@ -1232,6 +1234,16 @@ const header = document.querySelector(".site-header");
 const heroTitle = document.getElementById("hero-title");
 new IntersectionObserver(([e]) => header.classList.toggle("solid", !e.isIntersecting), { rootMargin: "-80px 0px 0px 0px" })
   .observe(heroTitle);
+
+// Hide the floating WhatsApp button once the footer (which has its own WhatsApp link) is on screen
+(function () {
+  const btn = document.querySelector(".wa-float"), foot = document.querySelector("footer");
+  if (!btn || !foot) return;
+  new IntersectionObserver(([e]) => {
+    btn.classList.toggle("away", e.isIntersecting);
+    btn.setAttribute("tabindex", e.isIntersecting ? "-1" : "0");
+  }).observe(foot);
+})();
 
 // Mobile menu
 const menuBtn = document.querySelector(".menu-btn");
