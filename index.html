@@ -974,7 +974,7 @@
         <h3>Contact</h3>
         <ul class="foot-links">
           <li><a href="https://wa.me/971524534410" target="_blank" rel="noopener" data-track="whatsapp"><svg class="icon" aria-hidden="true"><use href="#i-whatsapp-logo"/></svg>+971 52 453 4410</a></li>
-          <li><a href="mailto:inquries@4chouse.com"><svg class="icon" aria-hidden="true"><use href="#i-envelope-simple"/></svg>inquries@4chouse.com</a></li>
+          <li><a href="mailto:hello@4chouse.com"><svg class="icon" aria-hidden="true"><use href="#i-envelope-simple"/></svg>hello@4chouse.com</a></li>
           <li><a href="https://www.instagram.com/4c.house/" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-instagram-logo"/></svg>@4c.house</a></li>
           <li><a href="#book"><svg class="icon" aria-hidden="true"><use href="#i-map-pin"/></svg>Dubai, UAE</a></li>
         </ul>
@@ -1276,7 +1276,7 @@ document.addEventListener("keydown", e => { if (e.key === "Escape" && mobileNav.
     if (!form.getAttribute("action")) {
       // No form service connected yet: open an email draft instead.
       const body = [...data.entries()].map(([k, v]) => k + ": " + v).join("\n");
-      window.location.href = "mailto:inquries@4chouse.com?subject=" + encodeURIComponent("Diagnostic request: " + data.get("company")) + "&body=" + encodeURIComponent(body);
+      window.location.href = "mailto:hello@4chouse.com?subject=" + encodeURIComponent("Diagnostic request: " + data.get("company")) + "&body=" + encodeURIComponent(body);
       done();
       return;
     }

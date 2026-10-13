@@ -15,7 +15,7 @@ A static, single-page site with no build step. Files:
 Everything below is marked in the files with an HTML comment, so you can search for it.
 
 ### Must do
-1. ~~Contact details~~ Done: WhatsApp +971 52 453 4410, Instagram @4c.house, email inquries@4chouse.com. To change the email, search for `inquries@4chouse.com` in `index.html` and `privacy.html`.
+1. ~~Contact details~~ Done: WhatsApp +971 52 453 4410, Instagram @4c.house, email hello@4chouse.com. To change the email, search for `hello@4chouse.com` in `index.html` and `privacy.html`.
 2. **Connect the form.** Create a free form at [formspree.io](https://formspree.io) (or similar), then paste its URL into `<form id="leadForm" action="">`. Until then, submitting opens an email draft instead.
 3. **Your photo.** Save it as `assets/founder.jpg`. Until then a "K" monogram shows.
 4. **Past-project photos.** Copy photos into `assets/work/`, then edit the `PROJECTS` list near the bottom of `index.html`:
