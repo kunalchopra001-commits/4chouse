@@ -861,8 +861,9 @@
       </div>
 
       <div class="form-card">
-        <!-- Set action to your form endpoint, for example https://formspree.io/f/XXXXXXX (see README) -->
-        <form id="leadForm" action="" method="POST" novalidate>
+        <!-- Leads are sent through Formspree to hello@4chouse.com -->
+        <form id="leadForm" action="https://formspree.io/f/xdealvkq" method="POST" novalidate>
+          <input type="hidden" name="_subject" value="New diagnostic request from the website">
           <div class="checkup-note" data-checkup-note><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span></span></div>
           <div class="row2">
             <div class="field">
