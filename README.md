@@ -31,14 +31,24 @@ Everything below is marked in the files with an HTML comment, so you can search 
    - `generate_lead` (Google) and `Lead` (Meta) when the form is submitted. Use this as your ad conversion.
    - `checkup_complete` and `CheckupComplete` when someone finishes the 60-second check-up
    - `whatsapp_click` and `Contact` when a WhatsApp link is clicked
-8. **Domain tags.** Once your domain is live, add the canonical and `og:url` tags noted in the `<head>`, and a share image (`og:image`, 1200x630).
+8. ~~Domain tags~~ Done for https://4chouse.com: canonical link, share preview image (`assets/og-image.jpg`), `sitemap.xml`.
 
-## Publishing (Netlify, about 5 minutes)
-1. Go to https://app.netlify.com/drop and drag this project folder onto the page.
-2. Under *Domain management*, add your domain and follow the DNS steps.
-3. HTTPS is switched on automatically.
+## Publishing on GoDaddy (4chouse.com)
 
-Cloudflare Pages, Vercel or GitHub Pages work the same way, because the site is plain HTML.
+### If you have a GoDaddy web hosting plan (cPanel)
+1. GoDaddy → My Products → Web Hosting → **Manage** → **cPanel Admin** → **File Manager**.
+2. Open the `public_html` folder and delete GoDaddy's placeholder page (`index.html` or `default.html`) if there is one.
+3. Upload these files and folders into `public_html`: `index.html`, `privacy.html`, `robots.txt`, `sitemap.xml` and the whole `assets` folder (keep its structure). The easiest way: zip them on your computer, upload the zip, then right-click it in File Manager → **Extract**.
+4. In cPanel, open **SSL/TLS Status** and make sure 4chouse.com has a certificate (free AutoSSL), so the site loads on https.
+5. Visit https://4chouse.com.
 
-## Editing text
-All wording lives in `index.html`. Search for the sentence you want to change and edit it in place. The check-up questions and their recommendations are in the `QUESTIONS` list in the script.
+### If you only have the domain at GoDaddy (no hosting plan)
+Host free on Netlify and point the domain to it:
+1. Go to https://app.netlify.com/drop and drag the project folder onto the page.
+2. In Netlify: **Domain management → Add a domain** → `4chouse.com`, and follow the DNS records it shows.
+3. In GoDaddy: **My Products → Domain → DNS**, and add those records (usually an `A` record for `@` and a `CNAME` for `www`). HTTPS switches on automatically within an hour.
+
+### After it is live
+- Submit the booking form once to check the email arrives at hello@4chouse.com (check spam the first time).
+- Formspree → your form → Settings → **Restrict to domain**: `4chouse.com`.
+- Google Search Console: add 4chouse.com and submit `https://4chouse.com/sitemap.xml`.
