@@ -7,6 +7,7 @@ A static, single-page site with no build step. Files:
 | `index.html` | The landing page (design, content and scripts in one file) |
 | `privacy.html` | Privacy policy, linked from the form and footer (needed for Google and Meta ads) |
 | `robots.txt` | Lets search engines index the site |
+| `_headers` | Netlify caching and security settings |
 | `assets/work/` | Put past-project photos here |
 | `assets/founder.jpg` | Put your portrait here (square works best) |
 
@@ -42,11 +43,18 @@ Everything below is marked in the files with an HTML comment, so you can search 
 4. In cPanel, open **SSL/TLS Status** and make sure 4chouse.com has a certificate (free AutoSSL), so the site loads on https.
 5. Visit https://4chouse.com.
 
-### If you only have the domain at GoDaddy (no hosting plan)
-Host free on Netlify and point the domain to it:
-1. Go to https://app.netlify.com/drop and drag the project folder onto the page.
-2. In Netlify: **Domain management → Add a domain** → `4chouse.com`, and follow the DNS records it shows.
-3. In GoDaddy: **My Products → Domain → DNS**, and add those records (usually an `A` record for `@` and a `CNAME` for `www`). HTTPS switches on automatically within an hour.
+### Netlify + GoDaddy domain (the setup in use)
+1. Sign up free at https://app.netlify.com (with Google or GitHub).
+2. Go to https://app.netlify.com/drop and drag the `4chouse-site` folder onto the page. You get a test link like `random-name.netlify.app`.
+3. **Site configuration → Change site name** to `4chouse` (test link becomes `4chouse.netlify.app`).
+4. **Domain management → Add a domain** → `4chouse.com` → **Verify** → **Add domain**. Netlify adds `www.4chouse.com` too and redirects it.
+5. In GoDaddy: **My Products → 4chouse.com → DNS**:
+   - Edit the **A** record with name `@` → value `75.2.60.5` (delete any other `@` A records, such as GoDaddy "Parked").
+   - Edit the **CNAME** record with name `www` → value `4chouse.netlify.app`.
+   - Leave MX and TXT records alone (they handle email).
+6. Back in Netlify, **Domain management → HTTPS → Verify DNS configuration**. The certificate is issued automatically, usually within an hour (DNS can take up to 24 hours).
+
+To update the site later, drag the new folder onto **Deploys** in your Netlify site.
 
 ### After it is live
 - Submit the booking form once to check the email arrives at hello@4chouse.com (check spam the first time).
