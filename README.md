@@ -23,7 +23,7 @@ Everything below is marked in the files with an HTML comment, so you can search 
    { img: "assets/work/thumb/new-project.webp", full: "assets/work/new-project.webp", title: "Brand launch, Dubai Mall", category: "Activations" },
    ```
    Categories become the filter buttons automatically.
-5. **Privacy policy.** Add your registered company name and address in `privacy.html`, and check it with your advisor.
+5. ~~Privacy policy~~ Done: names 4C House of Advertising LLC, Dubai, UAE. Worth a quick check by your legal advisor.
 
 ### Should do
 6. **Client logos.** Add logos (SVG or transparent PNG) to `assets/clients/` and list them in `CLIENT_LOGOS`. The scrolling logo strip under the hero appears automatically once the list has entries. Only use brands you have permission to show.
