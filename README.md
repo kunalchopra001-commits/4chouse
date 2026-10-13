@@ -17,7 +17,7 @@ Everything below is marked in the files with an HTML comment, so you can search 
 ### Must do
 1. ~~Contact details~~ Done: WhatsApp +971 52 453 4410, Instagram @4c.house, email hello@4chouse.com. To change the email, search for `hello@4chouse.com` in `index.html` and `privacy.html`.
 2. **Connect the form.** Create a free form at [formspree.io](https://formspree.io) (or similar), then paste its URL into `<form id="leadForm" action="">`. Until then, submitting opens an email draft instead.
-3. ~~Your photo~~ Done for now: a cropped, colour-graded version of your selfie is at `assets/founder.jpg`. Replace that file to change it (square, at least 800px).
+3. ~~Your photo~~ Done: your Higgsfield studio portrait is at `assets/founder.jpg`. Replace that file to change it (square, at least 800px).
 4. ~~Past-project photos~~ Done: 27 enhanced photos in `assets/work/` (large) and `assets/work/thumb/` (gallery strip). To add more, save a 1800px and a 900px WebP version and add a line to the `PROJECTS` list near the bottom of `index.html`:
    ```js
    { img: "assets/work/thumb/new-project.webp", full: "assets/work/new-project.webp", title: "Brand launch, Dubai Mall", category: "Activations" },
