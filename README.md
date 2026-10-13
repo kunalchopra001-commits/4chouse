@@ -15,25 +15,23 @@ A static, single-page site with no build step. Files:
 Everything below is marked in the files with an HTML comment, so you can search for it.
 
 ### Must do
-1. **WhatsApp number.** Replace `971500000000` everywhere in `index.html` (country code, no `+` or spaces). It appears in the menu bar, hero, booking section, footer and floating button.
-2. **Contact details.** Replace `+971 50 000 0000` and `hello@4chouse.com` in the footer, the form script, and `privacy.html`.
-3. **Connect the form.** Create a free form at [formspree.io](https://formspree.io) (or similar), then paste its URL into `<form id="leadForm" action="">`. Until then, submitting opens an email draft instead.
-4. **Your photo.** Save it as `assets/founder.jpg`. Until then a "K" monogram shows.
-5. **Past-project photos.** Copy photos into `assets/work/`, then edit the `PROJECTS` list near the bottom of `index.html`:
+1. ~~Contact details~~ Done: WhatsApp +971 52 453 4410, Instagram @4c.house, email inquries@4chouse.com. To change the email, search for `inquries@4chouse.com` in `index.html` and `privacy.html`.
+2. **Connect the form.** Create a free form at [formspree.io](https://formspree.io) (or similar), then paste its URL into `<form id="leadForm" action="">`. Until then, submitting opens an email draft instead.
+3. **Your photo.** Save it as `assets/founder.jpg`. Until then a "K" monogram shows.
+4. **Past-project photos.** Copy photos into `assets/work/`, then edit the `PROJECTS` list near the bottom of `index.html`:
    ```js
    { img: "assets/work/mall-activation-dubai-mall.jpg", title: "Brand launch, Dubai Mall", category: "Activations" },
    ```
    Add as many as you like. Categories become the filter buttons automatically. Compress photos first (about 1600px wide, under 400 KB each, for example with squoosh.app).
-6. **Privacy policy.** Add your registered company name and address in `privacy.html`, and check it with your advisor.
+5. **Privacy policy.** Add your registered company name and address in `privacy.html`, and check it with your advisor.
 
 ### Should do
-7. **Client logos.** Add logos (SVG or transparent PNG) to `assets/clients/` and list them in `CLIENT_LOGOS`. The scrolling logo strip under the hero appears automatically once the list has entries. Only use brands you have permission to show.
-8. **Ad tracking.** Uncomment the tracking block in the `<head>` and add your Google Analytics 4, Google Ads and Meta Pixel IDs. The page already sends these events:
+6. **Client logos.** Add logos (SVG or transparent PNG) to `assets/clients/` and list them in `CLIENT_LOGOS`. The scrolling logo strip under the hero appears automatically once the list has entries. Only use brands you have permission to show.
+7. **Ad tracking.** Uncomment the tracking block in the `<head>` and add your Google Analytics 4, Google Ads and Meta Pixel IDs. The page already sends these events:
    - `generate_lead` (Google) and `Lead` (Meta) when the form is submitted. Use this as your ad conversion.
    - `checkup_complete` and `CheckupComplete` when someone finishes the 60-second check-up
    - `whatsapp_click` and `Contact` when a WhatsApp link is clicked
-9. **Social links.** Replace `#` on the Instagram and LinkedIn icons in the footer.
-10. **Domain tags.** Once your domain is live, add the canonical and `og:url` tags noted in the `<head>`, and a share image (`og:image`, 1200x630).
+8. **Domain tags.** Once your domain is live, add the canonical and `og:url` tags noted in the `<head>`, and a share image (`og:image`, 1200x630).
 
 ## Publishing (Netlify, about 5 minutes)
 1. Go to https://app.netlify.com/drop and drag this project folder onto the page.
