@@ -60,7 +60,10 @@
     @font-face { font-family: 'Montserrat'; font-style: normal; font-weight: 900; font-display: swap; src: url(assets/fonts/montserrat-latin-ext.woff2) format('woff2'); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF; }
     @font-face { font-family: 'Montserrat'; font-style: normal; font-weight: 900; font-display: swap; src: url(assets/fonts/montserrat-latin.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
     :root {
-      --bg: #0a0a0a;
+      --bg: #0c0b0a;
+      --crayon-yellow: #FFC94D;
+      --crayon-coral: #FF7A59;
+      --chalk: #F4EFE6;
       --surface: #111111;
       --surface-2: #171717;
       --line: rgba(255, 255, 255, 0.08);
@@ -87,7 +90,7 @@
     html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
     body {
       margin: 0;
-      background: var(--bg);
+      background: radial-gradient(1200px 800px at 15% 0%, rgba(255, 170, 90, 0.07), transparent 60%), var(--bg);
       color: var(--fg);
       font: 400 1rem/1.65 var(--body);
       -webkit-font-smoothing: antialiased;
@@ -116,8 +119,8 @@
     .accent { color: var(--cyan); }
     @media (min-width: 480px) { .nowrap { white-space: nowrap; } }
 
-    .wrap { width: 100%; max-width: var(--max); margin: 0 auto; padding: 0 24px; }
-    section { position: relative; padding: clamp(80px, 11vw, 140px) 0; }
+    .wrap { position: relative; width: 100%; max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+    section { position: relative; padding: clamp(64px, 8vw, 108px) 0; }
     .tone { background: rgba(255, 255, 255, 0.012); }
 
     .icon { width: 1.25em; height: 1.25em; flex-shrink: 0; fill: currentColor; }
@@ -184,11 +187,12 @@
     /* AI background, from the Figma system: fixed behind the whole page */
     .site-bg { position: fixed; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; }
     main, footer { position: relative; z-index: 1; }
+    main { overflow-x: clip; }
     .net { position: absolute; inset: 0; width: 100%; height: 100%; }
     .orb { position: absolute; border-radius: 50%; }
     .orb-cyan { width: 640px; height: 640px; top: -140px; right: -120px; opacity: 0.16; background: radial-gradient(circle, var(--cyan) 0%, transparent 70%); animation: float-orb 12s ease-in-out infinite; }
     .orb-2 { top: auto; right: auto; bottom: -220px; left: -180px; width: 560px; height: 560px; opacity: 0.1; animation-duration: 18s; }
-    .orb-magenta { top: 45%; bottom: auto; width: 420px; height: 420px; bottom: -100px; left: 8%; opacity: 0.08; background: radial-gradient(circle, var(--magenta) 0%, transparent 70%); animation: float-orb 16s ease-in-out infinite reverse; }
+    .orb-magenta { top: 38%; left: -6%; width: 520px; height: 520px; opacity: 0.1; background: radial-gradient(circle, #FFA24D 0%, transparent 70%); animation: float-orb 16s ease-in-out infinite reverse; }
     .node-line { stroke-dasharray: 8 4; animation: dash-flow 3s linear infinite; }
     @keyframes float-orb {
       0%, 100% { transform: translate(0, 0) scale(1); }
@@ -198,8 +202,8 @@
     @keyframes dash-flow { to { stroke-dashoffset: -100; } }
 
     /* Hero */
-    .hero { padding: 136px 0 96px; min-height: 100svh; display: flex; align-items: center; overflow: hidden; }
-    .hero-grid { position: relative; display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 56px; align-items: center; }
+    .hero { padding: 120px 0 56px; overflow: hidden; }
+    .hero-grid { position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
     .rotator { display: inline-grid; color: var(--cyan); }
     .rotator > span {
       grid-area: 1 / 1; opacity: 0; transform: translateY(45%); filter: blur(10px);
@@ -207,7 +211,66 @@
     }
     .rotator > span.on { opacity: 1; transform: none; filter: none; }
     .rotator > span.off { opacity: 0; transform: translateY(-30%); filter: blur(10px); transition-duration: 0.22s, 0.3s, 0.22s; transition-delay: 0s; transition-timing-function: ease-in; }
-    .hero .lede { max-width: 46ch; }
+    .hero .lede { max-width: 46ch; margin-top: 14px; }
+    .offer { margin-top: 22px; font: 700 clamp(1.1rem, 1.6vw, 1.3rem)/1.4 var(--display); color: var(--crayon-yellow); max-width: 34ch; }
+
+    /* Crayon story */
+    .story { position: relative; width: 100%; min-width: 0; max-width: 640px; justify-self: end; display: flex; flex-direction: column; gap: 10px; }
+    .story-svg { display: block; width: 100%; height: auto; overflow: visible; }
+    .story-cap { align-self: flex-start; margin: 0; padding: 8px 14px; border-radius: var(--pill); background: rgba(255, 201, 77, 0.12); box-shadow: inset 0 0 0 1px rgba(255, 201, 77, 0.35); color: var(--crayon-yellow); font: 700 0.85rem/1.2 var(--display); transition: opacity 0.35s ease; }
+    .story-cap.swap { opacity: 0; }
+    .story-replay { align-self: flex-end; display: inline-flex; align-items: center; gap: 6px; min-height: 36px; padding: 0 12px; border: 0; border-radius: var(--pill); background: rgba(255, 255, 255, 0.05); color: var(--muted); font: 600 0.78rem/1 var(--display); cursor: pointer; opacity: 0; transition: opacity 0.4s, color 0.2s; }
+    .story.done .story-replay { opacity: 1; }
+    .story-replay:hover { color: var(--fg); }
+    .story-replay .icon { width: 14px; height: 14px; }
+    .story .ink, .doodle .ink { stroke-dasharray: 1; stroke-dashoffset: 1; }
+    .story .fl, .doodle .fl { opacity: 0; transform-box: fill-box; transform-origin: center; }
+    .story.s1 .k1 .ink, .story.s2 .k2 .ink, .story.s3 .k3 .ink, .story.s4 .k4 .ink,
+    .doodle.drawn .ink { animation: ink var(--t, 0.7s) cubic-bezier(0.55, 0, 0.3, 1) var(--d, 0s) forwards; }
+    .story.s1 .k1 .fl, .story.s2 .k2 .fl, .story.s3 .k3 .fl, .story.s4 .k4 .fl,
+    .doodle.drawn .fl { animation: pop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) var(--d, 0s) forwards; }
+    @keyframes ink { to { stroke-dashoffset: 0; } }
+    @keyframes pop { from { opacity: 0; transform: scale(0.5); } to { opacity: 1; transform: none; } }
+    .story .frown, .story .sweat, .story .alerts { transition: opacity 0.4s ease; }
+    .story.s3 .sweat, .story.s3 .alerts, .story.s4 .frown { opacity: 0 !important; animation: none !important; }
+    .story .drip { opacity: 0; transform-box: fill-box; }
+    .story.s1:not(.s3) .drip { animation: drip 1.1s ease-in infinite; }
+    .story.s1:not(.s3) .drip:nth-child(2) { animation-delay: 0.37s; }
+    .story.s1:not(.s3) .drip:nth-child(3) { animation-delay: 0.74s; }
+    @keyframes drip { 0% { opacity: 0; transform: translate(0, 0); } 15% { opacity: 1; } 100% { opacity: 0; transform: translate(-10px, 22px); } }
+    .story.s3 .puddle { opacity: 0 !important; transition: opacity 0.6s; }
+    .story.s1:not(.s3) .phone { animation: ring 0.5s ease-in-out infinite; transform-box: fill-box; transform-origin: center bottom; }
+    @keyframes ring { 0%, 100% { transform: rotate(0); } 25% { transform: rotate(-6deg); } 75% { transform: rotate(6deg); } }
+    .story .flow { opacity: 0; transition: opacity 0.6s ease 0.9s; }
+    .story.s3 .flow { opacity: 1; animation: dash-flow 1.4s linear infinite; }
+    .story.s3 .wrench-arm { animation: wrench 0.6s ease-in-out 3; transform-box: fill-box; transform-origin: left bottom; }
+    @keyframes wrench { 50% { transform: rotate(-14deg); } }
+    .story.done .sparkles .fl { animation: twinkle 2.4s ease-in-out infinite; opacity: 1; }
+    .story.done .sparkles .fl:nth-child(2n) { animation-delay: 1.2s; }
+    @keyframes twinkle { 50% { opacity: 0.3; transform: scale(0.7); } }
+    .story.static .ink, .doodle.static .ink { animation: none !important; stroke-dashoffset: 0; }
+    .story.static .fl, .doodle.static .fl { animation: none !important; opacity: 1; }
+    .story.static .flow { opacity: 1; animation: none; }
+
+    /* Doodles scattered down the page */
+    .doodle { position: absolute; z-index: 0; width: 128px; pointer-events: none; }
+    .doodle-svg { display: block; width: 100%; height: auto; overflow: visible; }
+    .doodle.d-inline { position: static; width: 96px; margin-top: 24px; }
+    .doodle .wave { transform-origin: 30% 90%; }
+    .doodle.drawn .wave { animation: pop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) 0.7s forwards, waving 1.4s ease-in-out 1.3s 3; }
+    @keyframes waving { 0%, 100% { transform: rotate(0); } 50% { transform: rotate(-22deg); } }
+    .d-diff { right: 8%; top: -8px; transform: rotate(8deg); }
+    .d-services { right: 12%; top: -12px; transform: rotate(-6deg); }
+    .d-cart { position: static; width: 120px; flex-shrink: 0; }
+    .d-faq { right: 0; top: -12px; width: 96px; transform: rotate(6deg); }
+    .d-plane { width: 110px; }
+    .faq { position: relative; }
+    #diff-title, #services-title { position: relative; z-index: 1; }
+
+    /* Check-up section */
+    .checkup-sec { padding-top: clamp(40px, 5vw, 64px); }
+    .checkup-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 56px; align-items: center; }
+    .checkup-grid .checkup-frame { max-width: 520px; width: 100%; justify-self: end; }
     .hero-ctas { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 36px; }
 
     /* Check-up widget */
@@ -232,7 +295,7 @@
     .checkup-pointer span { text-decoration: underline; text-decoration-color: var(--cyan-edge); text-underline-offset: 4px; }
     .checkup-pointer:hover span { text-decoration-color: var(--cyan); }
     .checkup-pointer .arrow { animation: hint-nudge 1.6s var(--ease-out) infinite; }
-    @media (max-width: 1023px) { .checkup-pointer .arrow { transform: rotate(90deg); animation: none; } }
+    .checkup-pointer .arrow { transform: rotate(90deg); animation: none; }
     .checkup.flash { animation: flash 1.2s var(--ease-out); }
     @keyframes flash { 0% { box-shadow: 0 0 0 0 rgba(0, 217, 255, 0.6); } 100% { box-shadow: 0 0 0 18px rgba(0, 217, 255, 0); } }
     .checkup-band { position: relative; z-index: 1; border-top: 1px solid var(--cyan-edge); border-bottom: 1px solid var(--cyan-edge); background: linear-gradient(90deg, rgba(0, 217, 255, 0.04), rgba(0, 217, 255, 0.1), rgba(0, 217, 255, 0.04)); }
@@ -494,7 +557,9 @@
 
     /* Responsive */
     @media (max-width: 1023px) {
-      .hero-grid, .method-grid, .founder-grid, .book-grid, .depts-wrap { grid-template-columns: 1fr; gap: 56px; }
+      .checkup-grid .checkup-frame { justify-self: stretch; max-width: none; }
+      .story { justify-self: center; }
+      .hero-grid, .checkup-grid, .method-grid, .founder-grid, .book-grid, .depts-wrap { grid-template-columns: 1fr; gap: 56px; }
       .method-intro { position: static; }
       .journey { grid-template-columns: 1fr; gap: 0; }
       .journey-line { display: none; }
@@ -508,7 +573,14 @@
       .foot-grid > div:first-child { grid-column: 1 / -1; }
     }
     @media (max-width: 760px) {
-      .hero { padding: 112px 0 72px; min-height: 0; }
+      .hero { padding: 104px 0 40px; }
+      .doodle { width: 76px; }
+      .doodle.d-inline { width: 72px; }
+      .d-diff, .d-services { right: 18px; top: -46px; }
+      .d-diff { width: 62px; top: -60px; }
+      .d-faq { width: 64px; top: -6px; right: 10px; }
+      .d-cart { width: 88px; }
+      .story-cap { font-size: 0.78rem; }
       .compare thead { display: none; }
       .compare, .compare tbody, .compare tr, .compare th, .compare td { display: block; width: auto; }
       .compare tr { padding: 8px 0 20px; border-bottom: 1px solid var(--line); }
@@ -538,6 +610,8 @@
       .rotator > span, .js .reveal { transition: none !important; }
       .js .reveal { opacity: 1; transform: none; }
       .scanline { display: none; }
+      .story .ink, .doodle .ink { stroke-dashoffset: 0; }
+      .story .fl, .doodle .fl { opacity: 1; }
     }
   </style>
 </head>
@@ -581,6 +655,17 @@
   <div class="orb orb-cyan orb-2"></div>
   <div class="orb orb-magenta"></div>
 </div>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <filter id="crayon" x="-8%" y="-8%" width="116%" height="116%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.03" numOctaves="2" seed="4" result="warp"/>
+      <feDisplacementMap in="SourceGraphic" in2="warp" scale="3.2" xChannelSelector="R" yChannelSelector="G" result="wobbly"/>
+      <feTurbulence type="fractalNoise" baseFrequency="0.95" numOctaves="1" seed="9" result="grain"/>
+      <feColorMatrix in="grain" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -0.75 1.42" result="grainMask"/>
+      <feComposite in="wobbly" in2="grainMask" operator="in"/>
+    </filter>
+  </defs>
+</svg>
 <a class="skip" href="#main">Skip to content</a>
 
 <header class="site-header" id="top">
@@ -621,17 +706,10 @@
     <div class="wrap hero-grid">
       <div>
         <h1 id="hero-title">
-          Before we prescribe AI, <span class="nowrap">we diagnose your</span>
-          <span class="sr-only">business.</span>
-          <span class="rotator" aria-hidden="true">
-            <span class="on">business.</span>
-            <span>lead flow.</span>
-            <span>marketing.</span>
-            <span>sales.</span>
-            <span>operations.</span>
-          </span>
+          Before we prescribe AI, <span class="nowrap">we diagnose your</span> <span class="accent">business.</span>
         </h1>
-        <p class="lede">24 years of building for brands. Now we find where your business leaks leads and time, and automate the fix.</p>
+        <p class="offer">AI marketing, lead generation and business automation for Dubai companies.</p>
+        <p class="lede">24 years of building for brands taught us where businesses leak leads and time. Now we find the leaks and automate the fix.</p>
         <div class="hero-ctas">
           <a class="btn btn-cyan glow" href="#book">Book a free diagnostic
             <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
@@ -645,6 +723,159 @@
         </a>
       </div>
 
+      <div class="story" data-story role="img" aria-label="Short animation: a business owner is overwhelmed by missed calls and leaking leads. A friendly doctor-mechanic examines the business, fixes it with AI, and leads start flowing into a full calendar.">
+        <p class="story-cap" aria-hidden="true"><span data-cap>Calls missed. Leads leaking.</span></p>
+        <svg class="story-svg" viewBox="0 34 560 372" fill="none" aria-hidden="true">
+          <g filter="url(#crayon)" stroke="#F4EFE6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <!-- floor -->
+            <g class="k1"><path class="ink" pathLength="1" d="M12 393 C150 388 300 397 548 390" style="--t:1s"/></g>
+      
+            <!-- ========== SCENE 1: the owner, the desk, the leaks ========== -->
+            <g class="k1">
+              <!-- owner -->
+              <path class="fl" d="M70 330 C72 290 82 262 110 258 C138 262 148 290 150 330 Z" fill="#FF7A59" fill-opacity="0.85" stroke="none" style="--d:.2s"/>
+              <path class="ink" pathLength="1" d="M70 330 C72 290 82 262 110 258 C138 262 148 290 150 330" style="--d:.1s"/>
+              <circle class="fl" cx="110" cy="222" r="27" fill="#E9B58C" stroke="none" style="--d:.35s"/>
+              <circle class="ink" pathLength="1" cx="110" cy="222" r="27" style="--d:.25s"/>
+              <path class="fl" d="M84 214 C86 192 104 186 116 190 C130 186 140 200 136 214 C128 204 112 202 100 208 C94 210 88 212 84 214 Z" fill="#3A2A22" stroke="none" style="--d:.5s"/>
+              <circle class="fl" cx="101" cy="224" r="2.6" fill="#2B1D16" stroke="none" style="--d:.6s"/>
+              <circle class="fl" cx="119" cy="224" r="2.6" fill="#2B1D16" stroke="none" style="--d:.6s"/>
+              <path class="ink frown" pathLength="1" d="M101 240 Q110 233 119 240" stroke="#2B1D16" stroke-width="2.5" style="--d:.7s"/>
+              <path class="fl sweat" d="M138 200 q5 9 0 13 q-5 -4 0 -13z" fill="#7FE9FF" stroke="none" style="--d:.9s"/>
+              <path class="ink" pathLength="1" d="M78 282 C70 302 76 318 96 326" style="--d:.5s"/>
+              <path class="ink" pathLength="1" d="M142 282 C152 302 150 318 132 326" style="--d:.5s"/>
+              <!-- desk + laptop -->
+              <path class="ink" pathLength="1" d="M28 331 L242 331" stroke-width="4" style="--d:.3s"/>
+              <path class="ink" pathLength="1" d="M44 331 L44 393 M226 331 L226 393" style="--d:.45s"/>
+              <path class="fl" d="M86 330 L92 296 L142 296 L136 330 Z" fill="#2A2F36" stroke="none" style="--d:.6s"/>
+              <path class="ink" pathLength="1" d="M86 330 L92 296 L142 296 L136 330" style="--d:.55s"/>
+              <circle class="fl" cx="114" cy="313" r="3" fill="#00D9FF" stroke="none" style="--d:.8s"/>
+              <!-- phone + alerts -->
+              <g class="phone">
+                <rect class="fl" x="174" y="298" width="24" height="32" rx="4" fill="#2A2F36" stroke="none" style="--d:.7s"/>
+                <rect class="ink" pathLength="1" x="174" y="298" width="24" height="32" rx="4" style="--d:.65s"/>
+              </g>
+              <g class="alerts">
+                <circle class="fl" cx="208" cy="280" r="10" fill="#FF5A5A" stroke="none" style="--d:1s"/>
+                <circle class="fl" cx="228" cy="258" r="8" fill="#FF5A5A" stroke="none" style="--d:1.2s"/>
+                <circle class="fl" cx="200" cy="254" r="6" fill="#FF5A5A" stroke="none" style="--d:1.4s"/>
+                <path class="fl" d="M208 274 L208 281 M208 285 L208 286" stroke="#fff" stroke-width="2.5" style="--d:1s"/>
+                <path class="fl" d="M228 253 L228 259 M228 262 L228 263" stroke="#fff" stroke-width="2.2" style="--d:1.2s"/>
+              </g>
+              <!-- leaky bucket -->
+              <path class="fl" d="M252 318 L318 318 L310 388 L260 388 Z" fill="#FFC94D" fill-opacity="0.9" stroke="none" style="--d:.9s"/>
+              <path class="ink" pathLength="1" d="M252 318 L318 318 L310 388 L260 388 Z" style="--d:.8s"/>
+              <path class="ink" pathLength="1" d="M250 318 Q285 306 320 318" style="--d:1s"/>
+              <text class="fl" x="285" y="349" text-anchor="middle" font-family="Montserrat, sans-serif" font-weight="800" font-size="12" fill="#2B1D16" stroke="none" style="--d:1.1s">LEADS</text>
+              <g class="drips">
+                <path class="drip" d="M262 366 q4 7 0 10 q-4 -3 0 -10z" fill="#FF7A59" stroke="none"/>
+                <path class="drip" d="M262 366 q4 7 0 10 q-4 -3 0 -10z" fill="#FF7A59" stroke="none"/>
+                <path class="drip" d="M262 366 q4 7 0 10 q-4 -3 0 -10z" fill="#FF7A59" stroke="none"/>
+              </g>
+              <ellipse class="fl puddle" cx="246" cy="394" rx="16" ry="3.5" fill="#FF7A59" fill-opacity="0.7" stroke="none" style="--d:1.5s"/>
+            </g>
+      
+            <!-- ========== SCENE 2: the doctor-mechanic examines ========== -->
+            <g class="k2 doc">
+              <path class="ink" pathLength="1" d="M425 336 L420 391 M455 336 L460 391" style="--d:.0s"/>
+              <path class="fl" d="M405 250 C398 280 398 320 404 338 L476 338 C482 320 482 280 475 250 C462 242 418 242 405 250 Z" fill="#F4EFE6" fill-opacity="0.92" stroke="none" style="--d:.15s"/>
+              <path class="ink" pathLength="1" d="M405 250 C398 280 398 320 404 338 L476 338 C482 320 482 280 475 250 C462 242 418 242 405 250 Z" stroke="#CFC6B8" style="--d:.1s"/>
+              <path class="ink" pathLength="1" d="M440 262 L440 338" stroke="#CFC6B8" stroke-width="2" style="--d:.3s"/>
+              <path class="fl" d="M425 247 L440 266 L455 247 Z" fill="#00D9FF" stroke="none" style="--d:.35s"/>
+              <circle class="fl" cx="440" cy="212" r="28" fill="#E9B58C" stroke="none" style="--d:.3s"/>
+              <circle class="ink" pathLength="1" cx="440" cy="212" r="28" style="--d:.25s"/>
+              <path class="fl" d="M411 206 C412 182 468 182 469 206 Z" fill="#00D9FF" stroke="none" style="--d:.45s"/>
+              <path class="ink" pathLength="1" d="M467 205 L486 208" stroke="#00D9FF" stroke-width="4" style="--d:.5s"/>
+              <circle class="fl" cx="440" cy="196" r="6.5" fill="#F4EFE6" stroke="#FFC94D" stroke-width="2" style="--d:.55s"/>
+              <circle class="fl" cx="431" cy="215" r="2.6" fill="#2B1D16" stroke="none" style="--d:.6s"/>
+              <circle class="fl" cx="449" cy="215" r="2.6" fill="#2B1D16" stroke="none" style="--d:.6s"/>
+              <circle class="fl" cx="424" cy="224" r="4" fill="#FF7A59" fill-opacity="0.45" stroke="none" style="--d:.65s"/>
+              <circle class="fl" cx="456" cy="224" r="4" fill="#FF7A59" fill-opacity="0.45" stroke="none" style="--d:.65s"/>
+              <path class="ink" pathLength="1" d="M430 227 Q440 236 450 227" stroke="#2B1D16" stroke-width="2.5" style="--d:.7s"/>
+              <!-- stethoscope round the neck -->
+              <path class="ink" pathLength="1" d="M422 252 C418 274 430 288 440 288 C450 288 462 274 458 252" stroke="#FF7A59" style="--d:.7s"/>
+              <!-- arm + wrench -->
+              <g class="wrench-arm">
+                <path class="ink" pathLength="1" d="M474 262 C492 250 500 232 498 214" style="--d:.8s"/>
+                <path class="fl" d="M497 216 L511 186 L517 189 L503 219 Z M508 190 C500 182 508 168 520 172 L514 180 L519 185 L527 180 C530 192 518 198 508 190 Z" fill="#FFC94D" stroke="none" style="--d:.95s"/>
+              </g>
+              <!-- arm + clipboard -->
+              <path class="ink" pathLength="1" d="M406 262 C392 276 388 292 392 304" style="--d:.8s"/>
+              <rect class="fl" x="368" y="290" width="36" height="46" rx="3" fill="#F4EFE6" stroke="#CFC6B8" stroke-width="2" style="--d:.9s"/>
+              <rect class="fl" x="378" y="286" width="16" height="7" rx="2" fill="#FF7A59" stroke="none" style="--d:.95s"/>
+              <path class="ink" pathLength="1" d="M374 304 l4 4 l7 -8 M374 316 l4 4 l7 -8 M374 328 l4 4 l7 -8" stroke="#1FA971" stroke-width="2.5" style="--d:1.4s;--t:.9s"/>
+              <path class="ink" pathLength="1" d="M389 305 L398 305 M389 317 L398 317 M389 329 L398 329" stroke="#9A9184" stroke-width="2" style="--d:1.2s"/>
+              <!-- stethoscope listening to the bucket -->
+              <path class="ink" pathLength="1" d="M440 290 C410 302 360 300 322 342" stroke="#FF7A59" style="--d:1s;--t:1s"/>
+              <circle class="fl" cx="320" cy="344" r="6" fill="#FF7A59" stroke="none" style="--d:1.8s"/>
+              <g class="k2 shoes">
+                <ellipse class="fl" cx="416" cy="392" rx="10" ry="4" fill="#3A2A22" stroke="none" style="--d:.2s"/>
+                <ellipse class="fl" cx="464" cy="392" rx="10" ry="4" fill="#3A2A22" stroke="none" style="--d:.2s"/>
+              </g>
+            </g>
+      
+            <!-- ========== SCENE 3: the fix ========== -->
+            <g class="k3">
+              <!-- patch on the bucket -->
+              <path class="fl" d="M255 356 L315 356 L313 371 L257 371 Z" fill="#00D9FF" stroke="none" style="--d:.1s"/>
+              <text class="fl" x="285" y="368" text-anchor="middle" font-family="Montserrat, sans-serif" font-weight="900" font-size="11" fill="#0A0A0A" stroke="none" style="--d:.25s">AI</text>
+              <!-- calendar -->
+              <path class="fl" d="M330 52 L520 52 L520 150 L330 150 Z" fill="#F4EFE6" fill-opacity="0.08" stroke="none" style="--d:.5s"/>
+              <path class="ink" pathLength="1" d="M330 52 L520 52 L520 150 L330 150 Z" style="--d:.4s"/>
+              <path class="fl" d="M330 52 L520 52 L520 72 L330 72 Z" fill="#00D9FF" fill-opacity="0.85" stroke="none" style="--d:.6s"/>
+              <path class="ink" pathLength="1" d="M362 44 L362 60 M488 44 L488 60" style="--d:.6s"/>
+              <!-- pipe from the bucket to the calendar -->
+              <path class="ink" pathLength="1" d="M286 314 C286 236 296 160 330 126" stroke-width="7" stroke="#2A2F36" style="--d:.5s;--t:.9s"/>
+              <path class="flow" d="M286 314 C286 236 296 160 330 126" stroke="#00D9FF" stroke-width="3" stroke-dasharray="7 9"/>
+              <!-- phone alerts become green ticks -->
+              <circle class="fl" cx="208" cy="280" r="10" fill="#1FA971" stroke="none" style="--d:.9s"/>
+              <circle class="fl" cx="228" cy="258" r="8" fill="#1FA971" stroke="none" style="--d:1.05s"/>
+              <path class="ink" pathLength="1" d="M203 280 l4 4 l7 -8 M224 258 l3 3 l5 -6" stroke="#fff" stroke-width="2.4" style="--d:1.2s"/>
+            </g>
+      
+            <!-- ========== SCENE 4: leads flow in ========== -->
+            <g class="k4">
+              <g class="cal-dots" stroke="none">
+                <circle class="fl" cx="350" cy="88" r="7" fill="#FFC94D" style="--d:.0s"/>
+                <circle class="fl" cx="386" cy="88" r="7" fill="#FF7A59" style="--d:.12s"/>
+                <circle class="fl" cx="422" cy="88" r="7" fill="#1FA971" style="--d:.24s"/>
+                <circle class="fl" cx="458" cy="88" r="7" fill="#FFC94D" style="--d:.36s"/>
+                <circle class="fl" cx="494" cy="88" r="7" fill="#FF7A59" style="--d:.48s"/>
+                <circle class="fl" cx="350" cy="112" r="7" fill="#1FA971" style="--d:.6s"/>
+                <circle class="fl" cx="386" cy="112" r="7" fill="#FFC94D" style="--d:.72s"/>
+                <circle class="fl" cx="422" cy="112" r="7" fill="#FF7A59" style="--d:.84s"/>
+                <circle class="fl" cx="458" cy="112" r="7" fill="#1FA971" style="--d:.96s"/>
+                <circle class="fl" cx="494" cy="112" r="7" fill="#FFC94D" style="--d:1.08s"/>
+                <circle class="fl" cx="350" cy="136" r="7" fill="#FF7A59" style="--d:1.2s"/>
+                <circle class="fl" cx="386" cy="136" r="7" fill="#1FA971" style="--d:1.32s"/>
+              </g>
+              <!-- smile -->
+              <path class="ink" pathLength="1" d="M100 236 Q110 247 120 236" stroke="#2B1D16" stroke-width="2.6" style="--d:.2s"/>
+              <!-- sparkles -->
+              <g class="sparkles" fill="#FFC94D" stroke="none">
+                <path class="fl" d="M150 176 l2.5 -8 l2.5 8 l8 2.5 l-8 2.5 l-2.5 8 l-2.5 -8 l-8 -2.5 z" style="--d:.4s"/>
+                <path class="fl" d="M300 286 l2 -6 l2 6 l6 2 l-6 2 l-2 6 l-2 -6 l-6 -2 z" style="--d:.6s"/>
+                <path class="fl" d="M530 120 l2.5 -8 l2.5 8 l8 2.5 l-8 2.5 l-2.5 8 l-2.5 -8 l-8 -2.5 z" style="--d:.8s"/>
+                <path class="fl" d="M60 250 l2 -6 l2 6 l6 2 l-6 2 l-2 6 l-2 -6 l-6 -2 z" style="--d:1s"/>
+              </g>
+            </g>
+          </g>
+        </svg>
+        <button class="story-replay" type="button" data-replay aria-label="Replay animation">
+          <svg class="icon" aria-hidden="true"><use href="#i-arrow-counter-clockwise"/></svg> Replay
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHECK-UP -->
+  <section class="checkup-sec" aria-labelledby="checkup-sec-title">
+    <div class="wrap checkup-grid">
+      <div class="checkup-intro">
+        <h2 id="checkup-sec-title">Start with a free 60-second check-up.</h2>
+        <p class="lede">Six yes-or-no questions show where your business is leaking leads and time, and what we would fix first. No sign-up, no sales call.</p>
+        <div class="doodle d-inline" aria-hidden="true"><svg class="doodle-svg" viewBox="0 0 120 120" fill="none" aria-hidden="true"><g filter="url(#crayon)" stroke="#F4EFE6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path class="ink" pathLength="1" d="M34 18 C30 58 42 70 58 70 C74 70 86 58 82 18" stroke="#FF7A59" style="--d:0.0s"/><circle class="fl" cx="34" cy="16" r="4" fill="#F4EFE6" stroke="none" style="--d:0.3s"/><circle class="fl" cx="82" cy="16" r="4" fill="#F4EFE6" stroke="none" style="--d:0.3s"/><path class="ink" pathLength="1" d="M58 70 C58 94 76 104 92 96" stroke="#FF7A59" style="--d:0.5s"/><circle class="fl" cx="96" cy="92" r="10" fill="#00D9FF" stroke="none" style="--d:0.9s"/><circle class="ink" pathLength="1" cx="96" cy="92" r="10" style="--d:0.8s"/></g></svg></div>
+      </div>
       <div class="checkup-frame">
       <span class="checkup-tag">Free · No sign-up</span>
       <div class="checkup" id="checkup" role="region" aria-labelledby="checkup-title">
@@ -691,6 +922,7 @@
   <!-- DIFFERENCE -->
   <section class="tone" aria-labelledby="diff-title">
     <div class="wrap">
+      <div class="doodle d-diff" aria-hidden="true"><svg class="doodle-svg" viewBox="0 0 120 120" fill="none" aria-hidden="true"><g filter="url(#crayon)" stroke="#F4EFE6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle class="fl" cx="52" cy="62" r="26" fill="#FFC94D" fill-opacity="0.9" stroke="none" style="--d:0.1s"/><path class="ink" pathLength="1" d="M52 30 L52 22 M52 94 L52 102 M20 62 L12 62 M84 62 L92 62 M29 39 L23 33 M75 85 L81 91 M29 85 L23 91 M75 39 L81 33" stroke="#FFC94D" stroke-width="6" style="--d:0.0s"/><circle class="fl" cx="52" cy="62" r="9" fill="#0A0A0A" stroke="none" style="--d:0.3s"/><path class="ink" pathLength="1" d="M70 92 L104 34" style="--d:0.4s"/><path class="fl" d="M98 40 C92 30 100 18 112 20 L106 28 L110 33 L118 28 C120 40 108 46 98 40 Z" fill="#F4EFE6" stroke="none" style="--d:0.7s"/></g></svg></div>
       <h2 id="diff-title">Not another agency.<br>Not another consultancy.</h2>
       <p class="lede">We find what is holding your business back, fix it, and keep it running. An agency sells you posts. A consultancy sells you a report. Neither fixes the engine.</p>
       <table class="compare">
@@ -739,6 +971,7 @@
       <div class="method-intro">
         <h2 id="how-title">A check-up that ends in working systems.</h2>
         <p class="lede">The way a good doctor or a trusted mechanic works. Examine first, explain clearly, fix what matters, then keep it running.</p>
+        <div class="doodle d-inline d-mascot" aria-hidden="true"><svg class="doodle-svg" viewBox="0 0 120 120" fill="none" aria-hidden="true"><g filter="url(#crayon)" stroke="#F4EFE6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle class="fl" cx="56" cy="62" r="28" fill="#E9B58C" stroke="none" style="--d:0.15s"/><circle class="ink" pathLength="1" cx="56" cy="62" r="28" style="--d:0.0s"/><path class="fl" d="M27 56 C28 32 84 32 85 56 Z" fill="#00D9FF" stroke="none" style="--d:0.3s"/><circle class="fl" cx="56" cy="46" r="6" fill="#F4EFE6" stroke="#FFC94D" stroke-width="2" style="--d:0.4s"/><circle class="fl" cx="47" cy="66" r="2.6" fill="#2B1D16" stroke="none" style="--d:0.45s"/><circle class="fl" cx="65" cy="66" r="2.6" fill="#2B1D16" stroke="none" style="--d:0.45s"/><path class="ink" pathLength="1" d="M46 76 Q56 86 66 76" stroke="#2B1D16" stroke-width="2.5" style="--d:0.5s"/><path class="ink" pathLength="1" d="M84 82 C96 72 100 58 98 44" style="--d:0.6s"/><circle class="fl wave" cx="99" cy="40" r="7" fill="#E9B58C" stroke="none" style="--d:0.7s"/></g></svg></div>
       </div>
       <ol class="stages">
         <li class="stage">
@@ -789,6 +1022,7 @@
   <!-- SERVICES -->
   <section class="tone" id="services" aria-labelledby="services-title">
     <div class="wrap">
+      <div class="doodle d-services" aria-hidden="true"><svg class="doodle-svg" viewBox="0 0 120 120" fill="none" aria-hidden="true"><g filter="url(#crayon)" stroke="#F4EFE6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path class="fl" d="M28 48 L72 30 L72 90 L28 72 Z" fill="#FFC94D" stroke="none" style="--d:0.2s"/><path class="ink" pathLength="1" d="M28 48 L72 30 L72 90 L28 72 Z" style="--d:0.0s"/><path class="fl" d="M18 50 L28 48 L28 72 L18 70 Z" fill="#FF7A59" stroke="none" style="--d:0.3s"/><path class="ink" pathLength="1" d="M40 74 L46 96 L56 94 L52 78" style="--d:0.4s"/><path class="ink" pathLength="1" d="M84 46 Q94 60 84 74" stroke="#00D9FF" style="--d:0.6s"/><path class="ink" pathLength="1" d="M94 36 Q110 60 94 84" stroke="#00D9FF" style="--d:0.8s"/></g></svg></div>
       <h2 id="services-title">We start where the money is.</h2>
       <p class="lede">Five automations that take a stranger from first scroll to paying customer. Most clients begin here.</p>
 
@@ -837,6 +1071,7 @@
         <div>
           <h3>Then the rest of the business.</h3>
           <p>Once leads are flowing, we bring the same check-up to every department. Practical tools your team will actually use.</p>
+          <div class="doodle d-inline" aria-hidden="true"><svg class="doodle-svg" viewBox="0 0 120 120" fill="none" aria-hidden="true"><g filter="url(#crayon)" stroke="#F4EFE6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path class="fl" d="M60 20 C40 20 30 38 38 54 C44 64 48 70 48 78 L72 78 C72 70 76 64 82 54 C90 38 80 20 60 20 Z" fill="#FFC94D" stroke="none" style="--d:0.2s"/><path class="ink" pathLength="1" d="M60 20 C40 20 30 38 38 54 C44 64 48 70 48 78 L72 78 C72 70 76 64 82 54 C90 38 80 20 60 20 Z" style="--d:0.0s"/><path class="ink" pathLength="1" d="M50 86 L70 86 M53 94 L67 94" style="--d:0.4s"/><path class="ink" pathLength="1" d="M60 8 L60 2 M22 22 L17 17 M98 22 L103 17 M14 52 L7 52 M106 52 L113 52" stroke="#FFC94D" style="--d:0.6s"/><path class="ink" pathLength="1" d="M54 60 L58 48 L62 60 L66 48" stroke="#2B1D16" stroke-width="2.4" style="--d:0.7s"/></g></svg></div>
         </div>
         <ul class="depts">
           <li><svg class="icon" aria-hidden="true"><use href="#i-briefcase"/></svg><div><b>Sales</b><span>Quotes, proposals and pipeline tracking</span></div></li>
@@ -858,6 +1093,7 @@
           <h2 id="work-title">24 years of building things that had to open on time.</h2>
           <p class="lede">Mall activations, exhibition stands, retail interiors, food kiosks and carts. Designed and made to order for big brands and local startups.</p>
         </div>
+        <div class="doodle d-cart" aria-hidden="true"><svg class="doodle-svg" viewBox="0 0 120 120" fill="none" aria-hidden="true"><g filter="url(#crayon)" stroke="#F4EFE6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path class="fl" d="M22 52 L96 52 L96 86 L22 86 Z" fill="#FF7A59" stroke="none" style="--d:0.2s"/><path class="ink" pathLength="1" d="M22 52 L96 52 L96 86 L22 86 Z" style="--d:0.0s"/><path class="fl" d="M16 52 Q26 38 36 52 Q46 38 56 52 Q66 38 76 52 Q86 38 96 52 Q102 44 104 52 Z" fill="#FFC94D" stroke="none" style="--d:0.35s"/><path class="ink" pathLength="1" d="M24 52 L24 30 M94 52 L94 30 M18 30 L100 30" style="--d:0.3s"/><circle class="fl" cx="42" cy="96" r="10" fill="#2A2F36" stroke="#F4EFE6" stroke-width="3" style="--d:0.5s"/><path class="ink" pathLength="1" d="M96 70 L112 62" style="--d:0.6s"/><path class="ink" pathLength="1" d="M36 68 L52 68 M60 68 L80 68" stroke="#F4EFE6" stroke-width="2.4" style="--d:0.7s"/></g></svg></div>
       </div>
       <div class="filters" role="group" aria-label="Filter projects" data-filters></div>
     </div>
@@ -928,6 +1164,7 @@
           <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>A rough idea of cost and return</li>
           <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>No obligation and no hard sell</li>
         </ul>
+        <div class="doodle d-inline d-plane" aria-hidden="true"><svg class="doodle-svg" viewBox="0 0 120 120" fill="none" aria-hidden="true"><g filter="url(#crayon)" stroke="#F4EFE6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path class="ink" pathLength="1" d="M8 108 C20 96 18 84 34 80" stroke="#FF7A59" stroke-dasharray="none" style="--d:0.0s"/><path class="fl" d="M30 78 L112 20 L74 104 L64 80 Z" fill="#F4EFE6" stroke="none" style="--d:0.3s"/><path class="ink" pathLength="1" d="M30 78 L112 20 L74 104 L64 80 Z M112 20 L64 80" style="--d:0.2s"/><path class="fl" d="M64 80 L74 104 L70 84 Z" fill="#00D9FF" stroke="none" style="--d:0.5s"/></g></svg></div>
         <p class="alt-contact">Prefer to talk now? <a href="https://wa.me/971524534410" target="_blank" rel="noopener" data-track="whatsapp">Chat on WhatsApp</a>.</p>
       </div>
 
@@ -1006,6 +1243,7 @@
   <!-- FAQ -->
   <section class="tone" aria-labelledby="faq-title">
     <div class="wrap faq">
+      <div class="doodle d-faq" aria-hidden="true"><svg class="doodle-svg" viewBox="0 0 120 120" fill="none" aria-hidden="true"><g filter="url(#crayon)" stroke="#F4EFE6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path class="fl" d="M16 24 L92 24 Q102 24 102 34 L102 70 Q102 80 92 80 L48 80 L28 98 L32 80 L26 80 Q16 80 16 70 L16 34 Q16 24 26 24 Z" fill="#FFC94D" fill-opacity="0.9" stroke="none" style="--d:0.2s"/><path class="ink" pathLength="1" d="M26 24 L92 24 Q102 24 102 34 L102 70 Q102 80 92 80 L48 80 L28 98 L32 80 L26 80 Q16 80 16 70 L16 34 Q16 24 26 24 Z" style="--d:0.0s"/><path class="ink" pathLength="1" d="M48 42 C48 32 70 32 70 42 C70 50 59 50 59 58" stroke="#2B1D16" stroke-width="4" style="--d:0.5s"/><circle class="fl" cx="59" cy="68" r="3" fill="#2B1D16" stroke="none" style="--d:0.7s"/></g></svg></div>
       <h2 id="faq-title">Questions owners ask us.</h2>
       <div class="faq-list">
         <details><summary>Who is this for?<svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg></summary>
@@ -1350,6 +1588,48 @@ document.querySelectorAll("[data-start-checkup]").forEach(a => a.addEventListene
     if (first && first.offsetParent) first.focus({ preventScroll: true });
   }, reduceMotion ? 0 : 600);
 }));
+
+// Crayon story in the hero: four short scenes with captions, then it settles as an illustration
+(function () {
+  const story = document.querySelector("[data-story]");
+  if (!story) return;
+  const cap = story.querySelector("[data-cap]"), capBox = story.querySelector(".story-cap");
+  const SCENES = [
+    { at: 0, text: "Calls missed. Leads leaking." },
+    { at: 2600, text: "First, we diagnose." },
+    { at: 5000, text: "Then we fix it with AI." },
+    { at: 7300, text: "Leads flow in. Business breathes." }
+  ];
+  let timers = [];
+  function setCap(t) {
+    capBox.classList.add("swap");
+    setTimeout(() => { cap.textContent = t; capBox.classList.remove("swap"); }, 250);
+  }
+  function play() {
+    timers.forEach(clearTimeout); timers = [];
+    story.className = "story"; void story.offsetWidth;
+    SCENES.forEach((sc, i) => timers.push(setTimeout(() => { story.classList.add("s" + (i + 1)); if (i) setCap(sc.text); }, sc.at)));
+    timers.push(setTimeout(() => story.classList.add("done"), 9600));
+    cap.textContent = SCENES[0].text;
+  }
+  if (reduceMotion) {
+    story.classList.add("s1", "s2", "s3", "s4", "static", "done");
+    cap.textContent = SCENES[3].text;
+  } else {
+    play();
+  }
+  story.querySelector("[data-replay]").addEventListener("click", play);
+})();
+
+// Doodles draw themselves in as they scroll into view
+(function () {
+  const doodles = document.querySelectorAll(".doodle");
+  if (reduceMotion) { doodles.forEach(d => d.classList.add("static")); return; }
+  const io = new IntersectionObserver(entries => entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add("drawn"); io.unobserve(e.target); }
+  }), { rootMargin: "0px 0px -15% 0px" });
+  doodles.forEach(d => io.observe(d));
+})();
 
 // Method: highlight the stage in view
 (function () {
