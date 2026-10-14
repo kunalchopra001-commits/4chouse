@@ -9,6 +9,7 @@ A static, single-page site with no build step. Files:
 | `robots.txt` | Lets search engines index the site |
 | `_headers` | Netlify caching and security settings (HTTPS-only, content security policy, anti-clickjacking) |
 | `assets/fonts/` | Self-hosted Montserrat and Inter fonts (no calls to Google Fonts) |
+| `assets/js/` | The hero animation: `film.js` (the story and its timing) plus the GSAP animation library it uses (`gsap.min.js`, `MotionPathPlugin.min.js`, free under GSAP's standard licence) |
 | `assets/work/` | Put past-project photos here |
 | `assets/founder.jpg` | Put your portrait here (square works best) |
 
@@ -34,6 +35,10 @@ Everything below is marked in the files with an HTML comment, so you can search 
    - `checkup_complete` and `CheckupComplete` when someone finishes the 60-second check-up
    - `whatsapp_click` and `Contact` when a WhatsApp link is clicked
 8. ~~Domain tags~~ Done for https://4chouse.com: canonical link, share preview image (`assets/og-image.jpg`), `sitemap.xml`.
+
+## The hero animation
+
+The crayon film in the hero is drawn as an SVG inside `index.html` (search for `data-film`) and animated by `assets/js/film.js`. Captions are the `CAPS` list at the top of `film.js`. If you change `film.js`, bump the `?v=1` on its script tag at the bottom of `index.html` so visitors get the new version straight away. Visitors who have turned on "reduce motion" in their device settings see the finished final frame instead of the film.
 
 ## Publishing on GoDaddy (4chouse.com)
 
