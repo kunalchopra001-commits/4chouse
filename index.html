@@ -3,11 +3,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>4C House of Advertising | Business diagnostics and AI automation in Dubai</title>
-  <meta name="description" content="We diagnose your business before we prescribe AI. 24 years of building for brands, now AI social media, lead generation and business automation for Dubai companies.">
+  <title>4C House of Advertising | AI as a Service in Dubai</title>
+  <meta name="description" content="AI as a Service for Dubai businesses. We set up and run AI for your marketing, lead generation and operations, backed by 24 years of building for brands.">
   <meta name="theme-color" content="#0a0a0a">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="4C House of Advertising | We diagnose before we automate">
+  <meta property="og:title" content="4C House of Advertising | AI as a Service. We make AI work for you">
   <meta property="og:description" content="AI social media, automated lead generation and business automation, from a team with 24 years of hands-on delivery.">
   <link rel="canonical" href="https://4chouse.com/">
   <meta property="og:url" content="https://4chouse.com/">
@@ -15,7 +15,7 @@
   <meta property="og:image" content="https://4chouse.com/assets/og-image.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Before we prescribe AI, we diagnose your business. 4C House of Advertising, Dubai.">
+  <meta property="og:image:alt" content="AI as a Service. We make AI work for you. 4C House of Advertising, Dubai.">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2300d9ff'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-weight='900' font-size='28' text-anchor='middle' fill='%230a0a0a'%3E4C%3C/text%3E%3C/svg%3E">
   <link rel="preload" href="assets/fonts/montserrat-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -117,6 +117,13 @@
     p { margin: 0; }
     .lede { color: var(--muted); font-size: clamp(1.05rem, 1.4vw, 1.2rem); max-width: 60ch; margin-top: 20px; }
     .accent { color: var(--cyan); }
+    /* Hero headline: glowing rainbow that slowly shifts through its colours */
+    .rainbow { position: relative; display: inline-block; }
+    .rainbow > span, .rainbow::before { background: linear-gradient(90deg, #ff4d6d, #ff9f1c, #ffd60a, #3ddc84, #00d9ff, #6c63ff, #c86bfa, #ff4d6d) 0 50% / 300% 100%; -webkit-background-clip: text; background-clip: text; color: transparent; animation: rainbow-shift 8s linear infinite; }
+    .rainbow > span { position: relative; }
+    .rainbow::before { content: attr(data-text); position: absolute; inset: 0; filter: blur(16px); opacity: 0.8; pointer-events: none; }
+    @keyframes rainbow-shift { to { background-position: 300% 50%; } }
+    .h1-sub { display: block; margin-top: 0.12em; }
     @media (min-width: 480px) { .nowrap { white-space: nowrap; } }
 
     .wrap { position: relative; width: 100%; max-width: var(--max); margin: 0 auto; padding: 0 24px; }
@@ -203,7 +210,7 @@
 
     /* Hero */
     .hero { padding: 120px 0 104px; overflow: hidden; }
-    .hero-grid { position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+    .hero-grid { position: relative; display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 48px; align-items: center; }
     .rotator { display: inline-grid; color: var(--cyan); }
     .rotator > span {
       grid-area: 1 / 1; opacity: 0; transform: translateY(45%); filter: blur(10px);
@@ -587,6 +594,7 @@
     }
 
     @media (prefers-reduced-motion: reduce) {
+      .rainbow > span, .rainbow::before { animation: none; }
       html, .strip { scroll-behavior: auto; }
       *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; }
       .rotator > span, .js .reveal { transition: none !important; }
@@ -688,10 +696,11 @@
     <div class="wrap hero-grid">
       <div>
         <h1 id="hero-title">
-          Before we prescribe AI, <span class="nowrap">we diagnose your</span> <span class="accent">business.</span>
+          <span class="rainbow" data-text="AI as a Service."><span>AI as a Service.</span></span>
+          <span class="h1-sub">We make AI work for you.</span>
         </h1>
-        <p class="offer">AI marketing, lead generation and business automation for Dubai companies.</p>
-        <p class="lede">24 years of building for brands taught us where businesses leak leads and time. Now we find the leaks and automate the fix.</p>
+        <p class="offer">Done-for-you AI for Dubai businesses: marketing, lead generation and automation, set up and run by us.</p>
+        <p class="lede">24 years of building for brands showed us where businesses lose leads and time. We find those gaps, put AI to work on them and keep it running.</p>
         <div class="hero-ctas">
           <a class="btn btn-cyan glow" href="#book">Book a free diagnostic
             <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
