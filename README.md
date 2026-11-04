@@ -7,6 +7,9 @@ A static, single-page site with no build step. Files:
 | `index.html` | The landing page (design, content and scripts in one file) |
 | `privacy.html` | Privacy policy, linked from the form and footer (needed for Google and Meta ads) |
 | `robots.txt` | Lets search engines index the site |
+| `sitemap.xml` | List of pages for Google and Bing (update `lastmod` when pages change) |
+| `404.html` | Branded "page not found" page (Netlify uses it automatically) |
+| `favicon.ico`, `favicon.svg`, `apple-touch-icon.png`, `icon-*.png`, `site.webmanifest` | Browser tab, phone home-screen and app icons |
 | `_headers` | Netlify caching and security settings (HTTPS-only, content security policy, anti-clickjacking) |
 | `assets/fonts/` | Self-hosted Montserrat and Inter fonts (no calls to Google Fonts) |
 | `assets/js/` | The hero animation: `film.js` (the story and its timing) plus the GSAP animation library it uses (`gsap.min.js`, `MotionPathPlugin.min.js`, free under GSAP's standard licence) |
@@ -35,6 +38,7 @@ Everything below is marked in the files with an HTML comment, so you can search 
    - `checkup_complete` and `CheckupComplete` when someone finishes the 60-second check-up
    - `whatsapp_click` and `Contact` when a WhatsApp link is clicked
 8. ~~Domain tags~~ Done for https://4chouse.com: canonical link, share preview image (`assets/og-image.jpg`), `sitemap.xml`.
+9. ~~Search basics~~ Done (Nov 2026): business, website and FAQ structured data (JSON-LD) in `index.html`, full icon set and web manifest, branded 404 page, alt text on every gallery photo.
 
 ## The hero animation
 
@@ -45,7 +49,7 @@ The crayon film in the hero is drawn as an SVG inside `index.html` (search for `
 ### If you have a GoDaddy web hosting plan (cPanel)
 1. GoDaddy → My Products → Web Hosting → **Manage** → **cPanel Admin** → **File Manager**.
 2. Open the `public_html` folder and delete GoDaddy's placeholder page (`index.html` or `default.html`) if there is one.
-3. Upload these files and folders into `public_html`: `index.html`, `privacy.html`, `robots.txt`, `sitemap.xml` and the whole `assets` folder (keep its structure). The easiest way: zip them on your computer, upload the zip, then right-click it in File Manager → **Extract**.
+3. Upload these files and folders into `public_html`: `index.html`, `privacy.html`, `404.html`, `robots.txt`, `sitemap.xml`, the icon files (`favicon.ico`, `favicon.svg`, `apple-touch-icon.png`, `icon-192.png`, `icon-512.png`, `icon-maskable-512.png`, `site.webmanifest`) and the whole `assets` folder (keep its structure). The easiest way: zip them on your computer, upload the zip, then right-click it in File Manager → **Extract**.
 4. In cPanel, open **SSL/TLS Status** and make sure 4chouse.com has a certificate (free AutoSSL), so the site loads on https.
 5. Visit https://4chouse.com.
 
