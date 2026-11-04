@@ -150,26 +150,25 @@
   <link rel="preload" href="assets/fonts/montserrat-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
 
-  <!--
-    AD TRACKING: replace the IDs, then remove the comment markers around this block.
-    G-XXXXXXXXXX = Google Analytics 4, AW-XXXXXXXXXX = Google Ads, YOUR_PIXEL_ID = Meta Pixel.
-
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <!-- Google Analytics 4 with Consent Mode v2: no analytics cookies until the visitor accepts the cookie notice. -->
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-XXXXXXXXXX');
-    gtag('config', 'AW-XXXXXXXXXX');
+    (function () {
+      var c = null;
+      try { c = localStorage.getItem("4c-consent"); } catch (e) {}
+      var ok = c === "granted" ? "granted" : "denied";
+      gtag("consent", "default", { analytics_storage: ok, ad_storage: ok, ad_user_data: ok, ad_personalization: ok, wait_for_update: 500 });
+    })();
+    gtag("js", new Date());
+    gtag("config", "G-33L0CMHD96");
   </script>
-  <script>
-    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
-    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
-    document,'script','https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', 'YOUR_PIXEL_ID'); fbq('track', 'PageView');
-  </script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-33L0CMHD96"></script>
+
+  <!--
+    STILL TO ADD: Google Ads conversion tag (AW-XXXXXXXXXX) and Meta Pixel (YOUR_PIXEL_ID).
+    Google Ads: add gtag("config", "AW-XXXXXXXXXX"); under the GA4 config line above.
+    Meta Pixel: paste below and load it only after consent (see the cookie notice script).
   -->
 
   <style>
@@ -670,6 +669,14 @@
     .wa-float .icon { width: 30px; height: 30px; }
     .wa-float { transition: opacity 0.3s var(--ease-out), transform 0.3s var(--ease-out); }
     .wa-float.away { opacity: 0; transform: translateY(12px); pointer-events: none; }
+
+    /* Cookie notice */
+    .consent { position: fixed; z-index: 60; left: max(16px, env(safe-area-inset-left, 0px)); right: max(16px, env(safe-area-inset-right, 0px)); bottom: calc(16px + env(safe-area-inset-bottom, 0px)); max-width: 560px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; gap: 14px 18px; padding: 18px 20px; border-radius: var(--radius); background: rgba(17, 17, 17, 0.96); box-shadow: inset 0 0 0 1px var(--cyan-edge), 0 20px 60px rgba(0, 0, 0, 0.5); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+    .consent[hidden] { display: none; }
+    .consent p { flex: 1 1 260px; color: var(--muted); font-size: 0.9rem; line-height: 1.5; }
+    .consent p a { color: var(--fg); }
+    .consent-actions { display: flex; gap: 10px; }
+    .consent .btn { min-height: 44px; padding: 0 20px; font-size: 0.78rem; }
 
     /* Scroll reveal: content stays visible if JS is off */
     .js .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.8s var(--ease-out), transform 0.9s var(--ease-out); transition-delay: calc(var(--i, 0) * 90ms); }
@@ -2094,5 +2101,28 @@ document.querySelectorAll("[data-start-checkup]").forEach(a => a.addEventListene
 <script src="assets/js/gsap.min.js?v=3.15.0" defer></script>
 <script src="assets/js/MotionPathPlugin.min.js?v=3.15.0" defer></script>
 <script src="assets/js/film.js?v=1" defer></script>
+<div class="consent" id="consent" role="region" aria-label="Cookie notice" hidden>
+  <p>We use Google Analytics cookies to see which pages help visitors, so we can improve the site. <a href="privacy.html#cookies">Privacy policy</a></p>
+  <div class="consent-actions">
+    <button class="btn btn-outline" type="button" data-consent="denied">Decline</button>
+    <button class="btn btn-cyan" type="button" data-consent="granted">Accept</button>
+  </div>
+</div>
+<script>
+// Cookie notice: remembers the visitor's choice and passes it to Google Consent Mode.
+(function () {
+  const box = document.getElementById("consent");
+  let saved = null;
+  try { saved = localStorage.getItem("4c-consent"); } catch (e) {}
+  if (!saved) box.hidden = false;
+  box.addEventListener("click", e => {
+    const b = e.target.closest("[data-consent]"); if (!b) return;
+    const v = b.dataset.consent;
+    try { localStorage.setItem("4c-consent", v); } catch (e) {}
+    gtag("consent", "update", { analytics_storage: v, ad_storage: v, ad_user_data: v, ad_personalization: v });
+    box.hidden = true;
+  });
+})();
+</script>
 </body>
 </html>
