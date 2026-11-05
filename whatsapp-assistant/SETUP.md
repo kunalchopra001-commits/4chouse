@@ -17,7 +17,8 @@ Nothing here is part of the website deploy.
 1. Create a Google Sheet called **4C House WhatsApp leads**.
 2. Extensions → Apps Script → replace everything with `apps-script.gs`.
 3. Change `SECRET` to a long random text (keep it for step 3).
-4. Deploy → New deployment → type **Web app** → Execute as **Me** → Who has access **Anyone** → Deploy → allow access → copy the **Web app URL**.
+4. Deploy → New deployment → type **Web app** → Execute as **Me** → Who has access **Anyone** → Deploy → allow access (Google may or may not show an "unverified app" warning) → copy the **Web app URL**.
+5. Select `testSetup` in the toolbar → **Run**. A test row should appear in a new **Leads** tab and a test email should reach hello@4chouse.com. Delete the test rows afterwards.
 
 ## 3. Cloudflare Worker
 1. https://dash.cloudflare.com → sign up (free) → **Workers & Pages** → **Create** → **Create Worker** → name `4c-whatsapp` → Deploy.

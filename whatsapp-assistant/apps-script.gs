@@ -50,3 +50,13 @@ function getSheet_(name, headers) {
   }
   return sh;
 }
+
+// Run once from the editor (select testSetup → Run) to check the sheet and the alert email work.
+function testSetup() {
+  doPost({ postData: { contents: JSON.stringify({
+    secret: SECRET, phone: "+971500000000", profileName: "Setup test",
+    lead: { name: "Test lead", company: "Test company", stage: "new" },
+    alert: { reason: "other", summary: "Test alert from setup. You can delete this row." },
+    lastMessage: "Hello, this is a test",
+  }) } });
+}
