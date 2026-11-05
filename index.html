@@ -167,13 +167,23 @@
     })();
     gtag("js", new Date());
     gtag("config", "G-33L0CMHD96");
+    // Meta Pixel: loads only after the visitor accepts the cookie notice (or accepted on an earlier visit).
+    window.load4cPixel = function () {
+      if (window.fbq) return;
+      !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+      n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+      document,'script','https://connect.facebook.net/en_US/fbevents.js');
+      fbq("init", "1150731147404179");
+      fbq("track", "PageView");
+    };
+    try { if (localStorage.getItem("4c-consent") === "granted") window.load4cPixel(); } catch (e) {}
   </script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-33L0CMHD96"></script>
 
   <!--
-    STILL TO ADD: Google Ads conversion tag (AW-XXXXXXXXXX) and Meta Pixel (YOUR_PIXEL_ID).
-    Google Ads: add gtag("config", "AW-XXXXXXXXXX"); under the GA4 config line above.
-    Meta Pixel: paste below and load it only after consent (see the cookie notice script).
+    STILL TO ADD: Google Ads conversion tag. Add gtag("config", "AW-XXXXXXXXXX"); under the GA4 config line above.
   -->
 
   <style>
@@ -2110,7 +2120,7 @@ document.querySelectorAll("[data-start-checkup]").forEach(a => a.addEventListene
 <script src="assets/js/MotionPathPlugin.min.js?v=3.15.0" defer></script>
 <script src="assets/js/film.js?v=2" defer></script>
 <div class="consent" id="consent" role="region" aria-label="Cookie notice" hidden>
-  <p>We use Google Analytics cookies to see which pages help visitors, so we can improve the site. <a href="privacy.html#cookies">Privacy policy</a></p>
+  <p>We use cookies from Google Analytics and Meta to see which pages and ads help visitors, so we can improve them. <a href="privacy.html#cookies">Privacy policy</a></p>
   <div class="consent-actions">
     <button class="btn btn-outline" type="button" data-consent="denied">Decline</button>
     <button class="btn btn-cyan" type="button" data-consent="granted">Accept</button>
@@ -2128,6 +2138,7 @@ document.querySelectorAll("[data-start-checkup]").forEach(a => a.addEventListene
     const v = b.dataset.consent;
     try { localStorage.setItem("4c-consent", v); } catch (e) {}
     gtag("consent", "update", { analytics_storage: v, ad_storage: v, ad_user_data: v, ad_personalization: v });
+    if (v === "granted") window.load4cPixel();
     box.hidden = true;
   });
 })();

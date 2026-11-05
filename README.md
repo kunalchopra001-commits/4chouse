@@ -33,7 +33,7 @@ Everything below is marked in the files with an HTML comment, so you can search 
 
 ### Should do
 6. **Client logos.** Add logos (SVG or transparent PNG) to `assets/clients/` and list them in `CLIENT_LOGOS`. The scrolling logo strip under the hero appears automatically once the list has entries. Only use brands you have permission to show.
-7. **Ad tracking.** Google Analytics 4 is live (`G-33L0CMHD96`, Nov 2026) with Google Consent Mode v2: a cookie notice asks visitors first, and no analytics cookies are set until they accept. The privacy policy describes it. Still to add: the Google Ads conversion tag (`AW-…`) and the Meta Pixel; search `STILL TO ADD` in `index.html`, and update `privacy.html` at the same time. The page already sends these events:
+7. **Ad tracking.** Google Analytics 4 is live (`G-33L0CMHD96`, Nov 2026) with Google Consent Mode v2: a cookie notice asks visitors first, and no analytics cookies are set until they accept. The privacy policy describes it. The Meta Pixel (`1150731147404179`) is live too and loads only after the visitor accepts. Still to add: the Google Ads conversion tag (`AW-…`); search `STILL TO ADD` in `index.html`, and update `privacy.html` at the same time. The page already sends these events:
    - `generate_lead` (Google) and `Lead` (Meta) when the form is submitted. Use this as your ad conversion.
    - `checkup_complete` and `CheckupComplete` when someone finishes the 60-second check-up
    - `whatsapp_click` and `Contact` when a WhatsApp link is clicked
