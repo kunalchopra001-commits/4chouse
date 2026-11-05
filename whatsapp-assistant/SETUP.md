@@ -1,54 +1,47 @@
 # 4C House WhatsApp assistant: setup
 
-Instant, natural WhatsApp replies in the customer's language, lead qualification, the free-diagnostic booking link, a Google Sheet lead log, and alerts to Kunal. When Kunal replies to a chat himself, the assistant stays quiet in that chat for 12 hours.
+Instant, natural WhatsApp replies in the customer's language, lead qualification, the free-diagnostic booking link, a Google Sheet lead log, email alerts, and a private mobile inbox where Kunal reads every chat, replies himself and switches the AI off or on per chat. When Kunal replies in a chat, the AI stays quiet there for 12 hours.
 
 | Part | Where |
 |---|---|
-| `worker.js` | The assistant. Runs on Cloudflare Workers (free plan). The instructions and knowledge are in the `SYSTEM_PROMPT` section near the top. |
+| `worker.js` | The assistant and the inbox. Runs on Cloudflare Workers (free plan). The instructions and knowledge are in the `SYSTEM_PROMPT` section near the top. |
 | `apps-script.gs` | Lead sheet and email alerts. Runs in a Google Sheet. |
 
-Nothing here is part of the website deploy.
+Nothing here is part of the website deploy. Keys and passwords go only into Cloudflare and Apps Script settings.
 
-## 1. Claude API key
-1. https://console.anthropic.com → sign up with hello@4chouse.com → add a payment method and a monthly spend limit (start with USD 20).
-2. API keys → Create key → name it `whatsapp-assistant` → copy it (shown once).
+## 1. Claude API key (done)
+platform.claude.com → workspace "WhatsApp assistant" with a monthly spend limit → API key.
 
-## 2. Lead sheet and email alerts
-1. Create a Google Sheet called **4C House WhatsApp leads**.
-2. Extensions → Apps Script → replace everything with `apps-script.gs`.
-3. Change `SECRET` to a long random text (keep it for step 3).
-4. Deploy → New deployment → type **Web app** → Execute as **Me** → Who has access **Anyone** → Deploy → allow access (Google may or may not show an "unverified app" warning) → copy the **Web app URL**.
-5. Select `testSetup` in the toolbar → **Run**. A test row should appear in a new **Leads** tab and a test email should reach hello@4chouse.com. Delete the test rows afterwards.
+## 2. Lead sheet and email alerts (done)
+Google Sheet **4C House WhatsApp leads** (hello@4chouse.com) with `apps-script.gs` deployed as a web app (Execute as Me, access Anyone). Test with `testSetup` → Run.
 
 ## 3. Cloudflare Worker
 1. https://dash.cloudflare.com → sign up (free) → **Workers & Pages** → **Create** → **Create Worker** → name `4c-whatsapp` → Deploy.
 2. **Edit code** → replace everything with `worker.js` → **Deploy**.
 3. Storage & Databases → **KV** → Create namespace `4c-whatsapp-chats`.
 4. Worker → Settings → **Bindings** → Add → KV namespace → variable name `CHATS` → the namespace above.
-5. Worker → Settings → **Variables and secrets**: add the settings listed at the top of `worker.js`.
-6. Copy the Worker's address, e.g. `https://4c-whatsapp.<your-name>.workers.dev`. This is the **webhook URL**.
+5. Worker → Settings → **Variables and secrets** (use **Secret** for anything marked secret):
+   - `ANTHROPIC_API_KEY` (secret), `SHEET_WEBHOOK_URL` (text), `SHEET_SECRET` (secret), `INBOX_PASSWORD` (secret), `VERIFY_TOKEN` (secret)
+   - after step 4: `WA_TOKEN` (secret), `WA_PHONE_NUMBER_ID` (text), optionally `APP_SECRET` (secret)
+6. Note the Worker's address, e.g. `https://4c-whatsapp.<your-name>.workers.dev`. This is the **webhook URL**; the inbox is at the same address plus `/inbox` (username `kunal`).
 
-## 4. Connect WhatsApp
-Pick one route.
+## 4. Meta: WhatsApp Cloud API on +971 52 453 4410
+Important: a number on the Cloud API cannot stay in the WhatsApp or WhatsApp Business app. Before moving it, export any chats you want to keep (in the app: chat → ⋮ → More → Export chat), then delete the WhatsApp account from the app (Settings → Account → Delete account). Contacts can keep messaging the same number; replies then come from the assistant and the inbox.
+1. https://developers.facebook.com → My apps → **Create app** → use case **Connect with customers through WhatsApp** → business portfolio **4C House** (not Skyloov).
+2. WhatsApp → **API Setup** → **Add phone number** → display name **4C House of Advertising**, category, then verify **+971 52 453 4410** by SMS or voice call.
+3. Copy the **Phone number ID** → `WA_PHONE_NUMBER_ID`.
+4. Business settings → Users → **System users** → Add (Admin) → **Assign assets**: the app (full control) and the WhatsApp account (full control) → **Generate token** for the app with permissions `whatsapp_business_messaging` and `whatsapp_business_management`, expiry **Never** → `WA_TOKEN`.
+5. WhatsApp → **Configuration** → Webhook → **Edit**: Callback URL = the Worker URL, Verify token = `VERIFY_TOKEN` → Verify and save → **Manage** → subscribe to **messages**.
+6. Optional: App settings → Basic → **App secret** → `APP_SECRET`.
+7. Set the WhatsApp profile (photo = 4C tile, about, description, website, email) in WhatsApp Manager → Phone numbers → Profile.
+8. Add a payment method in WhatsApp Manager (needed for any paid messages later) and start **Business verification** in Business settings → Security centre, which raises sending limits.
 
-**A. Keep the number on the WhatsApp Business app too (coexistence), through 360dialog**
-1. Sign up at 360dialog and connect **+971 52 453 4410** with their **Coexistence** option (the number must have used the WhatsApp Business app for at least 7 days). Scan the QR code in the app when asked.
-2. Create an API key → put it in `WA_TOKEN`, and set `WA_MODE` = `360dialog`.
-3. Set the webhook URL (step 3.6) in 360dialog.
+## 5. Test before going live
+Message the business number from another phone in English, then Arabic. Check: the reply arrives within about 10 seconds; the lead appears in the sheet; asking for "a person" sends an alert email with an inbox link; the chat shows in the inbox; replying from the inbox reaches the phone and pauses the AI; switching AI on resumes it.
 
-**B. Meta directly (Cloud API)**
-1. https://developers.facebook.com → My apps → Create app → type **Business** → add **WhatsApp**, in the **4C House** business portfolio.
-2. Add the phone number and verify it. A number can only be on the Cloud API *or* the plain app unless it is onboarded with coexistence, which is normally offered through a Meta partner.
-3. Create a **System user** with a permanent token (Business settings → Users → System users) → put it in `WA_TOKEN`; put the phone number ID in `WA_PHONE_NUMBER_ID`; set `WA_MODE` = `meta`.
-4. WhatsApp → Configuration → Webhook: callback URL = the Worker URL, verify token = `VERIFY_TOKEN` → subscribe to **messages** (and **smb_message_echoes** if available).
-
-## 5. Alerts to Kunal on WhatsApp
-- `OWNER_NUMBER` must be a **different** WhatsApp number from the business number; a number cannot message itself.
-- WhatsApp only allows free-form messages within 24 hours of the last message from that person. For reliable alerts, create a **Utility** message template named `lead_alert`, language English, body `New WhatsApp lead: {{1}}`, and set `OWNER_TEMPLATE` = `lead_alert` once approved.
-- Email alerts to hello@4chouse.com come from the Google Sheet and work in every case.
-
-## 6. Test before going live
-Message the business number from another phone in English, then Arabic. Check: the reply arrives within about 10 seconds, the lead appears in the sheet, the alert arrives when you ask for "a person", and the assistant stays quiet after you reply yourself from the app.
+## Daily use
+- Open the inbox on your phone and choose **Add to Home Screen**; it opens like an app.
+- WhatsApp allows free replies only within 24 hours of the customer's last message. The inbox warns you when a chat is outside that window.
 
 ## Changing what it says
 Edit the `SYSTEM_PROMPT` section in `worker.js` in the Cloudflare editor and click Deploy. Keep this file in the repo in step.

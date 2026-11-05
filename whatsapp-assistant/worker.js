@@ -1,28 +1,29 @@
-// 4C House WhatsApp assistant (Cloudflare Worker)
-// Replies instantly to WhatsApp messages with Claude, qualifies leads, offers the
-// free diagnostic booking link, logs leads to a Google Sheet and alerts Kunal.
+// 4C House WhatsApp assistant (Cloudflare Worker, Meta WhatsApp Cloud API)
+// Replies instantly to WhatsApp messages with Claude, qualifies leads, offers the free
+// diagnostic booking link, logs leads to a Google Sheet, emails alerts, and gives Kunal a
+// private mobile inbox at /inbox to read every chat, reply himself and switch the AI off or on.
 //
 // Settings (Cloudflare → Worker → Settings → Variables and secrets):
-//   ANTHROPIC_API_KEY   secret   Claude API key from console.anthropic.com
-//   WA_TOKEN            secret   WhatsApp access token (Meta) or D360-API-KEY (360dialog)
-//   WA_MODE             text     "meta" (Meta Cloud API directly) or "360dialog"
-//   WA_PHONE_NUMBER_ID  text     Meta only: the phone number ID from WhatsApp Manager
-//   VERIFY_TOKEN        secret   Meta only: any long random text, also typed into Meta's webhook setup
-//   APP_SECRET          secret   Meta only, optional: app secret, used to check messages really come from Meta
+//   ANTHROPIC_API_KEY   secret   Claude API key from platform.claude.com
+//   WA_TOKEN            secret   Permanent access token of a Meta system user
+//   WA_PHONE_NUMBER_ID  text     Phone number ID from Meta's WhatsApp setup
+//   VERIFY_TOKEN        secret   Any long random text, also typed into Meta's webhook setup
+//   APP_SECRET          secret   Optional: the Meta app's secret, to check messages really come from Meta
 //   SHEET_WEBHOOK_URL   text     Google Apps Script web app URL (lead log + email alerts)
-//   SHEET_SECRET        secret   Same random text as in the Apps Script
-//   OWNER_NUMBER        text     Optional: Kunal's personal WhatsApp for alerts, digits only, e.g. 9715XXXXXXXX
-//   OWNER_TEMPLATE      text     Optional: approved template name for owner alerts (see SETUP.md)
+//   SHEET_SECRET        secret   Same random text as SECRET in the Apps Script
+//   INBOX_PASSWORD      secret   Password for the inbox (username: kunal)
 //   MODEL               text     Optional: defaults to claude-sonnet-5-5
 // KV namespace binding: CHATS
 
 const DEFAULT_MODEL = "claude-sonnet-5-5";
 const BOOKING_LINK = "https://calendar.app.google/R2B8xcipzy4drRqq7";
-const MAX_HISTORY = 40;          // messages kept per chat
-const CHAT_TTL = 60 * 24 * 3600; // forget a chat after 60 days of silence
-const HUMAN_PAUSE_HOURS = 12;    // assistant stays quiet after Kunal replies himself
+const GRAPH = "https://graph.facebook.com/v23.0";
+const MAX_HISTORY = 60;          // messages kept per chat
+const CHAT_TTL = 90 * 24 * 3600; // forget a chat after 90 days of silence
+const HUMAN_PAUSE_HOURS = 12;    // AI stays quiet in a chat after Kunal replies there
 const DAILY_LIMIT = 60;          // customer messages per chat per day before handing to Kunal
 const GATHER_MS = 3500;          // wait for a burst of messages before replying
+const INDEX_SIZE = 300;          // chats listed in the inbox
 
 // ───────────────────────────── EDIT HERE: what the assistant knows and how it behaves ─────────────────────────────
 const SYSTEM_PROMPT = `You are the WhatsApp assistant for 4C House of Advertising LLC, a Dubai company. Its founder and Managing Director is Kunal Chopra. You reply to people who message the business on WhatsApp.
@@ -117,6 +118,16 @@ const TOOLS = [
 export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
+    const path = url.pathname;
+
+    if (path === "/inbox" || path.startsWith("/api/")) {
+      if (!authorised(request, env)) {
+        return new Response("Sign in required", { status: 401, headers: { "WWW-Authenticate": 'Basic realm="4C House inbox", charset="UTF-8"' } });
+      }
+      if (path === "/inbox") return new Response(INBOX_HTML, { headers: { "content-type": "text/html; charset=utf-8", "cache-control": "no-store", "x-frame-options": "DENY", "referrer-policy": "no-referrer" } });
+      return handleApi(request, env, url);
+    }
+    if (path === "/manifest.json") return Response.json(MANIFEST);
 
     // Meta webhook verification handshake
     if (request.method === "GET") {
@@ -134,6 +145,7 @@ export default {
     }
     let body;
     try { body = JSON.parse(raw); } catch { return new Response("ok"); }
+    if (!env.PUBLIC_ORIGIN) env.PUBLIC_ORIGIN = url.origin;
 
     // Answer WhatsApp straight away; do the work in the background.
     ctx.waitUntil(handleWebhook(body, env).catch(err => console.error("handle failed", err && err.stack || err)));
@@ -141,18 +153,13 @@ export default {
   },
 };
 
+// ───────────────────────────── Incoming WhatsApp messages ─────────────────────────────
 async function handleWebhook(body, env) {
   for (const entry of body.entry || []) {
     for (const change of entry.changes || []) {
       const v = change.value || {};
-      // Kunal replied from the WhatsApp Business app (coexistence): pause the assistant for that chat.
-      for (const echo of v.message_echoes || []) {
-        if (echo.to) await pauseChat(env, echo.to);
-      }
       const names = Object.fromEntries((v.contacts || []).map(c => [c.wa_id, c.profile && c.profile.name]));
-      for (const msg of v.messages || []) {
-        await handleMessage(env, msg, names[msg.from]);
-      }
+      for (const msg of v.messages || []) await handleMessage(env, msg, names[msg.from]);
     }
   }
 }
@@ -178,20 +185,20 @@ async function handleMessage(env, msg, profileName) {
   const combined = (latest.length ? latest : pending).map(p => p.text).join("\n");
 
   const chat = await loadChat(env, from);
-  if (profileName && !chat.profileName) chat.profileName = profileName;
-
-  // Daily limit protects against abuse and runaway costs.
+  if (profileName) chat.profileName = profileName;
+  const now = Date.now();
   const today = new Date().toISOString().slice(0, 10);
   if (chat.day !== today) { chat.day = today; chat.count = 0; }
   chat.count += 1;
+  chat.lastUserAt = now;
+  chat.unread = (chat.unread || 0) + 1;
+  chat.messages.push({ role: "user", content: combined, at: now });
 
-  chat.messages.push({ role: "user", content: combined });
-
-  if (chat.pausedUntil && Date.now() < chat.pausedUntil) { await saveChat(env, from, chat); return; }
+  if (chat.aiOff || (chat.pausedUntil && now < chat.pausedUntil)) { await saveChat(env, from, chat); return; }
   if (chat.count > DAILY_LIMIT) {
-    if (!chat.limitAlerted) {
+    if (chat.limitAlerted !== today) {
       chat.limitAlerted = today;
-      await alertOwner(env, from, chat, { reason: "other", summary: "Daily message limit reached; the assistant has stopped replying in this chat for today." });
+      await alertOwner(env, from, chat, { reason: "other", summary: "Daily message limit reached; the AI has stopped replying in this chat for today." });
       await sendText(env, from, "Thanks for all the messages. Kunal will pick this chat up personally.");
     }
     await saveChat(env, from, chat);
@@ -205,14 +212,14 @@ async function handleMessage(env, msg, profileName) {
       if (i) await sleep(900);
       await sendText(env, from, parts[i]);
     }
-    chat.messages.push({ role: "assistant", content: reply });
+    chat.messages.push({ role: "assistant", content: reply, by: "ai", at: Date.now() });
   }
   await saveChat(env, from, chat);
 }
 
 async function runClaude(env, from, chat) {
-  const context = `\n\nCONTEXT FOR THIS CHAT\nCustomer's WhatsApp number: +${from}\nWhatsApp profile name: ${chat.profileName || "unknown"}\nDubai date and time now: ${new Date().toLocaleString("en-GB", { timeZone: "Asia/Dubai" })}\nWhat we know so far: ${JSON.stringify(chat.lead || {})}`;
-  const messages = chat.messages.map(m => ({ role: m.role, content: m.content }));
+  const context = `\n\nCONTEXT FOR THIS CHAT\nCustomer's WhatsApp number: +${from}\nWhatsApp profile name: ${chat.profileName || "unknown"}\nDubai date and time now: ${new Date().toLocaleString("en-GB", { timeZone: "Asia/Dubai" })}\nWhat we know so far: ${JSON.stringify(chat.lead || {})}\nMessages marked [Kunal] were written by Kunal himself; carry on naturally from them.`;
+  const messages = chat.messages.map(m => ({ role: m.role, content: m.by === "kunal" ? "[Kunal] " + m.content : m.content }));
   for (let round = 0; round < 4; round++) {
     const res = await fetch("https://api.anthropic.com/v1/messages", {
       method: "POST",
@@ -221,7 +228,7 @@ async function runClaude(env, from, chat) {
     });
     if (!res.ok) {
       console.error("Claude error", res.status, await res.text());
-      await alertOwner(env, from, chat, { reason: "unsure", summary: "The assistant could not reply (AI service error). Please answer this chat yourself." });
+      await alertOwner(env, from, chat, { reason: "unsure", summary: "The AI could not reply (AI service error). Please answer this chat yourself." });
       return "";
     }
     const data = await res.json();
@@ -248,14 +255,65 @@ async function runClaude(env, from, chat) {
   return "";
 }
 
+// ───────────────────────────── Inbox API (for Kunal) ─────────────────────────────
+function authorised(request, env) {
+  if (!env.INBOX_PASSWORD) return false;
+  const h = request.headers.get("authorization") || "";
+  if (!h.startsWith("Basic ")) return false;
+  let decoded = "";
+  try { decoded = atob(h.slice(6)); } catch { return false; }
+  const i = decoded.indexOf(":");
+  const userOk = safeEqual(decoded.slice(0, i), "kunal");
+  const passOk = safeEqual(decoded.slice(i + 1), env.INBOX_PASSWORD);
+  return userOk && passOk;
+}
+
+async function handleApi(request, env, url) {
+  const path = url.pathname;
+  if (request.method === "GET" && path === "/api/chats") {
+    const index = JSON.parse((await env.CHATS.get("index")) || "[]");
+    return Response.json(index);
+  }
+  if (request.method === "GET" && path === "/api/chat") {
+    const wa = (url.searchParams.get("wa") || "").replace(/\D/g, "");
+    const chat = await loadChat(env, wa);
+    if (chat.unread) { chat.unread = 0; await saveChat(env, wa, chat); }
+    return Response.json({ wa, profileName: chat.profileName || "", lead: chat.lead || {}, messages: chat.messages, aiOff: !!chat.aiOff, pausedUntil: chat.pausedUntil || 0, lastUserAt: chat.lastUserAt || 0 });
+  }
+  if (request.method === "POST" && path === "/api/send") {
+    const { wa: waRaw, text } = await request.json();
+    const wa = String(waRaw || "").replace(/\D/g, "");
+    if (!wa || !text || !text.trim()) return Response.json({ ok: false, error: "Nothing to send." }, { status: 400 });
+    const chat = await loadChat(env, wa);
+    if (!chat.lastUserAt || Date.now() - chat.lastUserAt > 24 * 3600 * 1000) {
+      return Response.json({ ok: false, error: "WhatsApp only allows free replies within 24 hours of the customer's last message. Ask them to message you again, or call them." }, { status: 400 });
+    }
+    const r = await sendText(env, wa, text.trim());
+    if (!r.ok) return Response.json({ ok: false, error: "WhatsApp did not accept the message (" + r.status + ")." }, { status: 502 });
+    chat.messages.push({ role: "assistant", content: text.trim(), by: "kunal", at: Date.now() });
+    chat.pausedUntil = Date.now() + HUMAN_PAUSE_HOURS * 3600 * 1000;
+    await saveChat(env, wa, chat);
+    return Response.json({ ok: true });
+  }
+  if (request.method === "POST" && path === "/api/ai") {
+    const { wa: waRaw, on } = await request.json();
+    const wa = String(waRaw || "").replace(/\D/g, "");
+    const chat = await loadChat(env, wa);
+    chat.aiOff = !on;
+    if (on) chat.pausedUntil = 0;
+    await saveChat(env, wa, chat);
+    return Response.json({ ok: true });
+  }
+  return Response.json({ ok: false, error: "Not found" }, { status: 404 });
+}
+
 // ───────────────────────────── WhatsApp ─────────────────────────────
 function waRequest(env, payload) {
-  const is360 = (env.WA_MODE || "meta") === "360dialog";
-  const url = is360 ? "https://waba-v2.360dialog.io/messages" : `https://graph.facebook.com/v23.0/${env.WA_PHONE_NUMBER_ID}/messages`;
-  const headers = { "content-type": "application/json" };
-  if (is360) headers["D360-API-KEY"] = env.WA_TOKEN; else headers.authorization = "Bearer " + env.WA_TOKEN;
-  return fetch(url, { method: "POST", headers, body: JSON.stringify({ messaging_product: "whatsapp", ...payload }) })
-    .then(async r => { if (!r.ok) console.error("WhatsApp error", r.status, await r.text()); return r; });
+  return fetch(`${GRAPH}/${env.WA_PHONE_NUMBER_ID}/messages`, {
+    method: "POST",
+    headers: { "content-type": "application/json", authorization: "Bearer " + env.WA_TOKEN },
+    body: JSON.stringify({ messaging_product: "whatsapp", ...payload }),
+  }).then(async r => { if (!r.ok) console.error("WhatsApp error", r.status, await r.clone().text()); return r; });
 }
 
 function sendText(env, to, text) {
@@ -263,7 +321,7 @@ function sendText(env, to, text) {
 }
 
 function markRead(env, messageId) {
-  // Shows blue ticks and a typing indicator while the reply is prepared.
+  // Blue ticks plus a typing indicator while the reply is prepared.
   return waRequest(env, { status: "read", message_id: messageId, typing_indicator: { type: "text" } }).catch(() => {});
 }
 
@@ -289,61 +347,186 @@ function messageText(msg) {
 // ───────────────────────────── Alerts and lead log ─────────────────────────────
 async function alertOwner(env, from, chat, alert) {
   chat.alerts = (chat.alerts || []).concat({ at: Date.now(), reason: alert.reason });
-  await logToSheet(env, from, chat, alert);
-  if (env.OWNER_NUMBER && env.OWNER_NUMBER !== from) {
-    const who = [chat.lead && chat.lead.name || chat.profileName, chat.lead && chat.lead.company].filter(Boolean).join(", ") || "New contact";
-    const line = `${labelFor(alert.reason)}: ${who} (+${from}). ${alert.summary}`.replace(/\s+/g, " ").slice(0, 900);
-    if (env.OWNER_TEMPLATE) {
-      await waRequest(env, { to: env.OWNER_NUMBER, type: "template", template: { name: env.OWNER_TEMPLATE, language: { code: "en" }, components: [{ type: "body", parameters: [{ type: "text", text: line }] }] } });
-    } else {
-      await sendText(env, env.OWNER_NUMBER, "🔔 " + line + `\nOpen chat: https://wa.me/${from}`);
-    }
-  }
-}
-
-function labelFor(reason) {
-  return { booked: "Booked diagnostic", ready_to_buy: "Ready to buy", wants_human: "Wants to talk to you", sensitive: "Needs your attention", unsure: "Assistant needs help", other: "Lead update" }[reason] || "Lead update";
+  chat.flag = alert.reason;
+  const link = env.PUBLIC_ORIGIN ? `\nOpen in inbox: ${env.PUBLIC_ORIGIN}/inbox#${from}` : "";
+  await logToSheet(env, from, chat, { reason: alert.reason, summary: alert.summary + link });
 }
 
 async function logToSheet(env, from, chat, alert) {
   if (!env.SHEET_WEBHOOK_URL) return;
-  const lastUser = [...chat.messages].reverse().find(m => m.role === "user" && typeof m.content === "string");
+  const lastUser = [...chat.messages].reverse().find(m => m.role === "user");
   try {
     await fetch(env.SHEET_WEBHOOK_URL, {
       method: "POST",
       headers: { "content-type": "application/json" },
-      body: JSON.stringify({ secret: env.SHEET_SECRET, phone: "+" + from, profileName: chat.profileName || "", lead: chat.lead || {}, alert, lastMessage: lastUser ? lastUser.content.slice(0, 500) : "" }),
+      body: JSON.stringify({ secret: env.SHEET_SECRET, phone: "+" + from, profileName: chat.profileName || "", lead: chat.lead || {}, alert, lastMessage: lastUser ? String(lastUser.content).slice(0, 500) : "" }),
       redirect: "follow",
     });
   } catch (e) { console.error("sheet log failed", e); }
 }
 
-// ───────────────────────────── Storage and helpers ─────────────────────────────
-async function loadChat(env, from) {
-  const c = JSON.parse((await env.CHATS.get("chat:" + from)) || "null");
+// ───────────────────────────── Storage ─────────────────────────────
+async function loadChat(env, wa) {
+  const c = JSON.parse((await env.CHATS.get("chat:" + wa)) || "null");
   return c || { messages: [], lead: {}, count: 0 };
 }
 
-async function saveChat(env, from, chat) {
-  // Keep the newest messages, starting the history on a customer message.
+async function saveChat(env, wa, chat) {
   let msgs = chat.messages.slice(-MAX_HISTORY);
-  while (msgs.length && msgs[0].role !== "user") msgs = msgs.slice(1);
+  while (msgs.length && msgs[0].role !== "user") msgs = msgs.slice(1); // history must start with the customer
   chat.messages = msgs;
-  await env.CHATS.put("chat:" + from, JSON.stringify(chat), { expirationTtl: CHAT_TTL });
+  await env.CHATS.put("chat:" + wa, JSON.stringify(chat), { expirationTtl: CHAT_TTL });
+
+  // Keep the inbox list up to date.
+  const index = JSON.parse((await env.CHATS.get("index")) || "[]").filter(c => c.wa !== wa);
+  const last = msgs[msgs.length - 1];
+  const lead = chat.lead || {};
+  index.unshift({
+    wa, name: lead.name || chat.profileName || "", company: lead.company || "", stage: lead.stage || "new",
+    lastAt: last ? last.at || Date.now() : Date.now(), lastText: last ? String(last.content).slice(0, 90) : "",
+    lastBy: last ? (last.role === "user" ? "customer" : last.by || "ai") : "", unread: chat.unread || 0,
+    aiOff: !!chat.aiOff, paused: !!(chat.pausedUntil && Date.now() < chat.pausedUntil), flag: chat.flag || "",
+  });
+  index.sort((a, b) => b.lastAt - a.lastAt);
+  await env.CHATS.put("index", JSON.stringify(index.slice(0, INDEX_SIZE)));
 }
 
-async function pauseChat(env, to) {
-  const chat = await loadChat(env, to);
-  chat.pausedUntil = Date.now() + HUMAN_PAUSE_HOURS * 3600 * 1000;
-  await saveChat(env, to, chat);
-}
-
+// ───────────────────────────── Helpers ─────────────────────────────
 async function validSignature(raw, header, secret) {
   if (!header || !header.startsWith("sha256=")) return false;
   const key = await crypto.subtle.importKey("raw", new TextEncoder().encode(secret), { name: "HMAC", hash: "SHA-256" }, false, ["sign"]);
   const sig = await crypto.subtle.sign("HMAC", key, new TextEncoder().encode(raw));
   const hex = [...new Uint8Array(sig)].map(b => b.toString(16).padStart(2, "0")).join("");
-  return hex === header.slice(7);
+  return safeEqual(hex, header.slice(7));
+}
+
+function safeEqual(a, b) {
+  a = String(a); b = String(b);
+  let diff = a.length ^ b.length;
+  for (let i = 0; i < Math.max(a.length, b.length); i++) diff |= (a.charCodeAt(i) || 0) ^ (b.charCodeAt(i) || 0);
+  return diff === 0;
 }
 
 const sleep = ms => new Promise(r => setTimeout(r, ms));
+
+const MANIFEST = {
+  name: "4C House Inbox", short_name: "4C Inbox", start_url: "/inbox", display: "standalone",
+  background_color: "#0c0b0a", theme_color: "#0c0b0a",
+  icons: [{ src: "https://4chouse.com/icon-192.png", sizes: "192x192", type: "image/png" }, { src: "https://4chouse.com/icon-512.png", sizes: "512x512", type: "image/png" }],
+};
+
+// ───────────────────────────── Inbox page ─────────────────────────────
+const INBOX_HTML = `<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>4C House Inbox</title>
+<meta name="theme-color" content="#0c0b0a"><meta name="robots" content="noindex">
+<link rel="manifest" href="/manifest.json"><link rel="apple-touch-icon" href="https://4chouse.com/apple-touch-icon.png">
+<style>
+:root{--bg:#0c0b0a;--surface:#141414;--surface2:#1c1c1c;--line:rgba(255,255,255,.08);--fg:#f5f5f5;--muted:#a3a3a3;--dim:#808080;--cyan:#00d9ff;--wash:rgba(0,217,255,.1);--edge:rgba(0,217,255,.3);--yellow:#ffc94d;--danger:#ff6b8b;color-scheme:dark}
+*{box-sizing:border-box}html,body{margin:0;height:100%;background:var(--bg);color:var(--fg);font:15px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+button,textarea{font:inherit;color:inherit}
+.app{display:grid;grid-template-columns:340px 1fr;height:100%}
+.list{border-right:1px solid var(--line);overflow-y:auto;padding-bottom:env(safe-area-inset-bottom)}
+.top{position:sticky;top:0;z-index:2;display:flex;align-items:center;gap:10px;padding:calc(14px + env(safe-area-inset-top)) 16px 14px;background:var(--bg);border-bottom:1px solid var(--line)}
+.tile{width:30px;height:30px;border-radius:8px;background:var(--cyan);color:var(--bg);display:grid;place-items:center;font-weight:900;font-size:12px}
+.top h1{font-size:16px;margin:0;flex:1}
+.item{display:block;width:100%;text-align:left;background:none;border:0;border-bottom:1px solid var(--line);padding:12px 16px;cursor:pointer}
+.item.on{background:var(--surface2)}
+.row{display:flex;justify-content:space-between;gap:8px;align-items:baseline}
+.name{font-weight:650;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.time{color:var(--dim);font-size:12px;flex-shrink:0}
+.snip{color:var(--muted);font-size:13px;margin-top:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.chips{display:flex;gap:6px;margin-top:6px;flex-wrap:wrap}
+.chip{font-size:11px;padding:2px 8px;border-radius:99px;box-shadow:inset 0 0 0 1px var(--line);color:var(--muted)}
+.chip.stage{color:var(--cyan);box-shadow:inset 0 0 0 1px var(--edge)}
+.chip.flag{color:var(--bg);background:var(--yellow);box-shadow:none}
+.chip.off{color:var(--danger);box-shadow:inset 0 0 0 1px var(--danger)}
+.badge{background:var(--cyan);color:var(--bg);border-radius:99px;font-size:11px;font-weight:700;padding:1px 7px}
+.empty{color:var(--dim);padding:40px 20px;text-align:center}
+.chat{display:flex;flex-direction:column;height:100%;min-width:0}
+.chead{display:flex;align-items:center;gap:10px;padding:calc(10px + env(safe-area-inset-top)) 14px 10px;border-bottom:1px solid var(--line)}
+.back{display:none;background:none;border:0;font-size:22px;padding:4px 8px;cursor:pointer}
+.who{flex:1;min-width:0}.who b{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.who span{color:var(--dim);font-size:12px}
+.ai{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted);cursor:pointer;user-select:none}
+.ai input{appearance:none;width:40px;height:24px;border-radius:99px;background:#333;position:relative;cursor:pointer;margin:0}
+.ai input::after{content:"";position:absolute;top:3px;left:3px;width:18px;height:18px;border-radius:50%;background:#bbb;transition:left .15s}
+.ai input:checked{background:var(--cyan)}.ai input:checked::after{left:19px;background:var(--bg)}
+.lead{padding:8px 14px;font-size:12px;color:var(--muted);border-bottom:1px solid var(--line);background:var(--surface)}
+.msgs{flex:1;overflow-y:auto;padding:16px 14px;display:flex;flex-direction:column;gap:8px}
+.b{max-width:78%;padding:8px 12px;border-radius:14px;display:flex;flex-direction:column}.b .t{white-space:pre-wrap;overflow-wrap:anywhere}
+.b small{display:block;color:var(--dim);font-size:11px;margin-top:3px}
+.b.user{align-self:flex-start;background:var(--surface2);border-top-left-radius:4px}
+.b.ai{align-self:flex-end;background:var(--wash);box-shadow:inset 0 0 0 1px var(--edge);border-top-right-radius:4px}
+.b.kunal{align-self:flex-end;background:var(--cyan);color:var(--bg);border-top-right-radius:4px}.b.kunal small{color:rgba(0,0,0,.6)}
+.note{font-size:12px;color:var(--yellow);padding:6px 14px}
+.send{display:flex;gap:8px;padding:10px 12px calc(10px + env(safe-area-inset-bottom));border-top:1px solid var(--line)}
+.send textarea{flex:1;resize:none;min-height:44px;max-height:140px;padding:11px 12px;border-radius:12px;border:0;background:var(--surface2);outline:none}
+.send textarea:focus{box-shadow:inset 0 0 0 2px var(--cyan)}
+.send button{border:0;border-radius:99px;background:var(--cyan);color:var(--bg);font-weight:700;padding:0 18px;cursor:pointer}
+.send button:disabled{opacity:.5}
+.placeholder{flex:1;display:grid;place-items:center;color:var(--dim)}
+:focus-visible{outline:2px solid var(--cyan);outline-offset:2px}
+@media (max-width:760px){.app{grid-template-columns:1fr}.app.open .list{display:none}.app:not(.open) .chat{display:none}.back{display:block}}
+</style></head><body>
+<div class="app" id="app">
+  <aside class="list"><div class="top"><div class="tile">4C</div><h1>WhatsApp inbox</h1></div><div id="chats"><p class="empty">Loading…</p></div></aside>
+  <section class="chat" id="chat"><div class="placeholder">Choose a chat</div></section>
+</div>
+<script>
+const $ = s => document.querySelector(s);
+let current = null, chats = [], timer;
+const STAGES = { new: "New", qualifying: "Qualifying", qualified: "Qualified", booking_link_sent: "Link sent", booked: "Booked", not_a_fit: "Not a fit" };
+const FLAGS = { booked: "Booked", ready_to_buy: "Ready to buy", wants_human: "Wants you", sensitive: "Needs attention", unsure: "AI needs help", other: "Update" };
+function ago(t){ if(!t) return ""; const s=(Date.now()-t)/1000; if(s<60) return "now"; if(s<3600) return Math.floor(s/60)+"m"; if(s<86400) return Math.floor(s/3600)+"h"; return new Date(t).toLocaleDateString("en-GB",{day:"numeric",month:"short"}); }
+function el(tag, cls, text){ const e=document.createElement(tag); if(cls) e.className=cls; if(text!==undefined) e.textContent=text; return e; }
+async function api(path, opts){ const r=await fetch(path, Object.assign({ headers:{ "content-type":"application/json" } }, opts||{})); return r.json(); }
+async function loadList(){
+  chats = await api("/api/chats");
+  const box = $("#chats"); box.innerHTML = "";
+  if(!chats.length){ box.appendChild(el("p","empty","No chats yet. New WhatsApp conversations appear here.")); return; }
+  for(const c of chats){
+    const b = el("button","item"+(c.wa===current?" on":"")); b.onclick=()=>openChat(c.wa);
+    const r1 = el("div","row"); r1.appendChild(el("span","name", c.name ? c.name+(c.company?" · "+c.company:"") : "+"+c.wa));
+    const right = el("span","time", ago(c.lastAt)); if(c.unread) { right.textContent=""; right.appendChild(el("span","badge", c.unread)); }
+    r1.appendChild(right); b.appendChild(r1);
+    b.appendChild(el("div","snip",(c.lastBy==="customer"?"":c.lastBy==="kunal"?"You: ":"AI: ")+c.lastText));
+    const ch = el("div","chips"); ch.appendChild(el("span","chip stage", STAGES[c.stage]||c.stage));
+    if(c.flag) ch.appendChild(el("span","chip flag", FLAGS[c.flag]||c.flag));
+    if(c.aiOff) ch.appendChild(el("span","chip off","AI off")); else if(c.paused) ch.appendChild(el("span","chip","AI paused"));
+    b.appendChild(ch); box.appendChild(b);
+  }
+}
+async function openChat(wa){
+  current = wa; location.hash = wa; $("#app").classList.add("open");
+  const d = await api("/api/chat?wa="+encodeURIComponent(wa));
+  const pane = $("#chat"); pane.innerHTML = "";
+  const head = el("div","chead");
+  const back = el("button","back","‹"); back.setAttribute("aria-label","Back to chats"); back.onclick=()=>{ current=null; history.replaceState(null,"","#"); $("#app").classList.remove("open"); loadList(); };
+  const who = el("div","who"); who.appendChild(el("b",null, d.lead.name || d.profileName || "+"+wa)); who.appendChild(el("span",null,"+"+wa));
+  const lab = el("label","ai"); const tog = el("input"); tog.type="checkbox"; tog.checked = !d.aiOff; tog.setAttribute("aria-label","AI replies");
+  tog.onchange = async ()=>{ await api("/api/ai",{ method:"POST", body: JSON.stringify({ wa, on: tog.checked }) }); loadList(); };
+  lab.append("AI", tog); head.append(back, who, lab); pane.appendChild(head);
+  const L = d.lead || {}; const facts = [L.company, L.industry, L.team_size && L.team_size+" people", L.main_problem].filter(Boolean).join(" · ");
+  if(facts) pane.appendChild(el("div","lead", facts));
+  const msgs = el("div","msgs");
+  for(const m of d.messages){
+    const who = m.role==="user" ? "user" : (m.by==="kunal" ? "kunal" : "ai");
+    const b = el("div","b "+who); b.appendChild(el("div","t", m.content)); b.appendChild(el("small",null,(who==="ai"?"AI · ":who==="kunal"?"You · ":"")+(m.at?new Date(m.at).toLocaleString("en-GB",{hour:"2-digit",minute:"2-digit",day:"numeric",month:"short"}):"")));
+    msgs.appendChild(b);
+  }
+  pane.appendChild(msgs);
+  const open = d.lastUserAt && Date.now()-d.lastUserAt < 24*3600*1000;
+  if(!open) pane.appendChild(el("div","note","More than 24 hours since their last message: WhatsApp won't deliver a free reply. Call them, or wait for them to message again."));
+  else if(!d.aiOff && d.pausedUntil > Date.now()) pane.appendChild(el("div","note","AI paused here until "+new Date(d.pausedUntil).toLocaleTimeString("en-GB",{hour:"2-digit",minute:"2-digit"})+" because you replied. Switch AI on to resume now."));
+  const form = el("form","send"); const ta = el("textarea"); ta.id="reply"; ta.placeholder="Reply as yourself…"; ta.rows=1;
+  const btn = el("button",null,"Send"); btn.type="submit"; form.append(ta, btn);
+  form.onsubmit = async e => { e.preventDefault(); if(!ta.value.trim()) return; btn.disabled=true;
+    const r = await api("/api/send",{ method:"POST", body: JSON.stringify({ wa, text: ta.value }) }); btn.disabled=false;
+    if(!r.ok){ alert(r.error||"Could not send."); return; } ta.value=""; openChat(wa); loadList(); };
+  pane.appendChild(form); msgs.scrollTop = msgs.scrollHeight; loadList();
+}
+async function tick(){ await loadList(); if(current && !document.activeElement.matches("#reply")) openChat(current); }
+loadList().then(()=>{ const h=location.hash.slice(1); if(h) openChat(h); });
+timer = setInterval(tick, 15000);
+</script></body></html>`;
