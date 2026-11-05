@@ -17,7 +17,7 @@
 // KV namespace binding: CHATS
 
 const DEFAULT_MODEL = "claude-sonnet-5-5";
-const BOOKING_LINK = "https://calendar.app.google/ZzdWj8wv2uR2qVBW8";
+const BOOKING_LINK = "https://calendar.app.google/R2B8xcipzy4drRqq7";
 const MAX_HISTORY = 40;          // messages kept per chat
 const CHAT_TTL = 60 * 24 * 3600; // forget a chat after 60 days of silence
 const HUMAN_PAUSE_HOURS = 12;    // assistant stays quiet after Kunal replies himself
