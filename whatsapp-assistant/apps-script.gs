@@ -11,7 +11,8 @@ function doPost(e) {
 
   const sheet = getSheet_("Leads", HEADERS);
   const values = sheet.getDataRange().getValues();
-  let row = values.findIndex((r, i) => i > 0 && String(r[0]) === data.phone) + 1;
+  const digits = v => String(v).replace(/\D/g, "");
+  let row = values.findIndex((r, i) => i > 0 && digits(r[0]) === digits(data.phone)) + 1;
   const now = new Date();
   const lead = data.lead || {};
   const existing = row ? values[row - 1] : [];
@@ -48,6 +49,8 @@ function getSheet_(name, headers) {
     sh.setFrozenRows(1);
     sh.getRange(1, 1, 1, headers.length).setFontWeight("bold");
   }
+  sh.getRange("B:B").setNumberFormat("@"); // keep phone numbers as text in Alerts
+  if (name === "Leads") sh.getRange("A:A").setNumberFormat("@"); // and in Leads, so the + stays
   return sh;
 }
 
