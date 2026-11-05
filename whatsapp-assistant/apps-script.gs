@@ -17,8 +17,9 @@ function doPost(e) {
   const lead = data.lead || {};
   const existing = row ? values[row - 1] : [];
   const pick = (val, idx) => (val !== undefined && val !== "" ? val : existing[idx] || "");
+  const phoneText = "'" + data.phone; // the apostrophe makes Sheets keep "+971..." as text
   const record = [
-    data.phone, data.profileName || existing[1] || "",
+    phoneText, data.profileName || existing[1] || "",
     pick(lead.name, 2), pick(lead.company, 3), pick(lead.industry, 4), pick(lead.team_size, 5),
     pick(lead.main_problem, 6), pick(lead.language, 7), pick(lead.stage, 8), pick(lead.notes, 9),
     data.lastMessage || existing[10] || "", existing[11] || now, now,
@@ -28,7 +29,7 @@ function doPost(e) {
   else sheet.appendRow(record);
 
   if (data.alert) {
-    getSheet_("Alerts", ["Time", "Phone", "Reason", "Summary"]).appendRow([now, data.phone, data.alert.reason, data.alert.summary]);
+    getSheet_("Alerts", ["Time", "Phone", "Reason", "Summary"]).appendRow([now, phoneText, data.alert.reason, data.alert.summary]);
     const who = [lead.name || data.profileName, lead.company].filter(String).join(", ") || data.phone;
     MailApp.sendEmail({
       to: ALERT_EMAIL,
@@ -49,8 +50,6 @@ function getSheet_(name, headers) {
     sh.setFrozenRows(1);
     sh.getRange(1, 1, 1, headers.length).setFontWeight("bold");
   }
-  sh.getRange("B:B").setNumberFormat("@"); // keep phone numbers as text in Alerts
-  if (name === "Leads") sh.getRange("A:A").setNumberFormat("@"); // and in Leads, so the + stays
   return sh;
 }
 
