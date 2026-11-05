@@ -796,7 +796,7 @@
 
 <header class="site-header" id="top">
   <div class="wrap header-inner">
-    <a class="brand" href="#main" aria-label="4C House of Advertising, back to top">
+    <a class="brand" href="#main">
       <span class="brand-mark" aria-hidden="true">4C</span>
       <span class="brand-name">4C House of Advertising</span>
     </a>
@@ -1651,7 +1651,7 @@ document.documentElement.classList.add("js");
     return { x: (c + 0.15 + 0.7 * rand(c, r, L.salt + 1)) * L.cell, y: (r + 0.15 + 0.7 * rand(c, r, L.salt + 2)) * L.cell };
   }
   function resize() {
-    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    dpr = Math.min(window.devicePixelRatio || 1, window.innerWidth < 760 ? 1.5 : 2);
     w = window.innerWidth; h = window.innerHeight;
     canvas.width = w * dpr; canvas.height = h * dpr;
     const small = w < 760;
@@ -1727,7 +1727,10 @@ document.documentElement.classList.add("js");
     let queued = false;
     window.addEventListener("scroll", () => { if (!queued) { queued = true; requestAnimationFrame(() => { queued = false; draw(); }); } }, { passive: true });
   } else {
-    running = true; requestAnimationFrame(frame);
+    // Draw the still network now; start the motion once the page has loaded and gone idle.
+    const start = () => { if (!running && !document.hidden) { running = true; lastT = performance.now(); requestAnimationFrame(frame); } };
+    const later = () => (window.requestIdleCallback ? requestIdleCallback(start, { timeout: 1500 }) : setTimeout(start, 400));
+    if (document.readyState === "complete") later(); else window.addEventListener("load", later, { once: true });
     document.addEventListener("visibilitychange", () => {
       if (document.hidden) running = false;
       else if (!running) { running = true; lastT = performance.now(); requestAnimationFrame(frame); }
@@ -2100,7 +2103,7 @@ document.querySelectorAll("[data-start-checkup]").forEach(a => a.addEventListene
 </script>
 <script src="assets/js/gsap.min.js?v=3.15.0" defer></script>
 <script src="assets/js/MotionPathPlugin.min.js?v=3.15.0" defer></script>
-<script src="assets/js/film.js?v=1" defer></script>
+<script src="assets/js/film.js?v=2" defer></script>
 <div class="consent" id="consent" role="region" aria-label="Cookie notice" hidden>
   <p>We use Google Analytics cookies to see which pages help visitors, so we can improve the site. <a href="privacy.html#cookies">Privacy policy</a></p>
   <div class="consent-actions">

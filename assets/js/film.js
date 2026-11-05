@@ -277,7 +277,10 @@
   if (reduce) {
     film = build(); film.progress(1).pause(); root.classList.add("done");
   } else {
-    play();
+    // Show the first frame at once, start the film once the page has finished loading,
+    // so phones can paint and respond first.
+    const go = () => (window.requestIdleCallback ? requestIdleCallback(play, { timeout: 1200 }) : setTimeout(play, 300));
+    if (document.readyState === "complete") go(); else window.addEventListener("load", go, { once: true });
   }
   const rp = root.querySelector("[data-film-replay]");
   if (rp) rp.addEventListener("click", play);

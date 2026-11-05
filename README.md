@@ -42,7 +42,7 @@ Everything below is marked in the files with an HTML comment, so you can search 
 
 ## The hero animation
 
-The crayon film in the hero is drawn as an SVG inside `index.html` (search for `data-film`) and animated by `assets/js/film.js`. Captions are the `CAPS` list at the top of `film.js`. If you change `film.js`, bump the `?v=1` on its script tag at the bottom of `index.html` so visitors get the new version straight away. Visitors who have turned on "reduce motion" in their device settings see the finished final frame instead of the film.
+The crayon film in the hero is drawn as an SVG inside `index.html` (search for `data-film`) and animated by `assets/js/film.js`. Captions are the `CAPS` list at the top of `film.js`. If you change `film.js`, bump the `?v=` number on its script tag at the bottom of `index.html` so visitors get the new version straight away. Visitors who have turned on "reduce motion" in their device settings see the finished final frame instead of the film.
 
 ## Publishing on GoDaddy (4chouse.com)
 
