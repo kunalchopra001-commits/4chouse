@@ -25,10 +25,10 @@ Google Sheet **4C House WhatsApp leads** (hello@4chouse.com) with `apps-script.g
    - after step 4: `WA_TOKEN` (secret), `WA_PHONE_NUMBER_ID` (text), optionally `APP_SECRET` (secret)
 6. Note the Worker's address, e.g. `https://4c-whatsapp.<your-name>.workers.dev`. This is the **webhook URL**; the inbox is at the same address plus `/inbox` (username `kunal`).
 
-## 4. Meta: WhatsApp Cloud API on +971 52 453 4410
-Important: a number on the Cloud API cannot stay in the WhatsApp or WhatsApp Business app. Before moving it, export any chats you want to keep (in the app: chat → ⋮ → More → Export chat), then delete the WhatsApp account from the app (Settings → Account → Delete account). Contacts can keep messaging the same number; replies then come from the assistant and the inbox.
+## 4. Meta: WhatsApp Cloud API on a second number
+The assistant runs on a **second number**. +971 52 453 4410 stays in the WhatsApp Business app as it is. The second number must not be registered on WhatsApp (delete any WhatsApp account on it first) and must be able to receive one SMS or voice call.
 1. https://developers.facebook.com → My apps → **Create app** → use case **Connect with customers through WhatsApp** → business portfolio **4C House** (not Skyloov).
-2. WhatsApp → **API Setup** → **Add phone number** → display name **4C House of Advertising**, category, then verify **+971 52 453 4410** by SMS or voice call.
+2. WhatsApp → **API Setup** → **Add phone number** → display name **4C House of Advertising**, category, then verify the second number by SMS or voice call.
 3. Copy the **Phone number ID** → `WA_PHONE_NUMBER_ID`.
 4. Business settings → Users → **System users** → Add (Admin) → **Assign assets**: the app (full control) and the WhatsApp account (full control) → **Generate token** for the app with permissions `whatsapp_business_messaging` and `whatsapp_business_management`, expiry **Never** → `WA_TOKEN`.
 5. WhatsApp → **Configuration** → Webhook → **Edit**: Callback URL = the Worker URL, Verify token = `VERIFY_TOKEN` → Verify and save → **Manage** → subscribe to **messages**.
