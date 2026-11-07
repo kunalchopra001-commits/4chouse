@@ -49,7 +49,18 @@ Read `brand/4C-House-Brand-Book.md` and follow it. In short:
 - Sound effects only unless asked; Kunal adds music in the app.
 - Vertical 1080×1920 for reels unless told otherwise; keep text in the safe area.
 
-## Step 3: Working style
+## Step 3: Standard output specs (approved by Kunal, November 2026)
+
+Kunal checked these on phones and approved them as the default. Use them unless he asks otherwise.
+- **Delivery size:** vertical 9:16 at **540×960, 24 fps** (H.264, AAC, `-movflags +faststart`). This is the final file for Instagram Reels and TikTok, not just a draft. Do not upscale or regenerate at higher resolution unless asked.
+- **AI talking shots:** Higgsfield `seedance_2_0_mini` at 480p with native audio, started from a 9:16 still made with `gpt_image_2_5` (quality medium, 2k). Write the exact dialogue in the prompt; for a second shot of the same person, pass the first shot's voice (extracted mp3) as `audio_references` so the voice matches. Check every line with speech-to-text and compare voice pitch between shots.
+- **Illustrated or story pieces:** `gpt_image_2_5` pages (medium, 2k) animated with GSAP in HTML, rendered frame by frame with Playwright and ffmpeg.
+- **Sound:** a background score from `elevenlabs_music_v2_5` (instrumental), ducked under any voice with sidechain compression; voiceovers from ElevenLabs. Avoid busy sound effects: Kunal found them distracting. A single transition effect (such as a glitch) is fine.
+- **End card:** built in HTML from the brand book (network background, 4C tile, neon 4C House, rainbow "AI as a Service.", service pills, "Book your package", 4chouse.com button), with a small "AI-generated" note.
+- **Captions:** give an Instagram caption and a shorter TikTok caption, plus cover frame, AI label reminder, pinned comment and posting time.
+- **Cost:** a typical 25–60 second reel costs about 15–35 Higgsfield credits. Give the estimate before generating.
+
+## Step 4: Working style
 
 - Show stills or a storyboard for approval before spending credits or long renders.
 - Check frames yourself before delivering; report problems honestly.
