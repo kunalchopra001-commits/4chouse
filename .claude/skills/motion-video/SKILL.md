@@ -60,6 +60,18 @@ Kunal checked these on phones and approved them as the default. Use them unless 
 - **Captions:** give an Instagram caption and a shorter TikTok caption, plus cover frame, AI label reminder, pinned comment and posting time.
 - **Cost:** a typical 25–60 second reel costs about 15–35 Higgsfield credits. Give the estimate before generating.
 
+## Founder avatar ("AI Kunal")
+
+Approved by Kunal, November 2026. Use for every video or image of Kunal made with AI.
+- **Character:** Higgsfield Soul 2.0 character "kunal chopra higgsfield", `soul_id` `c653428d-c48a-4c43-96a8-8094152529c5`, model `soul_2` (about 0.1 credit per still). Stills are the start frames for talking videos.
+- **Approved reference looks** (Higgsfield image jobs): navy suit and burgundy tie in a walnut office `060fdbf9-7517-4ed9-835d-5127db8efd3c` (first choice); charcoal suit and navy tie with Dubai skyline `f6874aa3-7317-4c68-ae08-c9abe514ef52`; black hoodie in the cyan-lit studio `345df10f-6fcd-480b-92c3-39ee3a0a0346`; grey hoodie in a daylight office `04a41619-d27b-43f4-a93c-dd082d61aac4`.
+- **Grooming:** clean-shaven by default; say "completely clean-shaven, no stubble" in every prompt. Stubble is acceptable only for casual weekend content.
+- **Hair:** neatly styled, short on the sides, swept back on top with natural volume (as in the approved looks).
+- **Clothes:** suit with shirt buttoned to the collar and a tie, or a plain hoodie (hood down; structured or zip-up preferred). Never an open-collar or unbuttoned shirt.
+- **Framing:** seated at a desk, looking straight into the camera, framed from mid-chest up. Camera slightly above eye level, chin gently forward, soft light defining the jawline. Kunal is self-conscious about the chin, neck and under-jaw area: never use low angles, side profiles, or framings that emphasise that area.
+- **Labelling:** every avatar video carries an "AI version of Kunal" label, and the platform's AI label is switched on.
+- **Voice:** a clone of Kunal's own voice once his recording is uploaded; until then, don't present a stock voice as his.
+
 ## Step 4: Working style
 
 - Show stills or a storyboard for approval before spending credits or long renders.
