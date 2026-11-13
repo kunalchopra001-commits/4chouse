@@ -1,6 +1,8 @@
 # Skydive reel: "Don't call this slop" (version 2, single shot)
 
-Vertical 9:16, about 31 seconds. AI-generated footage, labelled "AI-generated" on screen. No speech: the signs carry the message. Status: script agreed in principle; waiting for Kunal's extra reference pictures and his OK before generating.
+Vertical 9:16, 38 seconds, 540×960. AI-generated footage, labelled "AI-generated" on screen. No speech: the signs carry the message. Status: built 13 November 2026, silent (Kunal adds sound).
+
+Version 2: https://d2ol7oe51mr4n9.cloudfront.net/user_3JLxLqseTFEEi53NcuCzn01JulO/da498ca3-b10f-4559-9e22-797396cc08df.mp4
 
 Version 1 footage (Kunal not convinced by the look): https://d2ol7oe51mr4n9.cloudfront.net/user_3JLxLqseTFEEi53NcuCzn01JulO/4d0e0aba-1a15-40fc-8a19-a748d2f4967a.mp4
 
