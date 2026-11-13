@@ -1,34 +1,31 @@
-# Skydive reel: "Don't call this slop"
+# Skydive reel: "Don't call this slop" (version 2, single shot)
 
-Vertical 9:16, about 34 seconds plus the 4C House end card. AI-generated footage, labelled "AI-generated" on screen. No speech: the message is carried by the signs the diver holds; sound effects (wind, flapping cards) and music are added in the app.
+Vertical 9:16, about 31 seconds. AI-generated footage, labelled "AI-generated" on screen. No speech: the signs carry the message. Status: script agreed in principle; waiting for Kunal's extra reference pictures and his OK before generating.
 
-Footage in Higgsfield: https://d2ol7oe51mr4n9.cloudfront.net/user_3JLxLqseTFEEi53NcuCzn01JulO/4d0e0aba-1a15-40fc-8a19-a748d2f4967a.mp4
+Version 1 footage (Kunal not convinced by the look): https://d2ol7oe51mr4n9.cloudfront.net/user_3JLxLqseTFEEi53NcuCzn01JulO/4d0e0aba-1a15-40fc-8a19-a748d2f4967a.mp4
 
-## Look
-- One solo skydiver: black jumpsuit with cyan piping, black helmet, cyan goggles. No real skydive company branding.
-- Deep cobalt sky, sun flare, hazy horizon, slight fisheye; the sea and desert coast below.
-- The Palm Jumeirah appears only once, as a short glimpse at the very end.
+## Look (from Kunal's reference photos, used as description only)
+- Wide GoPro-style fisheye from a camera flyer facing the jumper.
+- Deep cobalt sky fading to a pale curved horizon, bright midday sun.
+- Dubai coastline and The World islands far below.
+- Mirrored blue sunglasses, open-face grey helmet with clear visor, drogue line trailing above, small plane in the distance.
+- The reference photos are watermarked ("Girl on a Trail") and show a real skydiving company's plane and real people: never upload them to a generator, never show logos, registration numbers or real faces.
 
-## Shot list
-| Time | Shot | Sign |
+## Shot: one continuous take (built from 2 or 3 clips joined invisibly)
+| Time | Action | Card |
 |---|---|---|
-| 0–3 s | Diver at the open door of the plane, then jumps; the plane pulls away overhead | none |
-| 3–8 s | Stable freefall towards camera, a wave to the viewer | none |
-| 8–11 s | Diver pulls out the first card | **DON'T CALL THIS SLOP** |
-| 11–14 s | Next card | **THIS IS A BIG OPPORTUNITY** |
-| 14–17 s | Next card | **FOR SMALL BUSINESSES** |
-| 17–20 s | Next card | **TO MAKE CONTENT** |
-| 20–23 s | Next card | **LIKE "BIG BOYS"** |
-| 23–25 s | Card flies away, thumbs up, next card | **BOOK YOUR PACKAGE** |
-| 25–28 s | Card flies off, final card held steady | **NOW.** |
-| 28–31 s | Canopy opens, diver floats under it | none |
-| 31–34 s | Wide aerial glimpse of the Palm Jumeirah and the coast | none |
-| 34–38 s | 4C House end card: network background, glowing 4C tile, neon "4C House", rainbow "AI as a Service.", service pills, "Book your package", 4chouse.com button | |
+| 0–3 s | In freefall facing camera, coast below, grin and wave | |
+| 3–6 s | A gloved hand from off-frame (fellow skydiver, never seen) hands him a card | DON'T CALL THIS SLOP |
+| 6–9 s | Tosses it over his shoulder, takes the next | THIS IS A BIG OPPORTUNITY |
+| 9–12 s | Toss, next | FOR SMALL BUSINESSES |
+| 12–15 s | Toss, next | TO MAKE CONTENT |
+| 15–18 s | Toss, next, cheeky shrug | LIKE "BIG BOYS" |
+| 18–21 s | Toss, next, points at camera | BOOK YOUR PACKAGE |
+| 21–25 s | Looks at the last card, bites a chunk out of it, chews, thumbs up | NOW. |
+| 25–26 s | On-screen note: "*Cards made of organic edible paper. No litter was dropped over Dubai." | |
+| 26–28 s | Aerial glimpse of the Palm Jumeirah, 1–2 seconds maximum | |
+| 28–31 s | Subtle end card: 4C tile, "4C House", "AI as a Service." glowing in the rainbow. Nothing else | |
 
-## Card design
-Bold black condensed capitals on a white card, short enough to read in under two seconds.
-
-## Notes from earlier rounds
-- The title card should match the website style, not a generic AI card.
-- Keep the Palm to one short glimpse at the end.
-- "NOW." should look calm and confident, not cartoonish.
+## Open questions
+- Main character: made-up solo diver, made-up tandem pair, or AI Kunal (Soul character).
+- Card style: black on white, or 4C colours.
