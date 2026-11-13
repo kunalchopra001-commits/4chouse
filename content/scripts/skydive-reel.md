@@ -26,6 +26,9 @@ Version 1 footage (Kunal not convinced by the look): https://d2ol7oe51mr4n9.clou
 | 26–28 s | Aerial glimpse of the Palm Jumeirah, 1–2 seconds maximum | |
 | 28–31 s | Subtle end card: 4C tile, "4C House", "AI as a Service." glowing in the rainbow. Nothing else | |
 
-## Open questions
-- Main character: made-up solo diver, made-up tandem pair, or AI Kunal (Soul character).
-- Card style: black on white, or 4C colours.
+## Decisions
+- Main character: a fictional solo diver (decided by Kunal). Default: man in his 30s, black jumpsuit with cyan accents, grey open-face helmet with clear visor, mirrored blue sunglasses, big expressive grin.
+- No audio in the delivered video: Kunal adds sound later.
+- Cards: bold black capitals on white (default unless Kunal changes it).
+- Palm glimpse: a quick tilt down past the diver onto the Palm Jumeirah with the marina and The World islands, from the high top-down angle in the references; the drogue chute visible in freefall, the canopy opening at the end of the action.
+- Waiting for one last reference picture and Kunal's OK before generating.
