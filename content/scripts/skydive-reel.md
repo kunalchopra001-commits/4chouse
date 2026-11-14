@@ -54,3 +54,9 @@ https://d2ol7oe51mr4n9.cloudfront.net/user_3JLxLqseTFEEi53NcuCzn01JulO/5925f4ed-
 47 s, silent. Changes from v3:
 - BOOK YOUR PACKAGE now arrives back-first and is flipped like the other cards (it had popped in at 27 s).
 - New ending: he salutes and pulls, the canopy snaps open and he shoots up out of frame, the camera flyer keeps falling and tilts down onto the Palm Jumeirah, then a 0.8 s fade to the 4C end card.
+
+## Version 5 (14 November 2026): final candidate
+https://d2ol7oe51mr4n9.cloudfront.net/user_3JLxLqseTFEEi53NcuCzn01JulO/5925f4ed-7b0e-4247-bb43-996e1433497a.mp4 replaced by
+https://d2ol7oe51mr4n9.cloudfront.net/user_3JLxLqseTFEEi53NcuCzn01JulO/32b58389-efda-46b3-b49c-73d5be2de752.mp4
+
+Only change from v4: the parachute ending uses the second take, in which the small drogue chute stays visible through the salute until the main canopy opens (in v4 it vanished for about a second at 39 s).
