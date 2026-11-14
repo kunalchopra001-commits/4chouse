@@ -47,3 +47,10 @@ https://d2ol7oe51mr4n9.cloudfront.net/user_3JLxLqseTFEEi53NcuCzn01JulO/665ef2da-
 - Note: "*Cards are meant to be organic edible material."
 - Palm ending rebuilt from the composition of Kunal's reference (steep top-down over the diver, Palm filling the frame, The World islands top, coastline right, Marina bottom right); the reference itself was described only, never uploaded.
 - Same subtle 4C end card.
+
+## Version 4 (14 November 2026)
+https://d2ol7oe51mr4n9.cloudfront.net/user_3JLxLqseTFEEi53NcuCzn01JulO/5925f4ed-7b0e-4247-bb43-996e1433497a.mp4
+
+47 s, silent. Changes from v3:
+- BOOK YOUR PACKAGE now arrives back-first and is flipped like the other cards (it had popped in at 27 s).
+- New ending: he salutes and pulls, the canopy snaps open and he shoots up out of frame, the camera flyer keeps falling and tilts down onto the Palm Jumeirah, then a 0.8 s fade to the 4C end card.
