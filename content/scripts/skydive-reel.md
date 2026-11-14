@@ -34,3 +34,16 @@ Version 1 footage (Kunal not convinced by the look): https://d2ol7oe51mr4n9.clou
 - Cards: bold black capitals on white (default unless Kunal changes it).
 - Palm glimpse: a quick tilt down past the diver onto the Palm Jumeirah with the marina and The World islands, from the high top-down angle in the references; the drogue chute visible in freefall, the canopy opening at the end of the action.
 - Waiting for one last reference picture and Kunal's OK before generating.
+
+## Version 3 (14 November 2026)
+https://d2ol7oe51mr4n9.cloudfront.net/user_3JLxLqseTFEEi53NcuCzn01JulO/665ef2da-adcf-4850-aa64-05e21e3a46f8.mp4
+
+45 s, 540×960, silent. Changes from v2, all from Kunal's notes:
+- Opens with the jump from the open door of a plain white plane, so the fall is set up.
+- Open-face helmet with blue-tinted goggles, no visor, so the bite is physically possible.
+- Freefall feel: jumpsuit rippling, cheeks flapping, slight camera bob; shake and motion blur only at the exit and the whip into the Palm. No cloud wisps.
+- Cards arrive back-first and he flips them to reveal the text, so the text never changes colour on screen.
+- Bite taken from the middle of the top edge and kept there; he then tosses the bitten card like the others.
+- Note: "*Cards are meant to be organic edible material."
+- Palm ending rebuilt from the composition of Kunal's reference (steep top-down over the diver, Palm filling the frame, The World islands top, coastline right, Marina bottom right); the reference itself was described only, never uploaded.
+- Same subtle 4C end card.
