@@ -61,7 +61,12 @@ https://d2ol7oe51mr4n9.cloudfront.net/user_3JLxLqseTFEEi53NcuCzn01JulO/32b58389-
 
 Only change from v4: the parachute ending uses the second take, in which the small drogue chute stays visible through the salute until the main canopy opens (in v4 it vanished for about a second at 39 s).
 
-## Captions and posting (v5)
+## Version 6 (14 November 2026): final
+https://d2ol7oe51mr4n9.cloudfront.net/user_3JLxLqseTFEEi53NcuCzn01JulO/4a8a5913-503a-4cf1-a6b5-dec09242d524.mp4
+
+46 s. Only change from v5: in the tilt down to the Palm, The World islands popped into view over open water at about 41 s. The ending now joins the two parachute takes at a moment when the diver has left the frame and both horizons match (take 2 for the salute and drogue, take 1 for the tilt, in which the islands slide in from the frame edge), with a 0.125 s blend.
+
+## Captions and posting (v6)
 
 **Instagram caption**
 > They called it AI slop.
