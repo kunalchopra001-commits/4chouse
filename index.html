@@ -129,7 +129,7 @@
      "name": "What does it cost?",
      "acceptedAnswer": {
       "@type": "Answer",
-      "text": "The first diagnostic call is free. After the diagnosis you get a written quote for each recommended fix before any work starts, so there are no surprises."
+      "text": "Monthly packages start at AED 1,800 (AED 900 for our Founding 25), excluding VAT and your ad budget. The first diagnostic call is free, and anything beyond a package gets a written quote before any work starts, so there are no surprises."
      }
     },
     {
@@ -535,6 +535,31 @@
     .depts b { display: block; font: 700 1rem/1.3 var(--display); }
     .depts span { color: var(--muted); font-size: 0.92rem; }
 
+    /* Packages */
+    .founding { margin-top: 32px; display: flex; flex-wrap: wrap; gap: 12px 24px; align-items: center; padding: 18px 22px; border-radius: var(--radius); background: var(--cyan-wash); box-shadow: inset 0 0 0 1px var(--cyan-edge); }
+    .founding b { font: 800 1rem/1.3 var(--display); color: var(--cyan); }
+    .founding p { color: var(--fg); font-size: 0.95rem; margin: 0; flex: 1 1 320px; }
+    .plans { list-style: none; margin: 40px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; align-items: stretch; }
+    .plan { display: flex; flex-direction: column; padding: 28px 24px; border-radius: var(--radius); background: var(--surface); box-shadow: inset 0 0 0 1px var(--line-strong); }
+    .plan.featured { box-shadow: inset 0 0 0 1.5px var(--cyan), 0 0 32px rgba(0, 217, 255, 0.12); }
+    .plan-tag { color: var(--cyan); font: 700 0.75rem/1 var(--display); letter-spacing: 0.1em; text-transform: uppercase; }
+    .plan h3 { margin-top: 12px; font-size: 1.6rem; font-weight: 800; letter-spacing: -0.02em; }
+    .plan .for { color: var(--muted); font-size: 0.92rem; margin-top: 6px; }
+    .price { margin-top: 22px; }
+    .price .now { font: 800 2rem/1 var(--display); }
+    .price .now small { font: 600 0.9rem/1 var(--display); color: var(--muted); }
+    .price .was { display: block; margin-top: 8px; color: var(--muted); font-size: 0.88rem; }
+    .price .was s { color: var(--muted); }
+    .plan ul { list-style: none; margin: 22px 0 0; padding: 0; flex: 1; }
+    .plan li { position: relative; padding: 9px 0 9px 26px; border-top: 1px solid var(--line); font-size: 0.93rem; }
+    .plan li::before { content: ""; position: absolute; left: 2px; top: 15px; width: 12px; height: 7px; border-left: 2px solid var(--cyan); border-bottom: 2px solid var(--cyan); transform: rotate(-45deg); }
+    .seats { margin-top: 18px; color: var(--muted); font-size: 0.85rem; }
+    .seats b { color: var(--fg); }
+    .plan .btn { margin-top: 18px; justify-content: center; }
+    .plans-notes { margin-top: 28px; display: grid; gap: 8px; color: var(--muted); font-size: 0.9rem; max-width: 80ch; }
+    .plans-notes b { color: var(--fg); }
+    @media (max-width: 1023px) { .plans { grid-template-columns: 1fr; max-width: 520px; } }
+
     /* Legacy gallery */
     .legacy-head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 28px; }
     .legacy-head > div { max-width: 640px; }
@@ -819,6 +844,7 @@
     <nav class="nav" aria-label="Main">
       <a class="link" href="#how">How we work</a>
       <a class="link" href="#services">Services</a>
+      <a class="link" href="#packages">Packages</a>
       <a class="link" href="#work">Our work</a>
       <a class="link" href="#about">About</a>
       <a class="wa-pill" href="https://wa.me/971524534410?text=Hi%2C%20I%27d%20like%20to%20book%20a%20free%20business%20diagnostic" target="_blank" rel="noopener" data-track="whatsapp">
@@ -834,6 +860,7 @@
 <nav class="mobile-nav" id="mobileNav" data-open="false" aria-label="Mobile">
   <a class="link" href="#how">How we work</a>
   <a class="link" href="#services">Services</a>
+  <a class="link" href="#packages">Packages</a>
   <a class="link" href="#work">Our work</a>
   <a class="link" href="#about">About</a>
   <a class="link" href="#checkup" data-start-checkup>Free 60-second check-up</a>
@@ -1377,6 +1404,72 @@
     </div>
   </section>
 
+  <!-- PACKAGES -->
+  <section id="packages" aria-labelledby="packages-title">
+    <div class="wrap">
+      <h2 id="packages-title">Packages, done for you.</h2>
+      <p class="lede">No software to learn. A real person makes your content, runs your ads and tells you, in plain English, what it brought in.</p>
+
+      <div class="founding">
+        <b>Founding 25: 50% off</b>
+        <p>The first 25 businesses pay half price for their first 12 months. In return, we share your journey and results publicly, only with your approval, or anonymously if you prefer.</p>
+      </div>
+
+      <ul class="plans">
+        <li class="plan reveal" style="--i:0">
+          <span class="plan-tag">Getting started</span>
+          <h3>Liftoff</h3>
+          <p class="for">Get off the ground with steady, on-brand content.</p>
+          <p class="price"><span class="now">AED 900 <small>/ month</small></span><span class="was">Founding price. Standard <s>AED 1,800</s></span></p>
+          <ul>
+            <li>10 posts or ads a month, in your brand and voice</li>
+            <li>Diagnosis session and a marketing plan</li>
+            <li>Ads run for you on Facebook and Instagram</li>
+            <li>Google Business Profile set up and tidied</li>
+            <li>A landing page for your offer</li>
+          </ul>
+          <p class="seats" data-seats="liftoff">Founding seats: <b>12 of 12 open</b></p>
+          <a class="btn btn-outline" href="#book" data-package="Liftoff">Start with Liftoff</a>
+        </li>
+        <li class="plan featured reveal" style="--i:1">
+          <span class="plan-tag">Steady leads</span>
+          <h3>Orbit</h3>
+          <p class="for">Build momentum and a steady flow of enquiries.</p>
+          <p class="price"><span class="now">AED 1,400 <small>/ month</small></span><span class="was">Founding price. Standard <s>AED 2,800</s></span></p>
+          <ul>
+            <li>20 posts or ads and 2 short videos a month</li>
+            <li>Monthly plan with weekly fine-tuning</li>
+            <li>Ads on up to 4 channels: Meta, Google, TikTok, Snapchat</li>
+            <li>Google Business Profile and a review-request system</li>
+            <li>A landing page with lead forms</li>
+          </ul>
+          <p class="seats" data-seats="orbit">Founding seats: <b>8 of 8 open</b></p>
+          <a class="btn btn-cyan" href="#book" data-package="Orbit">Start with Orbit</a>
+        </li>
+        <li class="plan reveal" style="--i:2">
+          <span class="plan-tag">Ready to push</span>
+          <h3>Warp Speed</h3>
+          <p class="for">Go fast, on every channel that pays.</p>
+          <p class="price"><span class="now">AED 3,000 <small>/ month</small></span><span class="was">Founding price. Standard <s>AED 6,000</s></span></p>
+          <ul>
+            <li>Up to 100 posts, ads and variations, plus 10 short videos a month</li>
+            <li>Monthly plan, weekly fine-tuning and a monthly strategy call</li>
+            <li>Ads on every channel you need, including LinkedIn</li>
+            <li>Google Business Profile and a review-request system</li>
+            <li>A landing page with forms, plus a WhatsApp AI assistant that takes bookings and answers questions</li>
+          </ul>
+          <p class="seats" data-seats="warp">Founding seats: <b>5 of 5 open</b></p>
+          <a class="btn btn-outline" href="#book" data-package="Warp Speed">Start with Warp Speed</a>
+        </li>
+      </ul>
+
+      <div class="plans-notes">
+        <p><b>Every package includes</b> a real person on WhatsApp, a monthly plain-English report, and a free diagnostic call before anything starts.</p>
+        <p>Prices exclude VAT. 3-month minimum, then 30 days' notice. Your ad budget is paid by you directly to the platforms: we recommend an amount and never spend it without your OK.</p>
+      </div>
+    </div>
+  </section>
+
   <!-- LEGACY -->
   <div class="horizon h-left" aria-hidden="true" style="--hc:#FFC94D"><svg class="horizon-line" viewBox="0 0 1440 40" preserveAspectRatio="none"><path class="ink" pathLength="1" filter="url(#crayon)" d="M0 20 Q90 10 180 20 Q270 30 360 20 Q450 10 540 20 Q630 30 720 20 Q810 10 900 20 Q990 30 1080 20 Q1170 10 1260 20 Q1350 30 1440 20"/></svg><div class="doodle"><svg class="doodle-svg" viewBox="0 0 120 120" fill="none" aria-hidden="true"><g filter="url(#crayon)" stroke="#F4EFE6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path class="fl" d="M22 52 L96 52 L96 86 L22 86 Z" fill="#FF7A59" stroke="none" style="--d:0.2s"/><path class="ink" pathLength="1" d="M22 52 L96 52 L96 86 L22 86 Z" style="--d:0.0s"/><path class="fl" d="M16 52 Q26 38 36 52 Q46 38 56 52 Q66 38 76 52 Q86 38 96 52 Q102 44 104 52 Z" fill="#FFC94D" stroke="none" style="--d:0.35s"/><path class="ink" pathLength="1" d="M24 52 L24 30 M94 52 L94 30 M18 30 L100 30" style="--d:0.3s"/><circle class="fl" cx="42" cy="96" r="10" fill="#2A2F36" stroke="#F4EFE6" stroke-width="3" style="--d:0.5s"/><path class="ink" pathLength="1" d="M96 70 L112 62" style="--d:0.6s"/><path class="ink" pathLength="1" d="M36 68 L52 68 M60 68 L80 68" stroke="#F4EFE6" stroke-width="2.4" style="--d:0.7s"/></g></svg></div></div>
   <section id="work" aria-labelledby="work-title" style="padding-bottom:clamp(64px,8vw,104px)">
@@ -1514,6 +1607,15 @@
             </div>
           </div>
           <div class="field">
+            <label for="f-package">Package</label>
+            <select id="f-package" name="package">
+              <option selected>Not sure yet</option>
+              <option>Liftoff</option>
+              <option>Orbit</option>
+              <option>Warp Speed</option>
+            </select>
+          </div>
+          <div class="field">
             <label for="f-pain">Biggest headache right now <span class="opt">(optional)</span></label>
             <textarea id="f-pain" name="headache" rows="3" placeholder="For example: leads come in, but nobody follows up fast enough."></textarea>
           </div>
@@ -1547,7 +1649,7 @@
         <details><summary>Can you just run our social media?<svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg></summary>
           <p>Yes. Many clients start with AI social media and lead generation. We still do a short diagnostic first, so the content reaches the right customers and every lead gets followed up.</p></details>
         <details><summary>What does it cost?<svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg></summary>
-          <p>The first diagnostic call is free. After the diagnosis you get a written quote for each recommended fix before any work starts, so there are no surprises.</p></details>
+          <p>Monthly packages start at AED 1,800 (AED 900 for our Founding 25), excluding VAT and your ad budget. The first diagnostic call is free, and anything beyond a package gets a written quote before any work starts, so there are no surprises.</p></details>
         <details><summary>How soon will we see results?<svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg></summary>
           <p>Lead capture and follow-up automations usually go live within a few weeks. Bigger operational changes are phased so you see value at every step.</p></details>
         <details><summary>Do you still build activations, stands and kiosks?<svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg></summary>
@@ -2065,6 +2167,11 @@ document.querySelectorAll("[data-start-checkup]").forEach(a => a.addEventListene
   const success = document.querySelector("[data-success]");
   const formError = document.querySelector("[data-form-error]");
   const btn = form.querySelector('button[type="submit"]');
+  // Package buttons preselect the package in the form
+  document.querySelectorAll("[data-package]").forEach(a => a.addEventListener("click", () => {
+    form.elements.package.value = a.dataset.package;
+    track("select_package", { name: "SelectPackage", custom: true }, { package: a.dataset.package });
+  }));
   const rules = {
     name: v => v.trim() ? "" : "Please enter your name.",
     company: v => v.trim() ? "" : "Please enter your company name.",
