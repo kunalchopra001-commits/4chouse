@@ -57,3 +57,10 @@ New stills: Fresh `29d749f2-8a0e-4594-97f6-87ac1fd4dba5`, jewellery `a6fa6070-2a
 Lessons for future pieces: always start realistic videos from a photographic first frame ("real photograph, full-frame camera, natural light, real imperfections"); check products and cars for resemblance to real brands; check physical details (paste direction, scale of small objects, water clarity).
 
 Unused for later weeks: candy, fashion, travel, night cream, toothpaste, chocolate, tailoring and coffee videos; tailoring and coffee stills.
+
+## Posting log
+| When (Dubai) | Platform | Post | Link |
+|---|---|---|---|
+| Mon 16 Nov, 5.40am | LinkedIn (Kunal) | L1 launch post with skydive reel (native video) | https://www.linkedin.com/feed/update/urn:li:ugcPost:7527908187799240704/ |
+
+LinkedIn video: `LINKEDIN_UPLOAD_VIDEO` with the public Higgsfield URL, then `LINKEDIN_CREATE_VIDEO_POST` (Composio). Images: `LINKEDIN_CREATE_LINKED_IN_POST`.
