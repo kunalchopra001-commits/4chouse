@@ -615,7 +615,8 @@
     .materials b { color: var(--fg); font-weight: 600; }
 
     dialog.lightbox { border: 0; padding: 0; background: transparent; max-width: min(1100px, 94vw); width: 100%; color: var(--fg); }
-    dialog.lightbox::backdrop { background: rgba(5, 5, 5, 0.92); backdrop-filter: blur(6px); }
+    dialog.lightbox::backdrop { background: rgba(5, 5, 5, 0.92); backdrop-filter: blur(6px); overflow: hidden; overscroll-behavior: contain; }
+    dialog.lightbox:modal { overscroll-behavior: contain; }
     .lb-frame { aspect-ratio: 4 / 3; max-height: 78vh; margin: 0 auto; border-radius: var(--radius); overflow: hidden; background: #111; position: relative; }
     .lb-frame img { width: 100%; height: 100%; object-fit: contain; }
     .lb-bar { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-top: 16px; }
@@ -1502,14 +1503,14 @@
     </div>
   </section>
 
-  <dialog class="lightbox" aria-label="Project photo">
+  <dialog class="lightbox" id="lightbox" closedby="any" aria-label="Project photo">
     <div class="lb-frame" data-lb-frame></div>
     <div class="lb-bar">
       <div><b data-lb-title></b><span data-lb-cat></span></div>
       <div class="lb-nav">
         <button class="round-btn" type="button" data-lb="-1" aria-label="Previous photo"><svg class="icon" aria-hidden="true"><use href="#i-caret-left"/></svg></button>
         <button class="round-btn" type="button" data-lb="1" aria-label="Next photo"><svg class="icon" aria-hidden="true"><use href="#i-caret-right"/></svg></button>
-        <button class="round-btn" type="button" data-lb-close aria-label="Close"><svg class="icon" aria-hidden="true"><use href="#i-x"/></svg></button>
+        <button class="round-btn" type="button" data-lb-close commandfor="lightbox" command="close" aria-label="Close"><svg class="icon" aria-hidden="true"><use href="#i-x"/></svg></button>
       </div>
     </div>
   </dialog>
@@ -2152,8 +2153,10 @@ document.querySelectorAll("[data-start-checkup]").forEach(a => a.addEventListene
   dlg.querySelectorAll("[data-lb]").forEach(b => b.addEventListener("click", () => {
     current = (current + Number(b.dataset.lb) + visible.length) % visible.length; showLb();
   }));
-  dlg.querySelector("[data-lb-close]").addEventListener("click", () => dlg.close());
-  dlg.addEventListener("click", e => { if (e.target === dlg) dlg.close(); });
+  // The close button (command="close") and click-outside (closedby="any") are handled by the browser.
+  // Fallbacks for browsers without Invoker Commands or dialog closedby (e.g. older Safari):
+  if (!("commandForElement" in HTMLButtonElement.prototype)) dlg.querySelector("[data-lb-close]").addEventListener("click", () => dlg.close());
+  if (!("closedBy" in HTMLDialogElement.prototype)) dlg.addEventListener("click", e => { if (e.target === dlg) dlg.close(); });
   dlg.addEventListener("keydown", e => {
     if (e.key === "ArrowRight") dlg.querySelector('[data-lb="1"]').click();
     if (e.key === "ArrowLeft") dlg.querySelector('[data-lb="-1"]').click();
