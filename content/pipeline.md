@@ -24,6 +24,15 @@ Showcases 35% · before → after 15% · practical tips 15% · bold-message loop
 - Instagram needs JPEG (not PNG) and a public media URL. Drive links don't work for posting: use the Higgsfield-hosted file.
 - Upload limit into Drive from a session: about 3 MB per file. Bigger videos need a smaller review copy or a direct link.
 
+## Weekly content process (from week 2, agreed 16 Nov)
+Each week's batch goes through five steps before it reaches the Drive folder:
+1. **Audit (Monday):** use real Instagram insights (reach, saves, shares, follows per post; TikTok and LinkedIn as available). Name the three patterns that earn likes but not follows, and what to change.
+2. **Series and reason to follow:** every post belongs to a named, numbered series with a promise (for example "AI vs the real shoot #1/30", "Would this work for your business?"). The bio says what followers get each week.
+3. **Hooks:** for each piece, write options in four modes (tension, counterintuitive claim, the owner's exact feeling, open loop) and pick the one that is sharp but true. No clickbait: the brand argues against "slop".
+4. **Format:** where a carousel or text-only reel suits the idea better, build it (7-slide carousel with exact slide text; text reel with scene-by-scene direction).
+5. **Retention and positioning check:** read each script and caption line by line, cut where attention would drop, and make sure it sounds like Kunal's point of view ("I'm the agent, not a platform you have to learn"): specific, simple and confident, with no guru talk or vanity numbers.
+Platform notes: Instagram is the base; TikTok needs a hook in the first second; LinkedIn is written in Kunal's voice, with more opinion and fewer effects.
+
 ## Week 1 (16–22 Nov): Drive folder `1dILizUVZJKbqz9UQopebgcF99uVzXgW9`
 Plan doc: `1AhuLSMJlpGxYoO3CxYLkfCIx4NXoR7uHucvbabaLpYg`. All week 1 pieces reuse earlier work (no new credits).
 
