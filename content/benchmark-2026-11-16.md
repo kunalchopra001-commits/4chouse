@@ -9,13 +9,14 @@ Accounts Kunal chose to benchmark against (not competitors). Public data via Api
 | bacchus.gcc | Global creative comms agency, GCC arm | 6,968 | ~2 | 9 carousel, 2 video | likes hidden |
 | 2wulffs | Amsterdam AI studio | 4,303 | ~1 | 9 video, 3 carousel | **1.5%** (best) |
 | electriclemonai | Dubai AI video-ad studio | 4,010 | ~4–5 | 10 video | 0.21% |
-| iklipse | – | 25, no posts | – | – | Wrong handle? Kunal to check. |
+| iklipse_ | AI creative and marketing agency (Cyprus, UAE, US, Egypt) | 61,717 | ~2.5 | 11 carousel, 1 video | 0.21% (but peaks of 1,577 and 1,005 engagements, mostly comments) |
 
 ## What works for them
 - **deepstudio_creative: trend-jacking plus serial stories.** The biggest posts ride a cultural moment (GTA VI hype) with "POV:" hooks and numbered parts ("PART 2, the story continues"). Volume is huge; the typical post does modestly, the trend posts explode.
 - **thehubadvertising: real client work, named.** Packaging, branding and an AI campaign for a named hotel group ("Real food, real locations, AI everything else"). Few posts, high engagement: proof beats volume.
 - **2wulffs: a signature and a lead magnet.** Every post signs off "100% AI FILMMAKING by 2WULFFS."; full campaigns for fictional brands (NØRVIK sportswear); a free "AI Art Direction Guide" in the bio. Only 18 posts, yet the best engagement rate.
 - **electriclemonai: closest to our offer.** "1 product photo. 1 month of content. Under 3 days. No shoot." Humorous POV ads for real Dubai brands, timed to local moments (Dubai Design Week, Dubai Fitness Challenge). Posts often, but low engagement: volume alone does not carry.
+- **iklipse_: teaching carousels with comment triggers.** Almost every post is a carousel that teaches something about AI creative work, opening with a pain the reader recognises: "Most AI product shoots fall apart around frame four.", "Most people treat AI prompting like a slot machine.", "Somewhere around message forty, your AI started writing like a stranger." The best posts get far more comments than likes (695 and 712 comments), the sign of a "comment a word to get it" offer. It also ties in to the calendar (Halloween).
 - **bacchus.gcc:** event and PR carousels for Dubai venues, tied to Movember and the Dubai Fitness Challenge. Less relevant to us.
 
 ## What to take into week 2
@@ -23,7 +24,8 @@ Accounts Kunal chose to benchmark against (not competitors). Public data via Api
 2. **One fictional brand, a full campaign, over a week** (2wulffs' NØRVIK). For example a Dubai bakery or perfume brand: launch reel, product stills, carousel, story set. This becomes the "Brand in a week" series and gives people a reason to follow.
 3. **Ride Dubai moments** (deepstudio, electriclemon, bacchus). Dubai Fitness Challenge (now), UAE National Day (2 Dec), festive season and New Year. One trend post a week, no copyrighted characters or brands.
 4. **Show real work** (thehubadvertising). Until Founding 25 results exist, use Kunal's 24 years of builds as "then and now" posts: a real stand or kiosk he built, then the AI campaign that could launch it.
-5. **A lead magnet in the bio plus a comment keyword.** A short free guide, for example "5 ways a small business can use AI content this month", sent to anyone who comments a word. It also feeds the email list.
-6. **Quality over volume.** electriclemon posts most and earns least; 2wulffs posts least and earns most. Keep the 3× schedule only while every piece passes the realism check; drop weak fillers rather than fill slots.
+5. **A lead magnet in the bio plus a comment keyword** (iklipse_ gets 700+ comments per post this way). A short free guide, for example "5 ways a small business can use AI content this month", sent to anyone who comments a word. It also feeds the email list.
+6. **Teaching carousels** (iklipse_): one a week that explains something real ("Why most AI product photos look fake, and the 3 checks we use"), drawn from our own fixes (skydive versions, realism remakes).
+7. **Quality over volume.** electriclemon posts most and earns least; 2wulffs posts least and earns most. Keep the 3× schedule only while every piece passes the realism check; drop weak fillers rather than fill slots.
 
 Cost of this scan: about $0.15 of the free $5 Apify allowance. Re-run monthly to track the gap.
