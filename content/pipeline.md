@@ -35,19 +35,25 @@ Source base A = `https://d8j0ntlcm91z4.cloudfront.net/user_3JLxLqseTFEEi53NcuCzn
 |---|---|---|---|---|
 | 01 | Mon 16, 7.30pm | Skydive reel (+ LinkedIn L1) | B `4a8a5913-503a-4cf1-a6b5-dec09242d524.mp4` | no (has own) |
 | 02 | Tue 17, 12.30pm | Smash burger | B `7c5c9b05-1b1c-4a5a-aca4-a3133101f802.mp4` | no |
-| 03 | Tue 17, 7.30pm | Jewellery boutique | A `hf_20261113_193757_e502c1f5-0fb1-408e-b19a-f3200dd188ae.mp4` | yes |
+| 03 | Tue 17, 7.30pm | Jewellery boutique (v2, true scale) | A `hf_20261116_011241_b4d7d825-03f6-4cec-811e-04b811f468bb.mp4` | yes |
 | 04 | Wed 18, 12.30pm | Carousel: cover, candy, fashion, travel, night cream, toothpaste, chocolate, CTA | filler stills (see fillers file), 1080×1350 JPEG | on slides |
 | 05 | Wed 18, 7.30pm | Sneaker | A `hf_20261113_202322_05c0d104-cfd2-4f0f-9094-1d3bb804d1bd.mp4` | yes |
 | 06 | Thu 19, 12.30pm | Bakery | A `hf_20261113_193757_44bfc135-1981-49f4-80fd-8a5fe6c27c50.mp4` | yes |
-| 07 | Thu 19, 7.30pm | Fresh to Home | B `f004e66d-614a-4722-bd02-0473ba68236c.mp4` | no |
+| 07 | Thu 19, 7.30pm | Fresh to Home (v2, real produce) | A `hf_20261116_011327_69bab844-9aff-4544-a8a3-7c2fd9cd9f67.mp4` | yes |
 | 08 | Fri 20, 12.30pm | Perfume | A `hf_20261113_193757_9d5f879c-c030-412e-8ffd-93f379f25da7.mp4` | yes |
 | 09 | Fri 20, 7.30pm | Ice cream | A `hf_20261113_202322_c0f5c0d3-97e2-486b-aa4a-85e173498690.mp4` | yes |
-| 10 | Sat 21, 12.30pm | Supercar showroom | A `hf_20261113_200838_53f5ba31-51cc-424e-a5b0-a10307f1207e.mp4` | yes |
-| 11 | Sat 21, 7.30pm | Plushie waterpark | A `hf_20261113_200838_32e5a426-09b9-4787-9e5f-ab5b15575717.mp4` | yes |
+| 10 | Sat 21, 12.30pm | Supercar showroom (v2, photographic, original car design) | A `hf_20261116_012158_56e31261-ae7c-4b41-8374-a50a3fbf0ed7.mp4` | yes |
+| 11 | Sat 21, 7.30pm | Plushie waterpark (v2, clear water) | A `hf_20261116_011241_1dd1321e-2203-464f-9aed-3f1e9448d532.mp4` | yes |
 | 12 | Sun 22, 12.30pm | Hair salon | A `hf_20261113_193757_657fbd9a-b87f-4538-a333-df1f8aa363dc.mp4` | yes |
 
 Stories (Drive subfolder `1ENkJ3ITCGscABn7bkAO6Kpqwrf_oIuOR`): 1080×1920 JPEG, still on a blurred copy of itself with a one-line caption and the label; plus "We're live" (Mon) and "Founding 25 seats" (Sun) text cards. Carousel subfolder: `1EaQURgqnAf-syLG9GhvpFrHIWW0fYsyd`.
 
 LinkedIn L1–L5 texts are in the plan doc.
+
+### Fixes from Kunal's review (16 Nov)
+Fresh to Home, jewellery, supercar and plushie were remade for realism (new gpt_image_2_5 first frames, animated with `seedance_2_5` at 480p, 15 credits per 5 s); the toothpaste carousel slide was remade with the paste laid along the bristles from the handle end to the tip. The supercar was redesigned because the first remake resembled a real Aston Martin. Rejected versions are in the Drive subfolder "Replaced versions (safe to delete)".
+New stills: Fresh `29d749f2-8a0e-4594-97f6-87ac1fd4dba5`, jewellery `a6fa6070-2a38-4f89-98e5-607ea8a8ed93`, supercar `a04d3842-77ac-4928-9739-e91e1cb15247`, plushie `11759187-fa35-407b-b46b-3b0ab3719cb6`, toothpaste `e2f4049c-2ac3-4763-823c-ef2c04fd4ea0` (Higgsfield job ids).
+
+Lessons for future pieces: always start realistic videos from a photographic first frame ("real photograph, full-frame camera, natural light, real imperfections"); check products and cars for resemblance to real brands; check physical details (paste direction, scale of small objects, water clarity).
 
 Unused for later weeks: candy, fashion, travel, night cream, toothpaste, chocolate, tailoring and coffee videos; tailoring and coffee stills.
