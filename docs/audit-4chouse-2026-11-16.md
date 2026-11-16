@@ -1,6 +1,6 @@
 # 4chouse.com against the launch checklist (16 Nov 2026)
 
-Checked from the site files in this repo. Live-site items (redirects, speed, Search Console) could not be tested from Claude's session and are marked **You**.
+Checked from the site files in this repo. Corrected the same day: several live items were already done in early November (see notes from the 5 Nov session) and are marked ✅ below.
 
 ✅ pass · 🔧 fixed today · ⚠️ gap · 👤 needs Kunal · — not applicable
 
@@ -33,7 +33,7 @@ Checked from the site files in this repo. Live-site items (redirects, speed, Sea
 ## Phase 3: Speed and stability
 | Item | Result |
 |---|---|
-| Core Web Vitals (LCP, CLS, INP) | 👤 Run https://pagespeed.web.dev on https://4chouse.com (mobile) after deploying, and send a screenshot. |
+| Core Web Vitals (LCP, CLS, INP) | ✅ Live PageSpeed report in early November: 100/100/100/100. 👤 Re-run after deploying the 16 Nov changes (checklist: re-run after every major change). |
 | WebP/AVIF, right-sized | ✅ Gallery in WebP: 900 px thumbnails and 1800 px full size. Founder photo is a 72 KB JPG at 800×800, which is fine. |
 | Space reserved for images | ✅ The founder photo has width and height; gallery frames reserve space with `aspect-ratio`. |
 | Lazy-loading | ✅ Gallery thumbnails and the founder photo are lazy. The hero is an inline SVG with no image to delay. |
@@ -49,18 +49,18 @@ Checked from the site files in this repo. Live-site items (redirects, speed, Sea
 | OG image | ✅ 1200×630, 80 KB. |
 | Twitter card | ✅ `summary_large_image`. |
 | Favicon set | ✅ favicon.ico, favicon.svg, 180×180 Apple icon, 192/512/maskable icons, site.webmanifest. |
-| Preview test | 👤 After deploying, paste https://4chouse.com into LinkedIn Post Inspector and the Facebook Sharing Debugger. |
+| Preview test | ✅ Tested in early November (LinkedIn fine; Meta fixed and domain verified). |
 
 ## Phase 5: Launch day
 | Item | Result |
 |---|---|
-| Google Search Console (Domain property, DNS TXT) | 👤 Not confirmed yet. Tell me if it's done; if not, it's about 10 minutes in GoDaddy DNS. |
-| Submit sitemap | 👤 In Search Console → Sitemaps → `sitemap.xml`. |
-| Request indexing | 👤 Home page now; privacy is optional. |
-| Bing Webmaster Tools (import from Search Console) | 👤 About 5 minutes once Search Console is set up. |
+| Google Search Console (Domain property, DNS TXT) | ✅ Set up in early November with the TXT record. |
+| Submit sitemap | 👤 Confirm it shows "Success" in Search Console → Sitemaps; resubmit after this deploy. |
+| Request indexing | 👤 Request again for the home page after this deploy (the Packages section is new). |
+| Bing Webmaster Tools (import from Search Console) | ✅ Set up; "No SEO/GEO issues found". |
 | IndexNow | ⚠️ Netlify drag-and-drop deploys can't ping IndexNow automatically. Use Bing Webmaster Tools → URL Submission after each update instead. |
 | Google Business Profile | ✅ Verified; photos still to add. |
-| Analytics linked to Search Console | ✅ GA4 is live. 👤 Link it in GA4 → Admin → Search Console links once Search Console exists. |
+| Analytics linked to Search Console | ✅ GA4 is live. 👤 Check the link exists in GA4 → Admin → Search Console links. |
 
 ## Phase 6: Ongoing
 | Item | Result |
