@@ -19,7 +19,7 @@ Status: `todo`, `done <link>`, `skipped <reason>`.
 | Mon 16, 7.30pm | Burger reel with hum | IG Reel, TikTok | `ab2b9dc3-c19b-486f-b727-6eb0f862d570.mp4` | burger | (not in Drive, approved in chat) | done IG https://www.instagram.com/reel/DfzuKICGZno/ ; TikTok posted manually by Kunal |
 | Mon 16, 7.30pm | Story: burger | IG Story | `eb51bb1c-07ac-4cdf-abfe-0eb4c6422a4b.jpg` | – | Tue 17 – Smash burger.jpg | done (story id 18104288186530150) |
 | Tue 17, 8.30am | L2 | LinkedIn (text) | – | L2 | – | done https://www.linkedin.com/feed/update/urn:li:share:7528364436294774785/ |
-| Tue 17, 12.30pm | Coffee shop (trimmed) | IG Reel, TikTok | `961a0ac8-e4c5-4581-861e-c7c1397d2f75.mp4` | coffee | (not in Drive, approved in chat) | todo |
+| Tue 17, 12.30pm | Coffee shop (trimmed) | IG Reel, TikTok | `961a0ac8-e4c5-4581-861e-c7c1397d2f75.mp4` | coffee | (not in Drive, approved in chat) | done IG https://www.instagram.com/reel/Df1f2ExCZFx/ ; TikTok: link + caption sent to Kunal to post manually |
 | Tue 17, 7.30pm | Jewellery boutique | IG Reel, TikTok | `9d5e0fba-4c46-4211-a946-cc83d4bb759c.mp4` | jewellery | 03 Tue 17 Nov 7.30pm – Jewellery boutique | todo |
 | Tue 17, 7.30pm | Story: jewellery | IG Story | `5a423d1f-c76f-480b-9a11-dc70d8527a86.jpg` | – | Tue 17 – Jewellery.jpg | todo |
 | Wed 18, 8.30am | L3 | LinkedIn (text) | – | L3 | – | todo |
