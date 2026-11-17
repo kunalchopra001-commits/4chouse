@@ -29,3 +29,26 @@ Accounts Kunal chose to benchmark against (not competitors). Public data via Api
 7. **Quality over volume.** electriclemon posts most and earns least; 2wulffs posts least and earns most. Keep the 3× schedule only while every piece passes the realism check; drop weak fillers rather than fill slots.
 
 Cost of this scan: about $0.15 of the free $5 Apify allowance. Re-run monthly to track the gap.
+
+## Added 17 Nov: wldd.in, and the three accounts to follow
+
+Kunal picked **wldd.in, iklipse_ and electriclemonai** as the three to follow closely and draw week 2 ideas from.
+
+**wldd.in (WLDD!!)**: Indian "full-stack attention" agency, Mumbai. 28,590 followers, 942 posts, about 3 a week, mostly video. Median engagement 1.1% of followers (about 316 per post). Clients include Amazon, Prime Video and ChatGPT India, with celebrity talent.
+- **Team culture is the engine.** Their team has a name ("Mememates"), and short team reels ("Everytime Mememates spot a camera", "Wait for their reactions") carry the account. The best post in the sample, "Wait for their reactions 😂", has 23,701 likes, about 60 times their median.
+- **Witty case-study captions.** One punchy line, then two lines on the brief ("big on greatness, bigger on silliness, and thankfully, very short on complicated advertising logic"). The work is the hero, and the caption is pure voice.
+- **A monthly recap reel with its own hashtag**: "60 seconds of what kept us busy", tagged #WorthYourAttention, with a newsletter link in the bio.
+- **Hiring and awards posts done with humour.** "Swipe left to get hired 😎" got 1,154 likes, their second-best post.
+- **Festive moments** (Diwali, "That time of the year 🪔").
+
+### Ideas for week 2, adapted for a one-person AI studio in Dubai
+We borrow the mechanics, not their content. Fictional brands only.
+1. **"v1 vs final" blooper reel** (WLDD's human reactions): Kunal reacts on camera to the skydive fails, such as the bite through the visor or the islands popping in, then the final shot. It's honest, funny, and shows the craft.
+2. **"November at 4C House in 60 seconds"** (WLDD recap): a reel on 30 Nov with a signature hashtag. The tag needs choosing. It should be distinct from WLDD's #WorthYourAttention.
+3. **Witty one-line captions for every client-style reel** (WLDD voice): for example burger, "Big on cheese. Bigger on cheese. Very short on photographers."
+4. **"Swipe to hire a whole creative team for AED 900"** (WLDD hiring humour, applied to the Founding 25 offer): a carousel framed as a funny job ad for our AI team.
+5. **Weekly teaching carousel with a comment keyword** (iklipse_): "Why AI product shots look fake, and the 3 checks we use". Comment REAL to get the free checklist.
+6. **"1 product photo → 1 week of posts"** (electriclemonai): one real-looking product still turned into a reel, a carousel, a Story set and an ad, all in one post.
+7. **Dubai moments**: Dubai Fitness Challenge (now) and UAE National Day (2 Dec), with one humorous POV ad each.
+
+Cost of this scan: about $0.05 of Apify credit.
