@@ -20,8 +20,8 @@ Status: `todo`, `done <link>`, `skipped <reason>`.
 | Mon 16, 7.30pm | Story: burger | IG Story | `eb51bb1c-07ac-4cdf-abfe-0eb4c6422a4b.jpg` | – | Tue 17 – Smash burger.jpg | done (story id 18104288186530150) |
 | Tue 17, 8.30am | L2 | LinkedIn (text) | – | L2 | – | done https://www.linkedin.com/feed/update/urn:li:share:7528364436294774785/ |
 | Tue 17, 12.30pm | Coffee shop (trimmed) | IG Reel, TikTok | `961a0ac8-e4c5-4581-861e-c7c1397d2f75.mp4` | coffee | (not in Drive, approved in chat) | done IG https://www.instagram.com/reel/Df1f2ExCZFx/ ; TikTok: link + caption sent to Kunal to post manually |
-| Tue 17, 7.30pm | Jewellery boutique | IG Reel, TikTok | `9d5e0fba-4c46-4211-a946-cc83d4bb759c.mp4` | jewellery | 03 Tue 17 Nov 7.30pm – Jewellery boutique | todo |
-| Tue 17, 7.30pm | Story: jewellery | IG Story | `5a423d1f-c76f-480b-9a11-dc70d8527a86.jpg` | – | Tue 17 – Jewellery.jpg | todo |
+| Tue 17, 7.30pm | Jewellery boutique | IG Reel, TikTok | `9d5e0fba-4c46-4211-a946-cc83d4bb759c.mp4` | jewellery | 03 Tue 17 Nov 7.30pm – Jewellery boutique | done IG https://www.instagram.com/reel/Df2QLTCHKZJ/ ; TikTok: link + caption sent to Kunal to post manually |
+| Tue 17, 7.30pm | Story: jewellery | IG Story | `5a423d1f-c76f-480b-9a11-dc70d8527a86.jpg` | – | Tue 17 – Jewellery.jpg | done (story id 18048165698831805) |
 | Wed 18, 8.30am | L3 | LinkedIn (text) | – | L3 | – | todo |
 | Wed 18, 12.30pm | Carousel (8 slides in order) | IG carousel, TikTok photos | c01 `9666761a-ef18-4c27-a514-bbf9c048e1dc.jpg`, c02 `402a4eec-35ff-4970-a03f-2ec3be3e666d.jpg`, c03 `848b210d-1c69-4c0c-a0d4-3b0e6a750061.jpg`, c04 `c4ef287e-af6e-425f-ac76-4bac6f76b9b1.jpg`, c05 `06748984-65b7-480b-9283-da915b1f7a4f.jpg`, c06 `97e37269-c734-47b6-8400-700db1eb6c60.jpg`, c07 `fd6fa320-4bff-424a-a6ed-63826a4f0f67.jpg`, c08 `e19864c5-644c-4104-a775-e612cdcc306e.jpg` | carousel | folder 04 Wed 18 Nov 12.30pm – Carousel | todo |
 | Wed 18, 7.30pm | Sneaker | IG Reel, TikTok | `e373831a-6cbf-40bf-a637-d5200717c5e3.mp4` | sneaker | 05 Wed 18 Nov 7.30pm – Sneaker | todo |
