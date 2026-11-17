@@ -12,7 +12,7 @@ A static, single-page site with no build step. Files:
 | `favicon.ico`, `favicon.svg`, `apple-touch-icon.png`, `icon-*.png`, `site.webmanifest` | Browser tab, phone home-screen and app icons |
 | `_headers` | Netlify caching and security settings (HTTPS-only, content security policy, anti-clickjacking) |
 | `assets/fonts/` | Self-hosted Montserrat and Inter fonts (no calls to Google Fonts) |
-| `assets/js/` | The hero animation: `film.js` (the story and its timing) plus the GSAP animation library it uses (`gsap.min.js`, `MotionPathPlugin.min.js`, free under GSAP's standard licence) |
+| `assets/reel/` | Showreel loops for the hero and showreel section: short muted 360×640 MP4s plus WebP posters, cut from our AI reels |
 | `assets/work/` | Put past-project photos here |
 | `assets/founder.jpg` | Put your portrait here (square works best) |
 
@@ -42,7 +42,7 @@ Everything below is marked in the files with an HTML comment, so you can search 
 
 ## The hero animation
 
-The crayon film in the hero is drawn as an SVG inside `index.html` (search for `data-film`) and animated by `assets/js/film.js`. Captions are the `CAPS` list at the top of `film.js`. If you change `film.js`, bump the `?v=` number on its script tag at the bottom of `index.html` so visitors get the new version straight away. Visitors who have turned on "reduce motion" in their device settings see the finished final frame instead of the film.
+The hero and showreel tiles are muted loops in `assets/reel/` (each MP4 about 6 seconds, 360×640, under 400 KB, with a WebP poster of the same name). To swap one, replace both files and update its caption in `index.html` (search for `class="reel"`). They play only while on screen, and visitors with "reduce motion" on see the posters.
 
 ## Publishing on GoDaddy (4chouse.com)
 
