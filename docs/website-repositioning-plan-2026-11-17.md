@@ -101,5 +101,5 @@ Sell 4C House as **your own content creation department**. We make all the creat
 - The check-up quiz and the crayon film were removed, and `assets/js` was deleted because nothing uses it any more.
 
 **Still to do:**
-- `assets/og-image.jpg` still says "AI as a Service" (the link preview image). Make a new one for "Your content engine".
+- ~~New share preview image~~ Done 17 Nov: `assets/og-image.jpg` now shows "Your content engine." with three reels.
 - After deploy, re-run PageSpeed and request indexing again.

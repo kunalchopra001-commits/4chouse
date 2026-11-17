@@ -10,7 +10,7 @@
 - **Services:** Websites · Content · Marketing chatbots · Lead generation · AI automations (plus operations, finance and HR automation).
 - **Method:** Diagnose → Prescribe → Implement → Monitor (the business doctor / trusted mechanic).
 - **Proof:** 24 years designing and building mall activations, exhibition stands, retail interiors and kiosks for big brands.
-- **Look:** dark near-black (#0c0b0a), brand cyan (#00d9ff), warm crayon yellow (#ffc94d), Montserrat headlines, Inter body, a faint animated network of cyan nodes and dashed lines behind everything, and a rainbow gradient only on "AI as a Service."
+- **Look:** dark near-black (#0c0b0a), brand cyan (#00d9ff), warm crayon yellow (#ffc94d), Montserrat headlines, Inter body, a faint animated network of cyan nodes and dashed lines behind everything, and a rainbow gradient only on the lead line, "Your content engine." (from 17 Nov 2026; before that it was "AI as a Service.")
 - **Main call to action:** Book a free diagnostic. Secondary: Chat on WhatsApp.
 - **Contact:** +971 52 453 4410 · hello@4chouse.com · @4c.house · 4chouse.com · Dubai, UAE
 
@@ -95,9 +95,9 @@ Rules:
 
 ### The rainbow headline
 
-"AI as a Service." is set in a rainbow gradient (`rainbow-1` to `rainbow-7`, back to `rainbow-1`), 300% wide, sliding sideways over 8 seconds, with a 16px blurred copy behind it at 80% opacity as a glow. The line below it ("We make AI work for you.") stays plain `fg`.
+"Your content engine." (the lead line since 17 Nov 2026; "AI as a Service." before) is set in a rainbow gradient (`rainbow-1` to `rainbow-7`, back to `rainbow-1`), 300% wide, sliding sideways over 8 seconds, with a 16px blurred copy behind it at 80% opacity as a glow. The line below it ("Scroll-stopping creative, every week.", formerly "We make AI work for you.") stays plain `fg`.
 
-- Use the rainbow for **"AI as a Service."** and nothing else. One rainbow per screen, slide or video.
+- Use the rainbow for the lead line **"Your content engine."** and nothing else. "AI as a Service." stays as a plain-text brand line (footer, bios), without the rainbow. One rainbow per screen, slide or video.
 - It always sits on `bg`.
 - With reduced motion, the gradient stops moving; it stays rainbow.
 
@@ -228,7 +228,7 @@ Every reel and ad ends on a 3–4 second end card built from the website hero:
 1. The network background (see Foundations and the NetworkBackground component): the fine grid, the two layers of dashed cyan links with pulses running down them, and the slow `cyan` and `warm-glow` orbs. In video, let it glide slowly upward the whole time, as if the viewer were scrolling.
 2. The 4C tile with a soft pulsing glow.
 3. **4C House** in Montserrat Black with a neon `cyan` glow (`4c-neon.png`), "OF ADVERTISING" small, spaced, beneath.
-4. **"AI as a Service."** in the moving rainbow, then "We make AI work for you." in `fg`.
+4. **"Your content engine."** in the moving rainbow, then "Scroll-stopping creative, every week." in `fg`.
 5. The services as `cyan-edge` pills that light up one after another: Websites, Content, Marketing chatbots, Lead generation, AI automations.
 6. "Book your package" in `crayon-yellow`, then a glowing solid `cyan` pill with **4chouse.com** in `bg`.
 
@@ -439,7 +439,7 @@ The header and footer logo: the cyan 4C tile beside the full name.
 
 ### RainbowHeadline
 
-The hero headline: "AI as a Service." in a slowly moving, glowing rainbow, with "We make AI work for you." beneath in white, and the offer line in crayon yellow.
+The hero headline: "Your content engine." in a slowly moving, glowing rainbow, with "Scroll-stopping creative, every week." beneath in white, and the offer line in crayon yellow.
 
 #### What you provide
 - The exact words "AI as a Service." in both the `data-text` attribute and the inner span (the attribute draws the glow).
