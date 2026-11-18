@@ -24,8 +24,8 @@ Status: `todo`, `done <link>`, `skipped <reason>`.
 | Tue 17, 7.30pm | Story: jewellery | IG Story | `5a423d1f-c76f-480b-9a11-dc70d8527a86.jpg` | – | Tue 17 – Jewellery.jpg | done (story id 18048165698831805) |
 | Wed 18, 8.30am | L3 | LinkedIn (text) | – | L3 | – | done https://www.linkedin.com/feed/update/urn:li:share:7528680635159252992/ |
 | Wed 18, 12.30pm | Carousel (8 slides in order) | IG carousel, TikTok photos | c01 `9666761a-ef18-4c27-a514-bbf9c048e1dc.jpg`, c02 `402a4eec-35ff-4970-a03f-2ec3be3e666d.jpg`, c03 `848b210d-1c69-4c0c-a0d4-3b0e6a750061.jpg`, c04 `c4ef287e-af6e-425f-ac76-4bac6f76b9b1.jpg`, c05 `06748984-65b7-480b-9283-da915b1f7a4f.jpg`, c06 `97e37269-c734-47b6-8400-700db1eb6c60.jpg`, c07 `fd6fa320-4bff-424a-a6ed-63826a4f0f67.jpg`, c08 `e19864c5-644c-4104-a775-e612cdcc306e.jpg` | carousel | folder 04 Wed 18 Nov 12.30pm – Carousel | done IG https://www.instagram.com/p/Df4GC5lFerZ/ ; TikTok photo post: slide links sent to Kunal |
-| Wed 18, 7.30pm | Sneaker | IG Reel, TikTok | `17dd4909-9239-41e5-b550-9c702855c61e.mp4` | sneaker | 05 Wed 18 Nov 7.30pm – Sneaker | todo |
-| Wed 18, 7.30pm | Story: sneaker | IG Story | `f5b2631a-34e8-4ca0-a878-1cc75aa96797.jpg` | – | Wed 18 – Sneaker.jpg | todo |
+| Wed 18, 7.30pm | Sneaker | IG Reel, TikTok | `17dd4909-9239-41e5-b550-9c702855c61e.mp4` | sneaker | 05 Wed 18 Nov 7.30pm – Sneaker | done IG https://www.instagram.com/reel/Df43BQKjgik/ (with soundtrack) ; TikTok: link + caption sent to Kunal |
+| Wed 18, 7.30pm | Story: sneaker | IG Story | `f5b2631a-34e8-4ca0-a878-1cc75aa96797.jpg` | – | Wed 18 – Sneaker.jpg | done (story id 18141510772651114) |
 | Thu 19, 8.30am | L4 | LinkedIn (text) | – | L4 | – | todo |
 | Thu 19, 12.30pm | Bakery | IG Reel, TikTok | `00e56e46-9171-448e-a57b-3f19d4ee8e61.mp4` | bakery | 06 Thu 19 Nov 12.30pm – Bakery | todo |
 | Thu 19, 12.30pm | Story: bakery | IG Story | `8076dc78-940f-4454-af68-ea3322b4d376.jpg` | – | Wed 18 – Bakery.jpg | todo |
