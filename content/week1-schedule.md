@@ -36,13 +36,15 @@ Status: `todo`, `done <link>`, `skipped <reason>`.
 | Fri 20, 12.30pm | Story: perfume | IG Story | `621f5397-18fa-4484-bc30-9db8b2f17f5a.jpg` | – | Thu 19 – Perfume.jpg | todo |
 | Fri 20, 7.30pm | Ice cream | IG Reel, TikTok | `3ae1a3c0-85d0-4ee1-9fdd-06c90b182490.mp4` | icecream | 09 Fri 20 Nov 7.30pm – Ice cream | todo |
 | Fri 20, 7.30pm | Story: ice cream | IG Story | `5d72aa13-22ef-4871-9118-76f91d601aba.jpg` | – | Fri 20 – Ice cream.jpg | todo |
-| Sat 21, 12.30pm | Supercar showroom | IG Reel, TikTok | `64131022-d78d-46fc-acb9-659bb1d905f5.mp4` | supercar | 10 Sat 21 Nov 12.30pm – Supercar | todo |
-| Sat 21, 12.30pm | Story: supercar | IG Story | `a6e3a8fb-2499-45d4-a27c-385cf152f85d.jpg` | – | Fri 20 – Supercar.jpg | todo |
+| Sat 21, 12.30pm | VANTA GT car ad (replaces supercar reel; Kunal, 18 Nov) | IG Reel, TikTok | `6ad88d3a-2c09-43bb-839d-5bcc2d1faee8.mp4` | vanta | (not in Drive, approved in chat) | todo |
+| Sat 21, 12.30pm | Story: VANTA GT | IG Story | `72a60687-e3ff-4c77-828f-f7aa4179f439.jpg` | – | (not in Drive, approved in chat) | todo |
 | Sat 21, 7.30pm | Plushie waterpark | IG Reel, TikTok | `33f2f55d-d911-425f-a391-26d8a1e71e70.mp4` | plushie | 11 Sat 21 Nov 7.30pm – Plushie | todo |
 | Sat 21, 7.30pm | Story: plushie | IG Story | `affbe551-53c2-4b9c-8781-80ccc115304b.jpg` | – | Sat 21 – Plushie waterpark.jpg | todo |
 | Sun 22, 12.30pm | Hair salon | IG Reel, TikTok | `b96bb97e-441a-4941-b73c-c6c7a9561ae2.mp4` | salon | 12 Sun 22 Nov 12.30pm – Hair salon | todo |
 | Sun 22, 12.30pm | Story: salon | IG Story | `7e141f7c-8146-4153-b9bb-17f1360c574c.jpg` | – | Sun 22 – Salon.jpg | todo |
 | Sun 22, 7.30pm | Story: Founding 25 seats | IG Story | `d082cba8-b113-40cf-a6d3-e772bf71cec0.jpg` | – | Sun 22 – Founding 25 seats.jpg | todo |
+| Mon 23, 7.30pm | SAHRA watch ad (Kunal, 18 Nov) | IG Reel, TikTok | `b9027949-8d49-4f4d-a0f8-6a075d2ca5ba.mp4` | sahra | (not in Drive, approved in chat) | todo |
+| Mon 23, 7.30pm | Story: SAHRA | IG Story | `fce3c207-300e-4697-9eb4-3b4628331e96.jpg` | – | (not in Drive, approved in chat) | todo |
 
 ## Captions (Instagram and TikTok; add the sign-off and hashtags)
 - **burger:** Built to be stopped at. 🍔 Your menu deserves the same treatment: cheese on the patty, slow-motion drop, full spin. No studio, no food stylist, no shoot day. #DubaiFood #RestaurantMarketing #AIContent #4CHouse
@@ -57,6 +59,8 @@ Status: `todo`, `done <link>`, `skipped <reason>`.
 - **supercar:** Showroom-grade content, without the shoot day. 🏎️ Car rentals, detailers, dealerships: your stock can look like this. #DubaiCars #AutomotiveMarketing #AIContent #4CHouse
 - **plushie:** Weekend mood. 🐻💦 Toy shops, kids' cafes and party planners: AI content can be this playful. #WeekendVibes #KidsBusiness #AIContent #4CHouse
 - **salon:** Your salon's best hair day, every day. 💇 #DubaiSalon #BeautyBusiness #AIContent #4CHouse
+- **vanta:** Wake the road. ⚡ A car launch film with no location permits and no camera car. Made with AI by 4C House for a fictional brand. Want an ad like this for your product? 4chouse.com #DubaiCars #CarCommercial #AIAds #4CHouse
+- **sahra:** Born in the dunes. ⌛ A watch launch film with no shoot, no studio and no models. Made with AI by 4C House for a fictional brand. Want an ad like this for your product? 4chouse.com #DubaiLuxury #WatchesOfInstagram #AIAds #4CHouse
 
 ## LinkedIn texts (Kunal's profile, post exactly)
 **L2**
@@ -106,3 +110,5 @@ Kunal: reels with sound get more views; the burger hum is doing well. Every rema
 - **Fresh to Home:** bright acoustic market groove.
 - **Sneaker:** hip-hop beat with a bass drop. **Perfume:** sensual cinematic strings. **Supercar:** pulsing cinematic synth, no engine sounds. **Plushie:** ukulele and glockenspiel. **Salon:** lounge deep house.
 - Silent originals, for reference: sneaker e373831a, bakery a5c84b07, Fresh to Home 0657bd5d, perfume 17fe4f21, ice cream 9c2da11c, supercar 2622efdf, plushie 1f55bde5, salon ee5b0c36.
+
+- The supercar reel (64131022, with soundtrack) and its Story (a6e3a8fb) were moved out of week 1. They can be used in a later week.
