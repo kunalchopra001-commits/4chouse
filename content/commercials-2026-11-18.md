@@ -32,3 +32,5 @@ Kunal approved the watch film as it is. For the car film:
 - The rest of the film is the same as v2.
 - **v2** (no longer used): https://d2ol7oe51mr4n9.cloudfront.net/user_3JLxLqseTFEEi53NcuCzn01JulO/7e857c02-0c04-4b97-ac1e-ce56ae3f3f15.mp4
 - **Lesson for car shots:** an exterior car driving on a road is the hardest thing for the model to get right. Prefer the driver's view, a static camera, or a parked hero shot.
+
+**Approved by Kunal on 18 Nov:** SAHRA (v1) and VANTA GT (v3). Neither is posted yet; the posting slots are still to be agreed.
