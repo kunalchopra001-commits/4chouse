@@ -73,3 +73,8 @@ Unused for later weeks: candy, fashion, travel, night cream, toothpaste, chocola
 | Mon 16 Nov, 5.40am | LinkedIn (Kunal) | L1 launch post with skydive reel (native video) | https://www.linkedin.com/feed/update/urn:li:ugcPost:7527908187799240704/ |
 
 LinkedIn video: `LINKEDIN_UPLOAD_VIDEO` with the public Higgsfield URL, then `LINKEDIN_CREATE_VIDEO_POST` (Composio). Images: `LINKEDIN_CREATE_LINKED_IN_POST`.
+
+## Update 18 Nov: sound and more food
+- **Sound on every video.** Reels with sound get more views. Food reels use the "Mmm" hum series. Other reels get a short instrumental track. See the motion-video skill.
+- **More food.** Food reels are getting the most views, so from week 2 food gets the biggest share of the reel slots (about half).
+- **New commercials:** a watch and a car, both for fictional brands. These are longer, 15–20 second ads with a full soundtrack, waiting for Kunal's approval of the concepts.

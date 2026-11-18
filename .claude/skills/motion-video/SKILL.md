@@ -46,7 +46,7 @@ Read `brand/4C-House-Brand-Book.md` and follow it. In short:
 - Rainbow gradient only on "AI as a Service.".
 - End card: network background, glowing 4C tile, neon "4C House", rainbow "AI as a Service.", service pills lighting up one by one, "Book your package", cyan 4chouse.com button. Elements arrive one after another.
 - Label AI-generated footage; AI people are never shown as real customers; only approved claims; no other company's branding.
-- Sound effects only unless asked; Kunal adds music in the app.
+- **Every reel goes out with sound** (Kunal, 18 Nov 2026: reels with sound get more views). Make a track with `elevenlabs_music_v2_5`, mix it to about -14 LUFS with a short fade-out, and check it before posting. Food reels get a signature a cappella "Mmm" hum in a voice that suits the dish (the burger's baritone blues hum started the series); other reels get a short instrumental that fits the product. Keep busy sound effects out.
 - Vertical 1080×1920 for reels unless told otherwise; keep text in the safe area.
 
 ## Step 3: Standard output specs (approved by Kunal, November 2026)

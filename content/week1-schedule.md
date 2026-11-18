@@ -24,23 +24,23 @@ Status: `todo`, `done <link>`, `skipped <reason>`.
 | Tue 17, 7.30pm | Story: jewellery | IG Story | `5a423d1f-c76f-480b-9a11-dc70d8527a86.jpg` | – | Tue 17 – Jewellery.jpg | done (story id 18048165698831805) |
 | Wed 18, 8.30am | L3 | LinkedIn (text) | – | L3 | – | todo |
 | Wed 18, 12.30pm | Carousel (8 slides in order) | IG carousel, TikTok photos | c01 `9666761a-ef18-4c27-a514-bbf9c048e1dc.jpg`, c02 `402a4eec-35ff-4970-a03f-2ec3be3e666d.jpg`, c03 `848b210d-1c69-4c0c-a0d4-3b0e6a750061.jpg`, c04 `c4ef287e-af6e-425f-ac76-4bac6f76b9b1.jpg`, c05 `06748984-65b7-480b-9283-da915b1f7a4f.jpg`, c06 `97e37269-c734-47b6-8400-700db1eb6c60.jpg`, c07 `fd6fa320-4bff-424a-a6ed-63826a4f0f67.jpg`, c08 `e19864c5-644c-4104-a775-e612cdcc306e.jpg` | carousel | folder 04 Wed 18 Nov 12.30pm – Carousel | todo |
-| Wed 18, 7.30pm | Sneaker | IG Reel, TikTok | `e373831a-6cbf-40bf-a637-d5200717c5e3.mp4` | sneaker | 05 Wed 18 Nov 7.30pm – Sneaker | todo |
+| Wed 18, 7.30pm | Sneaker | IG Reel, TikTok | `17dd4909-9239-41e5-b550-9c702855c61e.mp4` | sneaker | 05 Wed 18 Nov 7.30pm – Sneaker | todo |
 | Wed 18, 7.30pm | Story: sneaker | IG Story | `f5b2631a-34e8-4ca0-a878-1cc75aa96797.jpg` | – | Wed 18 – Sneaker.jpg | todo |
 | Thu 19, 8.30am | L4 | LinkedIn (text) | – | L4 | – | todo |
-| Thu 19, 12.30pm | Bakery | IG Reel, TikTok | `a5c84b07-567d-4ddb-85d9-faf1c7b91194.mp4` | bakery | 06 Thu 19 Nov 12.30pm – Bakery | todo |
+| Thu 19, 12.30pm | Bakery | IG Reel, TikTok | `00e56e46-9171-448e-a57b-3f19d4ee8e61.mp4` | bakery | 06 Thu 19 Nov 12.30pm – Bakery | todo |
 | Thu 19, 12.30pm | Story: bakery | IG Story | `8076dc78-940f-4454-af68-ea3322b4d376.jpg` | – | Wed 18 – Bakery.jpg | todo |
-| Thu 19, 7.30pm | Fresh to Home | IG Reel, TikTok | `0657bd5d-e188-4cf5-a94e-181947bf13b8.mp4` | fresh | 07 Thu 19 Nov 7.30pm – Fresh to Home | todo |
+| Thu 19, 7.30pm | Fresh to Home | IG Reel, TikTok | `9bfcdb6e-b505-4b74-9da3-957b36e85f0c.mp4` | fresh | 07 Thu 19 Nov 7.30pm – Fresh to Home | todo |
 | Thu 19, 7.30pm | Story: Fresh to Home | IG Story | `352a334b-fb52-4f73-90dd-0366abc1491f.jpg` | – | Thu 19 – Fresh to Home.jpg | todo |
 | Fri 20, 8.30am | L5 | LinkedIn (text) | – | L5 | – | todo |
-| Fri 20, 12.30pm | Perfume | IG Reel, TikTok | `17fe4f21-b24e-4b53-8075-aebfe27f2bc6.mp4` | perfume | 08 Fri 20 Nov 12.30pm – Perfume | todo |
+| Fri 20, 12.30pm | Perfume | IG Reel, TikTok | `d0fb238b-366c-4703-83c3-b0fcc2475d8f.mp4` | perfume | 08 Fri 20 Nov 12.30pm – Perfume | todo |
 | Fri 20, 12.30pm | Story: perfume | IG Story | `621f5397-18fa-4484-bc30-9db8b2f17f5a.jpg` | – | Thu 19 – Perfume.jpg | todo |
-| Fri 20, 7.30pm | Ice cream | IG Reel, TikTok | `9c2da11c-a1fa-4016-96ea-30c78919e853.mp4` | icecream | 09 Fri 20 Nov 7.30pm – Ice cream | todo |
+| Fri 20, 7.30pm | Ice cream | IG Reel, TikTok | `3ae1a3c0-85d0-4ee1-9fdd-06c90b182490.mp4` | icecream | 09 Fri 20 Nov 7.30pm – Ice cream | todo |
 | Fri 20, 7.30pm | Story: ice cream | IG Story | `5d72aa13-22ef-4871-9118-76f91d601aba.jpg` | – | Fri 20 – Ice cream.jpg | todo |
-| Sat 21, 12.30pm | Supercar showroom | IG Reel, TikTok | `2622efdf-455d-455c-8f9f-f15890478ba1.mp4` | supercar | 10 Sat 21 Nov 12.30pm – Supercar | todo |
+| Sat 21, 12.30pm | Supercar showroom | IG Reel, TikTok | `64131022-d78d-46fc-acb9-659bb1d905f5.mp4` | supercar | 10 Sat 21 Nov 12.30pm – Supercar | todo |
 | Sat 21, 12.30pm | Story: supercar | IG Story | `a6e3a8fb-2499-45d4-a27c-385cf152f85d.jpg` | – | Fri 20 – Supercar.jpg | todo |
-| Sat 21, 7.30pm | Plushie waterpark | IG Reel, TikTok | `1f55bde5-7ab1-4bf5-ab71-5e7443136047.mp4` | plushie | 11 Sat 21 Nov 7.30pm – Plushie | todo |
+| Sat 21, 7.30pm | Plushie waterpark | IG Reel, TikTok | `33f2f55d-d911-425f-a391-26d8a1e71e70.mp4` | plushie | 11 Sat 21 Nov 7.30pm – Plushie | todo |
 | Sat 21, 7.30pm | Story: plushie | IG Story | `affbe551-53c2-4b9c-8781-80ccc115304b.jpg` | – | Sat 21 – Plushie waterpark.jpg | todo |
-| Sun 22, 12.30pm | Hair salon | IG Reel, TikTok | `ee5b0c36-7396-45d6-864f-f0fc0da324cc.mp4` | salon | 12 Sun 22 Nov 12.30pm – Hair salon | todo |
+| Sun 22, 12.30pm | Hair salon | IG Reel, TikTok | `b96bb97e-441a-4941-b73c-c6c7a9561ae2.mp4` | salon | 12 Sun 22 Nov 12.30pm – Hair salon | todo |
 | Sun 22, 12.30pm | Story: salon | IG Story | `7e141f7c-8146-4153-b9bb-17f1360c574c.jpg` | – | Sun 22 – Salon.jpg | todo |
 | Sun 22, 7.30pm | Story: Founding 25 seats | IG Story | `d082cba8-b113-40cf-a6d3-e772bf71cec0.jpg` | – | Sun 22 – Founding 25 seats.jpg | todo |
 
@@ -99,3 +99,10 @@ None of this needs a photoshoot. It needs someone who knows your business.
 
 ## TikTok note (16 Nov)
 The TikTok publish form does not show in Kunal's Claude app. For each TikTok slot, send Kunal the video link and a ready-to-paste caption (with "AI-generated content" on and disclosure "Your brand") so he posts from the TikTok app, unless he says he is using claude.ai in a browser.
+
+### Sound versions (18 Nov)
+Kunal: reels with sound get more views; the burger hum is doing well. Every remaining video row now points to a version with a soundtrack (ElevenLabs Music via Higgsfield, trimmed to 5 s, fade out, about -14 LUFS). The Drive copies are the silent originals; the approved picture is unchanged, so the Drive check still applies to them.
+- **Food ("Mmm" series, a cappella hums):** bakery (warm female jazz "Mmmm"), ice cream (1950s doo-wop trio "Mmmm"). Burger (baritone blues) came first.
+- **Fresh to Home:** bright acoustic market groove.
+- **Sneaker:** hip-hop beat with a bass drop. **Perfume:** sensual cinematic strings. **Supercar:** pulsing cinematic synth, no engine sounds. **Plushie:** ukulele and glockenspiel. **Salon:** lounge deep house.
+- Silent originals, for reference: sneaker e373831a, bakery a5c84b07, Fresh to Home 0657bd5d, perfume 17fe4f21, ice cream 9c2da11c, supercar 2622efdf, plushie 1f55bde5, salon ee5b0c36.
