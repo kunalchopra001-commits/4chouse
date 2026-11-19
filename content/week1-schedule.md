@@ -112,3 +112,5 @@ Kunal: reels with sound get more views; the burger hum is doing well. Every rema
 - Silent originals, for reference: sneaker e373831a, bakery a5c84b07, Fresh to Home 0657bd5d, perfume 17fe4f21, ice cream 9c2da11c, supercar 2622efdf, plushie 1f55bde5, salon ee5b0c36.
 
 - The supercar reel (64131022, with soundtrack) and its Story (a6e3a8fb) were moved out of week 1. They can be used in a later week.
+
+- **20 Nov:** Kunal asked for the bakery reel (Df6qgqnCm7o) and the Fresh to Home reel (Df7t-qWmRB2) to come down for now. The Instagram API refused the delete ("Unsupported delete request"), so Kunal will archive or delete them in the app. A bakery repost with an orchestral track is waiting for his pick of the 5 s or 10 s version.
