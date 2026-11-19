@@ -29,8 +29,8 @@ Status: `todo`, `done <link>`, `skipped <reason>`.
 | Thu 19, 8.30am | L4 | LinkedIn (text) | – | L4 | – | done https://www.linkedin.com/feed/update/urn:li:share:7529042261758803968/ |
 | Thu 19, 12.30pm | Bakery | IG Reel, TikTok | `00e56e46-9171-448e-a57b-3f19d4ee8e61.mp4` | bakery | 06 Thu 19 Nov 12.30pm – Bakery | done IG https://www.instagram.com/reel/Df6qgqnCm7o/ (with Mmm hum) ; TikTok: link + caption sent to Kunal |
 | Thu 19, 12.30pm | Story: bakery | IG Story | `8076dc78-940f-4454-af68-ea3322b4d376.jpg` | – | Wed 18 – Bakery.jpg | done (story id 18127289752903523) |
-| Thu 19, 7.30pm | Fresh to Home | IG Reel, TikTok | `9bfcdb6e-b505-4b74-9da3-957b36e85f0c.mp4` | fresh | 07 Thu 19 Nov 7.30pm – Fresh to Home | todo |
-| Thu 19, 7.30pm | Story: Fresh to Home | IG Story | `352a334b-fb52-4f73-90dd-0366abc1491f.jpg` | – | Thu 19 – Fresh to Home.jpg | todo |
+| Thu 19, 7.30pm | Fresh to Home | IG Reel, TikTok | `9bfcdb6e-b505-4b74-9da3-957b36e85f0c.mp4` | fresh | 07 Thu 19 Nov 7.30pm – Fresh to Home | done IG https://www.instagram.com/reel/Df7t-qWmRB2/ (went out 10.28pm, late after a session restart) ; TikTok: link + caption sent to Kunal |
+| Thu 19, 7.30pm | Story: Fresh to Home | IG Story | `352a334b-fb52-4f73-90dd-0366abc1491f.jpg` | – | Thu 19 – Fresh to Home.jpg | done (story id 18132839312487448) |
 | Fri 20, 8.30am | L5 | LinkedIn (text) | – | L5 | – | todo |
 | Fri 20, 12.30pm | Perfume | IG Reel, TikTok | `d0fb238b-366c-4703-83c3-b0fcc2475d8f.mp4` | perfume | 08 Fri 20 Nov 12.30pm – Perfume | todo |
 | Fri 20, 12.30pm | Story: perfume | IG Story | `621f5397-18fa-4484-bc30-9db8b2f17f5a.jpg` | – | Thu 19 – Perfume.jpg | todo |
