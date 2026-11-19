@@ -27,8 +27,8 @@ Status: `todo`, `done <link>`, `skipped <reason>`.
 | Wed 18, 7.30pm | Sneaker | IG Reel, TikTok | `17dd4909-9239-41e5-b550-9c702855c61e.mp4` | sneaker | 05 Wed 18 Nov 7.30pm – Sneaker | done IG https://www.instagram.com/reel/Df43BQKjgik/ (with soundtrack) ; TikTok: link + caption sent to Kunal |
 | Wed 18, 7.30pm | Story: sneaker | IG Story | `f5b2631a-34e8-4ca0-a878-1cc75aa96797.jpg` | – | Wed 18 – Sneaker.jpg | done (story id 18141510772651114) |
 | Thu 19, 8.30am | L4 | LinkedIn (text) | – | L4 | – | done https://www.linkedin.com/feed/update/urn:li:share:7529042261758803968/ |
-| Thu 19, 12.30pm | Bakery | IG Reel, TikTok | `00e56e46-9171-448e-a57b-3f19d4ee8e61.mp4` | bakery | 06 Thu 19 Nov 12.30pm – Bakery | todo |
-| Thu 19, 12.30pm | Story: bakery | IG Story | `8076dc78-940f-4454-af68-ea3322b4d376.jpg` | – | Wed 18 – Bakery.jpg | todo |
+| Thu 19, 12.30pm | Bakery | IG Reel, TikTok | `00e56e46-9171-448e-a57b-3f19d4ee8e61.mp4` | bakery | 06 Thu 19 Nov 12.30pm – Bakery | done IG https://www.instagram.com/reel/Df6qgqnCm7o/ (with Mmm hum) ; TikTok: link + caption sent to Kunal |
+| Thu 19, 12.30pm | Story: bakery | IG Story | `8076dc78-940f-4454-af68-ea3322b4d376.jpg` | – | Wed 18 – Bakery.jpg | done (story id 18127289752903523) |
 | Thu 19, 7.30pm | Fresh to Home | IG Reel, TikTok | `9bfcdb6e-b505-4b74-9da3-957b36e85f0c.mp4` | fresh | 07 Thu 19 Nov 7.30pm – Fresh to Home | todo |
 | Thu 19, 7.30pm | Story: Fresh to Home | IG Story | `352a334b-fb52-4f73-90dd-0366abc1491f.jpg` | – | Thu 19 – Fresh to Home.jpg | todo |
 | Fri 20, 8.30am | L5 | LinkedIn (text) | – | L5 | – | todo |
