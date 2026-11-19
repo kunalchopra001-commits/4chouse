@@ -11,6 +11,7 @@
 - **Method:** Diagnose → Prescribe → Implement → Monitor (the business doctor / trusted mechanic).
 - **Proof:** 24 years designing and building mall activations, exhibition stands, retail interiors and kiosks for big brands.
 - **Look:** dark near-black (#0c0b0a), brand cyan (#00d9ff), warm crayon yellow (#ffc94d), Montserrat headlines, Inter body, a faint animated network of cyan nodes and dashed lines behind everything, and a rainbow gradient only on the lead line, "Your content engine." (from 17 Nov 2026; before that it was "AI as a Service.")
+- **Point of view (19 Nov 2026):** our enemy is AI slop, meaning lazy, plastic, obviously fake AI content. It is not AI itself. Brand line: **"AI content, without the slop."** It sits alongside the lead line "Your content engine." Use it as the sign-off line on posts and end cards, and as the closing line of captions. Every "AI can't…" claim must be true, and all AI content stays labelled.
 - **Main call to action:** Book a free diagnostic. Secondary: Chat on WhatsApp.
 - **Contact:** +971 52 453 4410 · hello@4chouse.com · @4c.house · 4chouse.com · Dubai, UAE
 

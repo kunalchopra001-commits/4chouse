@@ -78,3 +78,12 @@ LinkedIn video: `LINKEDIN_UPLOAD_VIDEO` with the public Higgsfield URL, then `LI
 - **Sound on every video.** Reels with sound get more views. Food reels use the "Mmm" hum series. Other reels get a short instrumental track. See the motion-video skill.
 - **More food.** Food reels are getting the most views, so from week 2 food gets the biggest share of the reel slots (about half).
 - **New commercials:** a watch and a car, both for fictional brands. These are longer, 15–20 second ads with a full soundtrack, waiting for Kunal's approval of the concepts.
+
+## Update 19 Nov: point of view
+- **Enemy:** AI slop. **Brand line:** "AI content, without the slop." Kunal approved both.
+- **From week 2:**
+  - The line closes every caption and appears on end cards.
+  - One bold "What AI can't do" post goes out each week.
+  - A "v1 vs final" proof-of-process post goes out each week.
+  - Weak posts are dropped, not posted to fill a slot.
+- **Details:** `content/brand-pov-2026-11-19.md`.
