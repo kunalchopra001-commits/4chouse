@@ -114,3 +114,7 @@ Kunal: reels with sound get more views; the burger hum is doing well. Every rema
 - The supercar reel (64131022, with soundtrack) and its Story (a6e3a8fb) were moved out of week 1. They can be used in a later week.
 
 - **20 Nov:** Kunal asked for the bakery reel (Df6qgqnCm7o) and the Fresh to Home reel (Df7t-qWmRB2) to come down for now. The Instagram API refused the delete ("Unsupported delete request"), so Kunal will archive or delete them in the app. A bakery repost with an orchestral track is waiting for his pick of the 5 s or 10 s version.
+- **20 Nov redo** (after Kunal's feedback): the croissant was oozing liquid cheese, and the groceries fell with no continuity. Both were remade at 10 s with seedance_2_5, using start and end frames.
+  - **Croissant:** a plain butter croissant with no filling, airy layers and a light stretch. Two takes (A and B) with the orchestral track. Higgsfield jobs 7a871bfb (A) and 6d3438ea (B).
+  - **Fresh to Home:** a locked camera on the same jute bag; carrots, lettuce, broccoli, tomatoes, lemons, apples, baguette and herbs drop in one at a time, ending overflowing. Acoustic track. Job c7b2432d.
+  - **Cost:** about 125 credits. Waiting for Kunal's pick before reposting.
