@@ -118,3 +118,7 @@ Kunal: reels with sound get more views; the burger hum is doing well. Every rema
   - **Croissant:** a plain butter croissant with no filling, airy layers and a light stretch. Two takes (A and B) with the orchestral track. Higgsfield jobs 7a871bfb (A) and 6d3438ea (B).
   - **Fresh to Home:** a locked camera on the same jute bag; carrots, lettuce, broccoli, tomatoes, lemons, apples, baguette and herbs drop in one at a time, ending overflowing. Acoustic track. Job c7b2432d.
   - **Cost:** about 125 credits. Waiting for Kunal's pick before reposting.
+- **Reposted 20 Nov, 4.28am Dubai** (Kunal approved croissant take A and Fresh to Home v2):
+  - Croissant: https://www.instagram.com/reel/Df8XlWOlKOC/ (media 4cc2c936)
+  - Fresh to Home: https://www.instagram.com/reel/Df8XlX2lM9Y/ (media 7d449062)
+  - TikTok links and captions sent to Kunal.
