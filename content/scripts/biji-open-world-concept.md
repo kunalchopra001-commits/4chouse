@@ -46,3 +46,30 @@ cd /home/user/4chouse && git add content/scripts/biji-open-world-concept.md && g
 
 Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
 Claude-Session: https://claude.ai/code/session_01NiEE7m4Hf7QDu3brAUGXzn" && git push -q origin ccr-413194e0-2uvjsu 2>&1|tail -1; git status -sb|head -1
+## Kunal's decisions (20 Nov)
+- GTA can be named in the caption. Dialogue is Punjabi with English subtitles. The line "Bas ik mission hor" stays.
+- **Look reference:** the Netflix film *Chamkila*, for its colour grade and the look of Punjab's fields, animals and buildings. We describe it in prompts only and never feed the film's stills into a generator. Modern sparkle is fine, with his approval.
+- **No video until the look and storyboard are approved.** Ask before using more credits.
+
+## Storyboard v1 (stills, about 11 credits)
+**Cast references:**
+- Biji: f81aadc9
+- The family (grandson, mum, uncle in a maroon turban): ee5b7891
+
+**Frames:**
+1. eb8e33ee: tractor hero
+2. 80e56b94: drone donuts
+3. d30fe87b: haystack dive
+4. ae4ed993: tracksuit. Fix: plain, no three stripes.
+5. 34fdb481: dhaba rickshaw
+6. 559bb2e3: water-tank sunset
+7. f48f3d54: night door
+8. c945a217: reveal. Fix: generic console and controller.
+9. d3acdc81: punchline
+
+**Sheet:** scratchpad/biji/biji-storyboard-v1.jpg
+
+**Video cost options (not approved):**
+- 480p: 9 shots × 15 credits, plus second takes on 3 shots, comes to about 180 credits.
+- 720p showreel quality: 9 × 35 credits, plus second takes, comes to about 420 credits.
+- Voices (ElevenLabs Punjabi) and music add about 5–10 credits.
