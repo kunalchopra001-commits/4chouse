@@ -32,8 +32,8 @@ Status: `todo`, `done <link>`, `skipped <reason>`.
 | Thu 19, 7.30pm | Fresh to Home | IG Reel, TikTok | `9bfcdb6e-b505-4b74-9da3-957b36e85f0c.mp4` | fresh | 07 Thu 19 Nov 7.30pm – Fresh to Home | done IG https://www.instagram.com/reel/Df7t-qWmRB2/ (went out 10.28pm, late after a session restart) ; TikTok: link + caption sent to Kunal |
 | Thu 19, 7.30pm | Story: Fresh to Home | IG Story | `352a334b-fb52-4f73-90dd-0366abc1491f.jpg` | – | Thu 19 – Fresh to Home.jpg | done (story id 18132839312487448) |
 | Fri 20, 8.30am | L5 | LinkedIn (text) | – | L5 | – | done https://www.linkedin.com/feed/update/urn:li:share:7529416310699610112/ |
-| Fri 20, 12.30pm | Perfume | IG Reel, TikTok | `d0fb238b-366c-4703-83c3-b0fcc2475d8f.mp4` | perfume | 08 Fri 20 Nov 12.30pm – Perfume | todo |
-| Fri 20, 12.30pm | Story: perfume | IG Story | `621f5397-18fa-4484-bc30-9db8b2f17f5a.jpg` | – | Thu 19 – Perfume.jpg | todo |
+| Fri 20, 12.30pm | Perfume | IG Reel, TikTok | `d0fb238b-366c-4703-83c3-b0fcc2475d8f.mp4` | perfume | 08 Fri 20 Nov 12.30pm – Perfume | done IG https://www.instagram.com/reel/Df9TUwXjjj7/ (1.10pm, late after a session restart) ; TikTok: link + caption sent to Kunal |
+| Fri 20, 12.30pm | Story: perfume | IG Story | `621f5397-18fa-4484-bc30-9db8b2f17f5a.jpg` | – | Thu 19 – Perfume.jpg | done (story id 18119966792464585) |
 | Fri 20, 7.30pm | Ice cream | IG Reel, TikTok | `3ae1a3c0-85d0-4ee1-9fdd-06c90b182490.mp4` | icecream | 09 Fri 20 Nov 7.30pm – Ice cream | todo |
 | Fri 20, 7.30pm | Story: ice cream | IG Story | `5d72aa13-22ef-4871-9118-76f91d601aba.jpg` | – | Fri 20 – Ice cream.jpg | todo |
 | Sat 21, 12.30pm | VANTA GT car ad (replaces supercar reel; Kunal, 18 Nov) | IG Reel, TikTok | `6ad88d3a-2c09-43bb-839d-5bcc2d1faee8.mp4` | vanta | (not in Drive, approved in chat) | todo |
