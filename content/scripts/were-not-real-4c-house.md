@@ -16,7 +16,7 @@ A thin nervous man plus a portly pompous man, both in 1930s suits and bowler hat
 
 Below, they're called **Percy** (thin, nervous) and **Reginald** (round, pompous).
 
-## Script (about 60 s)
+## Script v1 (bedroom; superseded by v2 below)
 
 **1. Intro (0–12 s): wide shot, then a push-in on Reginald**
 - **Reginald:** "Good evening. We are, regrettably… artificial."
@@ -95,3 +95,44 @@ Plus stills. Lip-sync repair costs extra if a shot needs it.
   - Percy wandering out the door → **out the shop door**, setting off the bell. The barber pole is visible outside.
   - **New gag option:** Reginald reaches for the straight razor to "prove" he's real, and Percy panics: "Not the face! They spent ages on the face!"
 - **No readable shop signs or real logos** anywhere in the shop.
+
+## Script v2 (barber shop with the razor gag; used for voices, 22 Nov)
+**1. Intro (0–10 s): wide (still B), push in on Reginald**
+- **Reginald:** "Good evening. We are, regrettably… artificial."
+- **Percy:** "He means fake. We're fake."
+- **Reginald:** "*Artificial*, Percival. Made by a small studio in Dubai called 4C House."
+
+**2. Hands (10–20 s): Percy caped in the chair (still A); ends on a cape whip**
+- **Percy** (counting): "Ten fingers! I counted twice. Eleven the second time, but—"
+- **Reginald:** "*Ten*, Percival. They check every frame. Somebody actually *looks*."
+- **Percy:** "That's why I've got ten."
+
+**3. Razor (20–30 s)**
+- **Reginald** (lifts the straight razor from the counter): "Allow me to prove we're real—"
+- **Percy** (shrinking into the chair): "Not the face! They spent *ages* on the face!"
+- **Reginald** (pause, puts the razor down): "…Fair."
+
+**4. Pitch (30–42 s)**
+- **Reginald:** "Most businesses need a photographer, a studio, a crew…"
+- **Percy** (sips coffee, gulps): "…and a sandwich budget."
+- **Reginald:** "4C House just makes the content. Every week. No shoot day."
+- **Percy:** "And I can drink coffee now!"
+
+**5. Deadpan (42–48 s):** Reginald stares into the lens and holds it.
+- **Percy** (off-screen): "…They also do websites."
+
+**6. Call to action (48–60 s)**
+- **Reginald:** "So if your business needs posts, reels, ads—"
+- **Percy:** "—hire the people who made *us*! Not us. We're busy." *(walks out; the door bell rings)*
+- **Reginald:** "4chouse.com. Percival, *come back*!"
+- **End card**
+
+(The gears gag is dropped to make room for the razor.)
+
+## Voice auditions (22 Nov; ElevenLabs Voice Design, eleven_ttv_v3, waiting for Kunal's pick)
+| Character | Preview 1 | Preview 2 | Preview 3 |
+|---|---|---|---|
+| Percy | DFcBkK9WDY1fsQocVMLU | DfuwmCBIFSIlM5BneaEJ | FSFgiwYpNEiDlnCaq8o5 |
+| Reginald | N2Phuslbrf3y9s5LruL5 | HEwAUfm1OuY09LxjmwKr | Rl1YEiSC8lCeSg3iaqZa |
+
+**After Kunal picks:** save both voices, record every v2 line as separate takes, then build the animatic.
