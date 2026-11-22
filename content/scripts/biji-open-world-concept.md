@@ -107,3 +107,25 @@ Claude-Session: https://claude.ai/code/session_01NiEE7m4Hf7QDu3brAUGXzn" && git 
    - C: documentary natural
    - D: phone-camera realism
    Waiting for Kunal to pick.
+
+## Storyboard v2 (22 Nov, stills only, about 9 credits)
+**Kunal's choices:** grade C for the day shots, grade B for the night reveal, no timestamps, a cinematic showreel finish.
+
+**Frames:**
+1. a749a578
+2. 1d79b728
+3. 16bfff83
+4. 7bd89185
+5. 9f657c73
+6. 1684fa64
+7. d1134fc9
+8. bbe55b57
+9. c5cd7b0b
+
+**Sheet:** scratchpad/biji/biji-storyboard-v2.jpg
+
+**Known points to fix in the video prompts:**
+- Shot 5: Uncle should react (eyes widen, chai overflows).
+- Shot 1: Biji's gaze should go out over the field.
+
+**Next:** Kunal approves v2 and picks 480p or 720p, then video.
