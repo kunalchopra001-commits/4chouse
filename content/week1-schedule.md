@@ -42,7 +42,7 @@ Status: `todo`, `done <link>`, `skipped <reason>`.
 | Sat 21, 7.30pm | Story: plushie | IG Story | `affbe551-53c2-4b9c-8781-80ccc115304b.jpg` | – | Sat 21 – Plushie waterpark.jpg | done (story id 17919317022536524) |
 | Sun 22, 12.30pm | Hair salon | IG Reel, TikTok | `0aa5a049-139a-45a0-a550-4a8cb69fbe0a.mp4` (v2, head sway; replaces b96bb97e) | salon | 12 Sun 22 Nov 12.30pm – Hair salon | done IG https://www.instagram.com/reel/DgCYIrTAOf3/ (v2, 12.29pm) ; TikTok form ready for Kunal (session 0db92057, expires 2.29pm) |
 | Sun 22, 12.30pm | Story: salon | IG Story | `7e141f7c-8146-4153-b9bb-17f1360c574c.jpg` | – | Sun 22 – Salon.jpg | done (story id 17981178687159322) |
-| Sun 22, 7.30pm | Story: Founding 25 seats | IG Story | `d082cba8-b113-40cf-a6d3-e772bf71cec0.jpg` | – | Sun 22 – Founding 25 seats.jpg | todo |
+| Sun 22, 7.30pm | Story: Founding 25 seats | IG Story | `d082cba8-b113-40cf-a6d3-e772bf71cec0.jpg` | – | Sun 22 – Founding 25 seats.jpg | done (story id 17875040274643992, 7.26pm) |
 | Mon 23, 7.30pm | SAHRA watch ad (Kunal, 18 Nov) | IG Reel, TikTok | `b9027949-8d49-4f4d-a0f8-6a075d2ca5ba.mp4` | sahra | (not in Drive, approved in chat) | todo |
 | Mon 23, 7.30pm | Story: SAHRA | IG Story | `fce3c207-300e-4697-9eb4-3b4628331e96.jpg` | – | (not in Drive, approved in chat) | todo |
 
