@@ -45,3 +45,19 @@ Message the business number from another phone in English, then Arabic. Check: t
 
 ## Changing what it says
 Edit the `SYSTEM_PROMPT` section in `worker.js` in the Cloudflare editor and click Deploy. Keep this file in the repo in step.
+
+## Status and next steps (22 Nov 2026)
+- Done: the Claude key, the lead sheet, the Cloudflare Worker and the inbox. The Meta app "4C Website Assistant" exists in the 4C House portfolio.
+- Meta gave the app a free **test number**, +1 555-168-1653 (display name "Test Number", unverified). Use it to test the whole flow now:
+  1. In WhatsApp → API Setup, choose the test number as the sender, copy its **Phone number ID** into `WA_PHONE_NUMBER_ID`, and add up to 5 recipient phones (Kunal's own) to the "To" list.
+  2. Create a system-user token (step 4 above) and put it in `WA_TOKEN`. The 24-hour temporary token also works for a quick test.
+  3. Set the webhook (step 5) and subscribe to **messages**.
+  4. From Kunal's phone, message the test number and run the checks in section 5.
+- The test number can't be shown to customers or renamed. Going live needs the second real number (step 4.2), followed by display-name approval.
+- **Meta business verification** was rejected and Kunal is reapplying. Common causes:
+  - the legal name doesn't match the trade licence exactly ("4C House of Advertising LLC")
+  - the address doesn't match across documents
+  - the documents are unreadable
+  - the domain or phone can't be confirmed
+  Use the trade licence (533880), a document showing the same address, the verified domain 4chouse.com and hello@4chouse.com.
+- Once the second number is live, the website's WhatsApp buttons (currently +971 52 453 4410, eight links in `index.html`) can point to it, if Kunal wants the AI to answer website enquiries.
