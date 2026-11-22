@@ -80,3 +80,18 @@ Plus stills. Lip-sync repair costs extra if a shot needs it.
   - FLUX: 04779606 (shows more room; the mirror reflection is wrong)
 - **Sheets:** scratchpad/duo/portraits.jpg and scratchpad/duo/sets.jpg
 - **Next, after Kunal picks:** turnaround sheets for both characters, then voices.
+
+## Set change (22 Nov): a New York barber shop instead of the bedroom
+- **Kunal approved** the GPT characters: Percy f3863974, Reginald 5eb5fbbf.
+- **Barber shop stills (GPT Image 2.5):**
+  - A, 82e381c0: Percy caped in the chair, Reginald fixing his tie. Close two-shot.
+  - B, 896051d7: wider room. Percy leans on a chair with a coffee; Reginald poses grandly.
+- **Turnaround sheets:**
+  - Percy, 061c5b45: the sleeves came out elbow-short, far shorter than in the portrait. Regenerate if it carries into the video.
+  - Reginald, d0cc427e: good.
+- **Prop swaps in the script:**
+  - Hat whip → **cape whip**: the barber cape flicked at the lens covers the cut.
+  - Glass of water → **Percy's paper coffee cup**.
+  - Percy wandering out the door → **out the shop door**, setting off the bell. The barber pole is visible outside.
+  - **New gag option:** Reginald reaches for the straight razor to "prove" he's real, and Percy panics: "Not the face! They spent ages on the face!"
+- **No readable shop signs or real logos** anywhere in the shop.
