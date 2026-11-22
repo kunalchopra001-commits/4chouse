@@ -40,8 +40,8 @@ Status: `todo`, `done <link>`, `skipped <reason>`.
 | Sat 21, 12.30pm | Story: VANTA GT | IG Story | `72a60687-e3ff-4c77-828f-f7aa4179f439.jpg` | – | (not in Drive, approved in chat) | done (story id 18128356874471952) |
 | Sat 21, 7.30pm | Plushie waterpark | IG Reel, TikTok | `33f2f55d-d911-425f-a391-26d8a1e71e70.mp4` | plushie | 11 Sat 21 Nov 7.30pm – Plushie | done IG https://www.instagram.com/reel/DgAttE_mxsT/ (8.59pm) ; TikTok: link + caption sent to Kunal |
 | Sat 21, 7.30pm | Story: plushie | IG Story | `affbe551-53c2-4b9c-8781-80ccc115304b.jpg` | – | Sat 21 – Plushie waterpark.jpg | done (story id 17919317022536524) |
-| Sun 22, 12.30pm | Hair salon | IG Reel, TikTok | `b96bb97e-441a-4941-b73c-c6c7a9561ae2.mp4` | salon | 12 Sun 22 Nov 12.30pm – Hair salon | todo |
-| Sun 22, 12.30pm | Story: salon | IG Story | `7e141f7c-8146-4153-b9bb-17f1360c574c.jpg` | – | Sun 22 – Salon.jpg | todo |
+| Sun 22, 12.30pm | Hair salon | IG Reel, TikTok | `b96bb97e-441a-4941-b73c-c6c7a9561ae2.mp4` | salon | 12 Sun 22 Nov 12.30pm – Hair salon | HOLD: redo, hair flip not realistic (Kunal 22 Nov); do not post until the new version is approved |
+| Sun 22, 12.30pm | Story: salon | IG Story | `7e141f7c-8146-4153-b9bb-17f1360c574c.jpg` | – | Sun 22 – Salon.jpg | HOLD with the salon reel |
 | Sun 22, 7.30pm | Story: Founding 25 seats | IG Story | `d082cba8-b113-40cf-a6d3-e772bf71cec0.jpg` | – | Sun 22 – Founding 25 seats.jpg | todo |
 | Mon 23, 7.30pm | SAHRA watch ad (Kunal, 18 Nov) | IG Reel, TikTok | `b9027949-8d49-4f4d-a0f8-6a075d2ca5ba.mp4` | sahra | (not in Drive, approved in chat) | todo |
 | Mon 23, 7.30pm | Story: SAHRA | IG Story | `fce3c207-300e-4697-9eb4-3b4628331e96.jpg` | – | (not in Drive, approved in chat) | todo |
