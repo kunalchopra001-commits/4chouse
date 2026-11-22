@@ -67,3 +67,16 @@ The pack's "5–8 takes per shot" at 15 s and 720p comes to roughly 105 credits 
 | **Total** | **~900** |
 
 Plus stills. Lip-sync repair costs extra if a shot needs it.
+
+## Stills v1 (22 Nov; Kunal chose the 1950s option)
+- **Percy:**
+  - GPT Image 2.5: f3863974 (recommended)
+  - FLUX.2 pro: f6da2b72
+- **Reginald:**
+  - GPT Image 2.5: 5eb5fbbf (recommended)
+  - FLUX.2 pro: 1453cb4d
+- **Bedroom set:**
+  - GPT: c956eb7b (faces hold; tight framing)
+  - FLUX: 04779606 (shows more room; the mirror reflection is wrong)
+- **Sheets:** scratchpad/duo/portraits.jpg and scratchpad/duo/sets.jpg
+- **Next, after Kunal picks:** turnaround sheets for both characters, then voices.
