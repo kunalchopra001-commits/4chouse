@@ -73,3 +73,37 @@ Claude-Session: https://claude.ai/code/session_01NiEE7m4Hf7QDu3brAUGXzn" && git 
 - 480p: 9 shots × 15 credits, plus second takes on 3 shots, comes to about 180 credits.
 - 720p showreel quality: 9 × 35 credits, plus second takes, comes to about 420 credits.
 - Voices (ElevenLabs Punjabi) and music add about 5–10 credits.
+
+## Storyboard v2 plan (Kunal's notes, 22 Nov; nothing generated yet)
+1. **The light follows one day, from dawn to night.**
+
+| Shot | Time and light |
+|---|---|
+| 1 | about 6.15am: blue-gold dawn, mist |
+| 2 | about 7.30am: low golden sun, long shadows |
+| 3 | about 10am: bright, clean morning light |
+| 4 | about 12.30pm: hard overhead sun, short shadows, a hot white sky |
+| 5 | about 3.30pm: warm afternoon, dust in the air |
+| 6 | about 6pm: golden hour into sunset |
+| 7 | about 10pm: blue moonlight |
+| 8–9 | late night: only the screen's glow and a dim bulb |
+
+2. **Caught on camera, never performed.**
+   - Nobody looks at the lens or poses.
+   - Biji is completely absorbed: focused, deadpan, on her "mission". She doesn't smile.
+   - Shots are filmed through doorways, over shoulders, from behind walls, with leaves or a door frame in the foreground. Slight phone zooms, the way a family member filming secretly would.
+   - Every action shot also catches someone's surprise: in the foreground, or as a quick cutaway.
+3. **Shot 3, the haystack.** Seen from behind the grandson, who is peeking over a wall. Biji runs past focused and serious, dives into the haystack, and the rooster scatters. His reaction is in the foreground.
+4. **Shot 6, rooftop.** Mum sits on a charpai on the next rooftop, cutting vegetables into a steel thali. She looks up, sees Biji standing on the water tank, and the thali tips out of her hands. Vegetables scatter across the rooftop floor. No laundry, and nothing thrown off the roof.
+5. **Other frames to fix.**
+   - Shot 1: Biji looks out at the field, not at the camera.
+   - Shot 4: she looks past the lens.
+   - Shot 5: no smile at the camera; she's focused on the road.
+   - Shot 4: plain tracksuit with no stripes.
+   - Shots 8–9: a generic console and controller.
+6. **Grade options**, tested on existing frames (scratchpad/biji/grade-options.jpg):
+   - A: sun-bleached (current)
+   - B: rich film (Kodachrome-style)
+   - C: documentary natural
+   - D: phone-camera realism
+   Waiting for Kunal to pick.
