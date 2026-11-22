@@ -1,0 +1,69 @@
+# "We're Not Real": 4C House version (script draft 1, nothing produced)
+
+**Base:** Kunal's prompt pack (22 Nov): a 60 s vertical reel, two vintage comedy gentlemen in a modern bedroom proving they're AI. This version makes the whole bit a pitch for hiring 4C House. The format follows the reference video; the script and characters are original.
+
+## Rules
+- **They're AI characters, never customers.** They don't claim results ("4C got me 30% more sales"). They talk about what 4C House makes and how, which is true.
+- **No performance promises,** and no prices or numbers unless they're on the website.
+- **Disclosure:** the gag is that they say they're AI, and the platform AI labels go on too.
+- **Likeness:** see the costume note below before any stills are made.
+
+## Costume note (decide before generating)
+A thin nervous man plus a portly pompous man, both in 1930s suits and bowler hats, is very close to the look of a famous real duo whose likeness is licensed. Original faces don't fully fix that, because the costume and body pairing do the evoking. Safer options that keep the joke:
+1. **Same duo, different era:** 1950s TV-variety hosts (a skinny one in a too-short tuxedo, a round one in a loud checked blazer). **Recommended.**
+2. **Same era, no bowlers:** a flat cap and a straw boater, waistcoats, no moustache curl.
+3. Keep the pack as written and accept the risk (not recommended for a brand account).
+
+Below, they're called **Percy** (thin, nervous) and **Reginald** (round, pompous).
+
+## Script (about 60 s)
+
+**1. Intro (0–12 s): wide shot, then a push-in on Reginald**
+- **Reginald:** "Good evening. We are, regrettably… artificial."
+- **Percy:** "He means fake. We're fake."
+- **Reginald:** "*Artificial*, Percival. Made by a small studio in Dubai called 4C House."
+
+**2. Hands (12–24 s): a close two-shot, ending on a hat whip**
+- **Percy** (counting): "Ten fingers! I counted twice. Eleven the second time, but—"
+- **Reginald:** "*Ten*, Percival. They check every frame. Somebody actually *looks*."
+- **Percy:** "That's why I've got ten."
+
+**3. The pitch gag (24–42 s): medium two-shot; hat over the eyes, the drink, then the gears**
+- **Reginald:** "Most businesses need a photographer, a studio, a crew…"
+- **Percy** (drinks, gulp): "…and a sandwich budget."
+- **Reginald:** "4C House just makes the content. Every week. No shoot day."
+- **Percy:** "And I can drink now!"
+- **Reginald:** "Show them the inside."
+- **Both,** tilting back: "Ahhhh." *(gears clunk)*
+
+**4. The deadpan beat (42–48 s): Reginald stares into the lens, holds 1.5 s or more**
+- **Percy** (off-screen, humming nervously), then: "…They also do websites."
+- Reginald's eyebrow rises.
+
+**5. Call to action (48–60 s): by the door, Percy wanders off**
+- **Reginald:** "So if your business needs posts, reels, ads—"
+- **Percy:** "—hire the people who made *us*! Not us. We're busy."
+- **Reginald:** "4chouse.com. Percival, *come back*."
+- **End card:** "Your content engine. AI content, without the slop." / 4chouse.com
+
+**Caption:** "We're not real. The studio that made us is. 🎩 4C House makes your posts, reels and ads every week, with no shoot day. Made with AI by 4C House. 4chouse.com #AIContent #DubaiBusiness #ContentCreation #4CHouse"
+
+## Production plan (follows `content/storytelling-playbook.md`)
+1. **Stills:** both characters and the bedroom set, about 5–10 credits. Kunal approves the faces and costumes.
+2. **Voices:** design two voices in ElevenLabs and record every line. Kunal approves them by ear.
+3. **Animatic:** stills cut to the voice track with temp sound. Kunal approves the timing.
+4. **Video** (approve the budget first):
+   - Generate takes at 480p, then re-make the best ones at 720p.
+   - Shorter shots (5–10 s) with coverage, rather than 15 s single takes.
+5. **Finish:** grain, word-by-word captions, room tone and foley, then master to −14 LUFS.
+
+## Cost honesty
+The pack's "5–8 takes per shot" at 15 s and 720p comes to roughly 105 credits per take, or 2,600–4,000 credits in total. The cheaper route is about 12 shots of 5 s each:
+
+| Step | Credits |
+|---|---|
+| 2–3 takes per shot at 480p (~15 each) | ~450 |
+| Selects re-made at 720p (~35 each) | ~420 |
+| **Total** | **~900** |
+
+Plus stills. Lip-sync repair costs extra if a shot needs it.
