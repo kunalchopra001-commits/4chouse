@@ -129,3 +129,29 @@ Claude-Session: https://claude.ai/code/session_01NiEE7m4Hf7QDu3brAUGXzn" && git 
 - Shot 1: Biji's gaze should go out over the field.
 
 **Next:** Kunal approves v2 and picks 480p or 720p, then video.
+
+## First cut, 480p (22 Nov; waiting for Kunal's review)
+- **Clips (seedance_2_5, 480p, no native audio):**
+  - 1: d275d85a
+  - 2: e8ff6943
+  - 2b: 38eec1e9
+  - 3: 21e05a9d
+  - 4: 0c99d9ac
+  - 5: 053cd57c
+  - 6a: 5b85fa15
+  - 6b: d35fcefd
+  - 7: e080d4f0
+  - 8: 9c983de6
+  - 9: 161cbbf8
+- **Music:**
+  - Harmonium dawn intro: 1160efaa
+  - Dhol/808 beat: ced2706d
+- **Voices (ElevenLabs eleven_v4, fictional library voices, never Kunal's):**
+  - Biji: "Dulari Didi" (wSMP2ehaozb5I36yi8vg)
+  - Grandson: "Amit Ratan" (dNNR4hVwgRICgZyUZ51n)
+  - Uncle: "Maal Singh" (EQyuUD4RSoXnvNrRCvfZ)
+- **Edit:** 43 s. Grade C for day, B for night. Cards hand-lettered in Caveat and Baloo Paaji 2. Bilingual subtitles. AI label throughout, and a 4C end card with a fiction disclaimer.
+- **Cost:** about 160 Higgsfield credits for the video. ElevenLabs voices are about 340 ElevenLabs credits.
+- **If approved:**
+  - Re-render the keepers at 720p, about 35 credits a clip.
+  - Or upscale the 480p cut.
