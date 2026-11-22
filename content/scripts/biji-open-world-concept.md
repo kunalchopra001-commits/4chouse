@@ -155,3 +155,9 @@ Claude-Session: https://claude.ai/code/session_01NiEE7m4Hf7QDu3brAUGXzn" && git 
 - **If approved:**
   - Re-render the keepers at 720p, about 35 credits a clip.
   - Or upscale the 480p cut.
+
+## Kunal's verdict on the first cut (22 Nov): rejected
+- Every sequence and shot is off the mark and looks visibly like AI slop.
+- His view: we squeezed the story into under a minute and saved credits too hard.
+- **Next:** research how good short-form storytelling is made and paced before any more generation. Kunal is gathering resources too.
+- **Do not reuse this cut** or post it anywhere.
