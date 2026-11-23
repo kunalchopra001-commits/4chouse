@@ -43,8 +43,8 @@ Status: `todo`, `done <link>`, `skipped <reason>`.
 | Sun 22, 12.30pm | Hair salon | IG Reel, TikTok | `0aa5a049-139a-45a0-a550-4a8cb69fbe0a.mp4` (v2, head sway; replaces b96bb97e) | salon | 12 Sun 22 Nov 12.30pm – Hair salon | done IG https://www.instagram.com/reel/DgCYIrTAOf3/ (v2, 12.29pm) ; TikTok form ready for Kunal (session 0db92057, expires 2.29pm) |
 | Sun 22, 12.30pm | Story: salon | IG Story | `7e141f7c-8146-4153-b9bb-17f1360c574c.jpg` | – | Sun 22 – Salon.jpg | done (story id 17981178687159322) |
 | Sun 22, 7.30pm | Story: Founding 25 seats | IG Story | `d082cba8-b113-40cf-a6d3-e772bf71cec0.jpg` | – | Sun 22 – Founding 25 seats.jpg | done (story id 17875040274643992, 7.26pm) |
-| Mon 23, 7.30pm | SAHRA watch ad (Kunal, 18 Nov) | IG Reel, TikTok | `b9027949-8d49-4f4d-a0f8-6a075d2ca5ba.mp4` | sahra | (not in Drive, approved in chat) | todo |
-| Mon 23, 7.30pm | Story: SAHRA | IG Story | `fce3c207-300e-4697-9eb4-3b4628331e96.jpg` | – | (not in Drive, approved in chat) | todo |
+| Mon 23, 7.30pm | SAHRA watch ad (Kunal, 18 Nov) | IG Reel, TikTok | `b9027949-8d49-4f4d-a0f8-6a075d2ca5ba.mp4` | sahra | (not in Drive, approved in chat) | done IG https://www.instagram.com/reel/DgEvaL7AsVW/ (10.31am, moved up from 7.30pm on Kunal's request) ; TikTok form ready (expires 12.31pm) |
+| Mon 23, 7.30pm | Story: SAHRA | IG Story | `fce3c207-300e-4697-9eb4-3b4628331e96.jpg` | – | (not in Drive, approved in chat) | done (posted 10.30am with the reel) |
 
 ## Captions (Instagram and TikTok; add the sign-off and hashtags)
 - **burger:** Built to be stopped at. 🍔 Your menu deserves the same treatment: cheese on the patty, slow-motion drop, full spin. No studio, no food stylist, no shoot day. #DubaiFood #RestaurantMarketing #AIContent #4CHouse
